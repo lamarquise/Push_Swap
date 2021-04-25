@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 22:57:38 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/20 23:13:26 by ericlazo         ###   ########.fr       */
+/*   Created: 2021/04/24 01:06:55 by ericlazo          #+#    #+#             */
+/*   Updated: 2021/04/25 05:02:04 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-// something else?
-
-
-
-
-
-int		main(int ac, char **av)
-{
+//#include "libft.h"	// nope, it's in both.h
+#include "both.h"
 
 
 
-	return (0);
-}
+int		ft_apply_ops(t_list **stack_a, t_list **stack_b);
 
+
+
+#endif
