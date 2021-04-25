@@ -120,11 +120,14 @@ re: fclean all
 	### VARIOUS TESTS, Valgrind, leaks, etc... ###
 
 	# works for just Checker...
+	# also, dosen't work on Mac with Big Sur atm... ugh
 testl: $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_valgrind -g
-	printf "$(_GREEN)\r\33[2K\r$(CHECKER) created  😎\n$(_END)"
+	echo "$(_GREEN)\r\33[2K\rValgrind is ready  😎\n$(_END)"
 
-	
+tests: $(OBJS_CHECKER) $(LIBFT)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_sanitize -g3 -fsanitize=address
+	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
 
 
 .PHONY: all clean fclean re
