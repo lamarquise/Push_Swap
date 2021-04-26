@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   utils_both.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 01:06:55 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/26 23:59:13 by ericlazo         ###   ########.fr       */
+/*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
+/*   Updated: 2021/04/27 00:51:28 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
 
-//#include "libft.h"	// nope, it's in both.h
+	// do not love the name, would prefere these sort of funcs come from or be
+	// put in the Libft...
+
 #include "both.h"
 
-// for open for testing GNL
-#include <fcntl.h>
+// seems like a stupid func, but need it for lstclear, may make a whole new system later
+	// such a dumb function...
+	// in our case content is an int*
+	// should i just do int *content?
+void	ft_free_int(void *content)
+{
 
-int		ft_apply_ops(t_list **stack_a, t_list **stack_b);
+	content = NULL;
+
+}
 
 
 
-#endif
+

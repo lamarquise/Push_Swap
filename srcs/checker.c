@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/25 05:48:03 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/27 00:48:10 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@
 	// around, and then we free them at the end
 	// Opperating under this assumption for now...
 
-
-// seems like a stupid func, but need it for lstclear, may make a whole new system later
-
-	// in our case content is an int*
-void	ft_free_int(void *content)
-{
-	// no need to do more cuz free the tab, which is later...
-	content = NULL;
-}
 
 
 	// the function that actually checks if all the Nums are in order...
@@ -138,6 +129,9 @@ int		main(int ac, char **av)
 	{
 		ft_putstr("OK\n");
 	}
+
+	// maybe put the visuallizer and other bonuses here?
+
 
 /*
 ** Freeing things prolly gonna move this

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/25 06:31:16 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/27 01:29:45 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,21 @@ int			ft_reverse_rotate(t_list **stack);
 
 int			ft_rotate_both(t_list **stack_a, t_list **stack_b);
 int			ft_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
+
+
+
+
+
+
+// Utils Both
+// Would rather not have this file, would like either to use funcs from Libft
+// create and put in libft, but for now...
+
+void		ft_free_int(void *content);
+
+
+
+
 
 
 

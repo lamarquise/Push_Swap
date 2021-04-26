@@ -1,5 +1,6 @@
-# ok we're gonna grab a whole bunch of the libft and cub3d and libASM makefilesi think
 
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra
 
 
 # can i do this? would it work?
@@ -19,28 +20,66 @@ CHECKER		=	checker
 		# make re... LOL
 DIR_SRCS		=	./srcs/
 
-DIR_CHECKER		=	$(DIR_SRCS)checker/
+#DIR_CHECKER		=	$(DIR_SRCS)checker/
+DIR_CHECKER		=	$(DIR_SRCS)
 SRCS_CHECKER	=	checker.c \
-					parsing.c \
-					create_stack.c \
-					swap.c \
 					apply_operations.c \
-					push.c \
-					rotate.c \
 
 
-DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
+#DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
+DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap.c \
+
+
+DIR_BOTH		=	$(DIR_SRCS)
+SRCS_BOTH		=	parsing.c \
+					create_stack.c \
+					op_push.c \
+					op_swap.c \
+					op_rotate.c \
+					utils_both.c \
 
 
 DIR_INC		=	includes/
 INCS		=	-I$(DIR_INC)
 
 
+# This is where it would be nice to have an include file, one i could bring in
+# for libft that i also use in libft, where all the include files and sources files
+# are stored...
+
 LIBFT_NAME	=	libft.a
 DIR_LIBFT	=	../libft/
+LIBFT		=	$(DIR_LIBFT)$(LIBFT_NAME)
+
+
 DIR_LIBFT_INC	=	$(DIR_LIBFT)includes/
+
+	# these names don't make sense, should be swapped or changed...
+LIBFT_INC		=	$(wildcard $(DIR_LIBFT_INC)*.h)
 LIBFT_INCS	=	-I$(DIR_LIBFT_INC)
+
+
+
+DIR_LIBFT_SRC	=	$(DIR_LIBFT)srcs/
+
+	# You could easily use a wildcard to get all these...
+DIR_LIBFT_SRCS	=	atoi_funcs/ \
+					is_funcs/ \
+					linked_list_funcs/list_funcs/ \
+					linked_list_funcs/nlist_funcs/ \
+					mem_plus_funcs/ \
+					mem_funcs_more/ \
+					printf/ \
+					put_funcs/ \
+					simple_funcs/ \
+					str_funcs/ \
+					str_funcs_more/ \
+					tab_funcs/ \
+
+LIBFT_SRC	=	$(addprefix $(DIR_LIBFT_SRC),$(DIR_LIBFT_SRCS))
+LIBFT_SRCS	=	$(foreach dir, $(LIBFT_SRC), $(wildcard $(dir)*.c))
+
 
 #ALL_LIBS	=	$(DIR_LIBFT)$(LIBFT_NAME)
 ALL_LIBS	=	-L$(DIR_LIBFT) -lft
@@ -49,31 +88,28 @@ ALL_LIBS	=	-L$(DIR_LIBFT) -lft
 ALL_INCS	=	$(INCS) $(LIBFT_INCS)
 
 
-CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
-
 
 DIR_OBJ		=	./objs/
 
-OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o)
-OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o)
+OBJ_BOTH	=	$(SRCS_BOTH:.c=.o)
+OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH)
+OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH)
 
 OBJS_CHECKER	=	$(addprefix $(DIR_OBJ),$(OBJ_CHECKER))
 OBJS_PUSH_SWAP	=	$(addprefix $(DIR_OBJ),$(OBJ_PUSH_SWAP))
 
 
 
-#all: $(CHECKER) $(PUSH_SWAP)
+all: $(CHECKER) $(PUSH_SWAP)
 
 	# just working on Checker for now...
-all: $(CHECKER)
+#all: $(CHECKER)
 
-$(LIBFT):
-	make -C $(DIR_LIBFT) $(LIBFT_NAME)
+$(LIBFT): $(LIBFT_INC) $(LIBFT_SRCS)
+	make -C $(DIR_LIBFT)
 
 
 	### EXECUTABLE CREATION ###
-
 
 	# don't forget to add more dependancies, like $(LIBFT) and whatever else
 	# fairly certain the includes and libs and stuff need to be in both
@@ -103,6 +139,11 @@ $(DIR_OBJ)%.o: $(DIR_PUSH_SWAP)%.c
 	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
 	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
 
+$(DIR_OBJ)%.o: $(DIR_BOTH)%.c
+	mkdir -p $(DIR_OBJ)
+	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
+	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
+
 
 	### CLEANING ###
 
@@ -114,7 +155,14 @@ fclean: clean
 	rm -rf $(CHECKER) $(PUSH_SWAP)
 	echo "$(_RED)$(CHECKER) and $(PUSH_SWAP) Deleted  😱$(_END)"
 
+lclean:
+	make -C $(DIR_LIBFT) clean
+
+lfclean:
+	make -C $(DIR_LIBFT) fclean
+
 re: fclean all
+
 
 
 	### VARIOUS TESTS, Valgrind, leaks, etc... ###
@@ -130,7 +178,7 @@ tests: $(OBJS_CHECKER) $(LIBFT)
 	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re lclean lfclean libft_1 testl tests
 
 .SILENT:
 
