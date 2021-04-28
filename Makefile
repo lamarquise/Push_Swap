@@ -29,6 +29,8 @@ SRCS_CHECKER	=	checker.c \
 #DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
 DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap.c \
+					mysort.c \
+					op_wrappers.c \
 
 
 DIR_BOTH		=	$(DIR_SRCS)
@@ -38,6 +40,8 @@ SRCS_BOTH		=	parsing.c \
 					op_swap.c \
 					op_rotate.c \
 					utils_both.c \
+					init_structs.c \
+					print_struct_status.c \
 
 
 DIR_INC		=	includes/
@@ -173,8 +177,12 @@ testl: $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_valgrind -g
 	echo "$(_GREEN)\r\33[2K\rValgrind is ready  😎\n$(_END)"
 
-tests: $(OBJS_CHECKER) $(LIBFT)
+testsc: $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_sanitize -g3 -fsanitize=address
+	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
+
+testsp: $(OBJS_PUSH_SWAP) $(LIBFT)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o pus_swap_sanitize -g3 -fsanitize=address
 	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
 
 

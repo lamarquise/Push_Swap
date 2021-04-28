@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:04:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/27 01:08:25 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/28 01:02:29 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_push_to_from(t_list **stack_to, t_list **stack_from)
 		return (0);
 
 	tmp_from = *stack_from;
+	if (tmp_from == NULL)	// overly explicit
+		return (2);			// means nothing happened
 
 	*stack_from = (*stack_from)->next;
 

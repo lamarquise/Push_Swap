@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/27 00:48:10 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/28 04:11:57 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ int		main(int ac, char **av)
 
 
 	// testing
-	int i;
+//	ft_print_both_stacks(&all);
+
+/*	int i;
 	t_list	*tmp_a;
 	t_list	*tmp_b;
 	
@@ -117,7 +119,7 @@ int		main(int ac, char **av)
 		ft_putnbrnl(*((int*)(tmp_b->content)));
 		tmp_b = tmp_b->next;
 	}
-
+*/
 
 // This is where I do the Checking part...
 

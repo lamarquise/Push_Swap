@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/26 23:59:45 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/28 02:35:19 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "both.h"
 
 
-
+int		ft_mysort(t_mysort *all);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:53:53 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/27 01:08:38 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/04/28 03:32:52 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int		ft_rotate(t_list **stack)
 	first = *stack;
 	last = *stack;
 
-	if (!last->next)
-		return (1);
+	if (!first->next)
+		return (2);
 
 	// doesn't happen if only 1 elem
 	while (last->next)
@@ -53,8 +53,9 @@ int		ft_reverse_rotate(t_list **stack)
 	first = *stack;
 	last = *stack;
 
-	if (!last->next)
-		return (1);
+		// ie if there is only one elem
+	if (!first->next)
+		return (2);
 
 	// doesn't happen if only 1 elem
 	while (last->next)
