@@ -22,16 +22,16 @@ DIR_SRCS		=	./srcs/
 
 #DIR_CHECKER		=	$(DIR_SRCS)checker/
 DIR_CHECKER		=	$(DIR_SRCS)
-SRCS_CHECKER	=	checker.c \
+SRCS_CHECKER	=	checker_main.c \
 					apply_operations.c \
 
 
 #DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
 DIR_PUSH_SWAP	=	$(DIR_SRCS)
-SRCS_PUSH_SWAP	=	push_swap.c \
-					mysort.c \
+SRCS_PUSH_SWAP	=	push_swap_main.c \
 					op_wrappers.c \
-
+					my_sort.c \
+					bubble_sort.c \
 
 DIR_BOTH		=	$(DIR_SRCS)
 SRCS_BOTH		=	parsing.c \

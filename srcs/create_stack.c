@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:40:15 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 01:02:43 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:02:00 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int		ft_create_stack(t_list **stack, int **tab, int size)
 	t_list	*new;
 	int		i;
 
+//	printf("create stack test 1\n");
+
+
 	// testing
 //	ft_print_inttab(*tab, size);
 
@@ -81,5 +84,7 @@ int		ft_create_stack(t_list **stack, int **tab, int size)
 		// do actually need this... ugh
 		++i;
 	}
+//	printf("create stack test 2 end\n");
+
 	return (1);
 }

@@ -6,14 +6,14 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:53:53 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 03:32:52 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:06:18 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	// in both for now
 #include "both.h"
 
-int		ft_rotate(t_list **stack)
+int		ft_op_rotate(t_list **stack)
 {
 	t_list	*first;
 	t_list	*last;
@@ -38,7 +38,7 @@ int		ft_rotate(t_list **stack)
 	return (1);
 }
 
-int		ft_reverse_rotate(t_list **stack)
+int		ft_op_reverse_rotate(t_list **stack)
 {
 	t_list	*first;
 	t_list	*last;
@@ -71,23 +71,23 @@ int		ft_reverse_rotate(t_list **stack)
 	return (1);
 }
 
-int		ft_rotate_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_rotate_both(t_list **stack_a, t_list **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);
 
-	if (!ft_rotate(stack_a) || !ft_rotate(stack_b))
+	if (!ft_op_rotate(stack_a) || !ft_op_rotate(stack_b))
 		return (0);
 
 	return (1);
 }
 
-int		ft_reverse_rotate_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);
 
-	if (!ft_reverse_rotate(stack_a) || !ft_reverse_rotate(stack_b))
+	if (!ft_op_reverse_rotate(stack_a) || !ft_op_reverse_rotate(stack_b))
 		return (0);
 
 	return (1);

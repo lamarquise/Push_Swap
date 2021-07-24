@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 04:20:35 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:29:08 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int		main(int ac, char **av)
 	int				*int_tab;		// may want a clearer name... like int_tab?
 	int				size;		// also clearer name? a long? size_t?
 	// could forgo size and use info.size_total from the start...
-	t_mysort		all;	// no need to free but should free things in it (if pointers)
+	t_sorting		all;	// no need to free but should free things in it (if pointers)
 
 	t_stack_info	info_a;
 	t_stack_info	info_b;
 
+//	printf("|-------Push Swap Start-------|\n");
 	if (ac < 2)
 		return (ft_error_msg("ERROR: no list of ints\n", 0));
 
@@ -47,7 +48,7 @@ int		main(int ac, char **av)
 
 // so far this is all identical to checker.c
 
-
+//	printf("push main test 1\n");
 
 	// this is where we would do the sorting
 		// first i need to init the Structure...
@@ -65,11 +66,12 @@ int		main(int ac, char **av)
 	if (!ft_prep_stack_info(&info_a, int_tab))
 		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
 
-	ft_printf("Pre Sorting\n");
-	ft_print_both_stacks(&all);
+//	ft_printf("Pre Sorting\n");
+//	ft_print_both_stacks(&all);
 //	ft_print_mysort_all(&all);
 
 
+//	printf("push main test 2\n");
 
 //	if (!ft_prep_mysort_info(&info_all, tab))
 //		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
@@ -78,18 +80,20 @@ int		main(int ac, char **av)
 		// are also set.
 
 		// do i need anything else? int_tab?
-	if(!ft_mysort(&all))
-		return (ft_error_msg("ERROR: MySort failed to sort.\n", 0));
+//	if(!ft_mysort(&all))
+//		return (ft_error_msg("ERROR: MySort failed to sort.\n", 0));
 
-
+	if (!ft_bubble_sort(&all))
+		return (ft_error_msg("ERROR: Bubble Sort failed to sort.\n", 0));
 
 	// then we print the Operations in order to
 
 
+//	printf("push main test 3\n");
 
 	// now we print status...
-	ft_printf("\nPost Sort:\n");
-	ft_print_both_stacks(&all);
+//	ft_printf("\nPost Sort:\n");
+//	ft_print_both_stacks(&all);
 //	ft_print_mysort_all(&all);
 
 
@@ -97,6 +101,7 @@ int		main(int ac, char **av)
 
 	ft_lstclear(&stack_a, &ft_free_int);
 
+//	printf("|-------Push Swap End-------|\n");
 
 	return (0);
 }

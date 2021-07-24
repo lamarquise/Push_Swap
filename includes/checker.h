@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 01:06:55 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/26 23:59:13 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/24 09:32:34 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 int		ft_apply_ops(t_list **stack_a, t_list **stack_b);
 
-
+// i think this goes here...
+int		ft_parse_op_codes(t_list *op_codes);
 
 #endif

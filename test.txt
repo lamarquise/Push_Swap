@@ -1,0 +1,17 @@
+      would be an exact copy of the tutor when you saved it.
+
+  5. Now remove the file by typing (Windows):   :!del TEST
+				or (Unix):	:!rm TEST
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		    Lesson 5.3: SELECTING TEXT TO WRITE
+
+
+	** To save part of the file, type  v  motion  :w FILENAME **
+
+  1. Move the cursor to this line.
+
+  2. Press  v  and move the cursor to the fifth item below.  Notice that the
+     text is highlighted.
+

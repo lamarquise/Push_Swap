@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 02:25:47 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 00:40:27 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:09:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 	// IDK... seems right?
 
-int		ft_swap(t_list **stack)
+int		ft_op_swap(t_list **stack)
 {
 	t_list	*e1;
 	t_list	*e2;
@@ -41,12 +41,12 @@ int		ft_swap(t_list **stack)
 	return (1);
 }
 
-int		ft_swap_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_swap_both(t_list **stack_a, t_list **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);
 
-	if (!ft_swap(stack_a) || !ft_swap(stack_b))
+	if (!ft_op_swap(stack_a) || !ft_op_swap(stack_b))
 		return (0);
 
 	return (1);

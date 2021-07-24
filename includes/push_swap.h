@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 02:35:19 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/21 19:31:14 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 	// already has libft and stdio.h
 # include "both.h"
 
+// may end up adding my Wrapper Funcs in here
 
-int		ft_mysort(t_mysort *all);
-
+int		ft_my_sort(t_sorting *all);
+int		ft_bubble_sort(t_sorting *all);
 
 #endif

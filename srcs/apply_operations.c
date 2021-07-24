@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 03:23:33 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/27 00:30:16 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/24 09:32:56 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		ft_apply_ops(t_list **stack_a, t_list **stack_b)
 			// 16 is # chars to read and 0 is Stdin fd
 	while ((ret = ft_gnl(&line, 0)) > 0)
 	{
-		printf("GNL Line: |%s|\n", line);
+//		printf("GNL Line: |%s|\n", line);
 	}
 //	printf("post GNL, ret: %d\n", ret);
 

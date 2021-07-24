@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 02:29:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 02:29:21 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:02:56 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 	// this function is kinda useless...
 int		ft_init_stack_info(t_stack_info *info, int size)
 {
+//	printf("init stack info test 1\n");
+
+
+
 	if (!info)
 		return (0);
 //	info->max = -2147483648;	// instead we assign it the first val of the int_tab
@@ -34,6 +38,9 @@ int		ft_init_stack_info(t_stack_info *info, int size)
 int		ft_prep_stack_info(t_stack_info *info, int *int_tab)
 {
 	int		i;
+
+//	printf("perp stack info test 1\n");
+
 
 	i = 0;
 

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 03:47:49 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/04/28 04:13:51 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/23 10:26:14 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_stack(t_list *stack)
 	}
 }
 
-void	ft_print_both_stacks(t_mysort *all)
+void	ft_print_both_stacks(t_sorting *all)
 {
 	ft_putstr("Stack A:\n----------\n");
 	ft_print_stack(all->stack_a);
@@ -39,7 +39,7 @@ void	ft_print_stack_info(t_stack_info *info)
 			info->min, info->size, info->rot);
 }
 
-void	ft_print_mysort_all(t_mysort *all)
+void	ft_print_mysort_all(t_sorting *all)
 {
 	ft_printf("STATUS\n---------\nSize Total: %d\n", all->size_total);
 	ft_putstr("\nStack A Info:\n---\n");
