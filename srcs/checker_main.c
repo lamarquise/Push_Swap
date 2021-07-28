@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/24 09:30:32 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/28 12:53:31 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ int		ft_checker(t_sorting *all)
 		prev = *((int*)all->stack_a->content);
 		all->stack_a = all->stack_a->next;
 	}
-	ft_print_both_stacks(all);
+//	ft_print_both_stacks(all);
 	return (1);
 }
+
+
+
+
+
+
 
 int		main(int ac, char **av)
 {
@@ -71,13 +77,12 @@ int		main(int ac, char **av)
 	t_list		*stack_b;
 	t_list		*op_codes;
 
-	int			*tab;		// may want a clearer name...
-	int			size;		// also clearer name? a long? size_t?
+	int			*int_tab;		// may want a clearer name...
 
 	stack_a = NULL;
 	stack_b = NULL;
 	op_codes = NULL;
-	tab = NULL;
+	int_tab = NULL;
 
 
 	// So i am going to create a t_sorting all but just not fill out 
@@ -87,21 +92,19 @@ int		main(int ac, char **av)
 
 
 
-
-
 		// could send tab... easier to free?
 		// will this work? like en cas d'erreur we return 0
-	if (!(size = ft_parser(av, &tab)))
+	if (!(all.size_total = ft_parser(av, &int_tab)))
 		return (ft_error_msg("ERROR: Bad List\n", 0));
 
 	// this is where i call the ft_parse_op_codes
 
-	if (!ft_parse_op_codes(op_codes))
+	if (!ft_parse_op_codes(&op_codes))
 		return (ft_error_msg("ERROR: Bad OP Codes\n", 0));
 
 
 			// not sure if this skip will work... let's try it
-	if (!ft_create_stack(&stack_a, &tab, size))
+	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
 	{
 		// may need to free some things...
 		return (ft_error_msg("ERROR: failed to create the stack\n", 0));
@@ -119,7 +122,7 @@ int		main(int ac, char **av)
 **	given to me...
 */
 
-	if (!ft_apply_ops(&stack_a, &stack_b))
+	if (!ft_apply_ops(&all, &op_codes))
 		return (ft_error_msg("ERROR: Failed to apply sorting operations.\n", 0));
 
 
@@ -152,6 +155,10 @@ int		main(int ac, char **av)
 
 // This is where I do the Checking part...
 
+	// Don't use this cuz Info never get's inited here...
+//	ft_print_mysort_all(&all);
+
+	ft_print_both_stacks(&all);
 	if (!ft_checker(&all))
 	{
 		ft_putstr("KO\n");

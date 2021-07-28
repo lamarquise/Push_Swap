@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 12:33:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/22 17:39:08 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/25 19:30:48 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_bubble_sort(t_sorting *all)
 	// back 1 from B.
 
 	// here our goal is to get everything from stack A to Stack B
+
 // if i wanted to futher optimize, i could use a counter that track how
 // close to the bottom of Stack A the loop has gotten, and it stops if it
 // has made it to the last element, that way it doesn't move it's whole self
@@ -41,14 +42,17 @@ int		ft_bubble_sort(t_sorting *all)
 			// must then retreive all from Stack B
 			ft_wr_swap(all, &all->stack_a, 'a');
 		//	ft_all_push_to_from(&all->stack_a, &all->stack_b);
-			ft_op_push_to_from(&all->stack_a, &all->stack_b);
+			ft_wr_push(all, 'a');
+//			ft_op_push_to_from(&all->stack_a, &all->stack_b);
 		}
 		else if (*((int*)(all->stack_a->content)) < *((int*)(all->stack_a->next->content)))
 		{
 //			printf("Bubble Sort Push\n");
 			// first is smallest so we push to B
-			if (!ft_op_push_to_from(&all->stack_b, &all->stack_a))
-				return (0);
+//			if (!ft_op_push_to_from(&all->stack_b, &all->stack_a))
+//			if (!ft_wr_push(all, 'b'))
+//				return (0);
+			ft_wr_push(all, 'b');		// secure later...
 		}
 
 //		printf("end of loop in bubble sort\n");
@@ -57,6 +61,6 @@ int		ft_bubble_sort(t_sorting *all)
 
 //	printf("Bubble Sort all back to A\n");
 	// now we need to return all from stack B to Stack A
-	ft_all_push_to_from(&all->stack_a, &all->stack_b);
+	ft_all_push_to_from(all, 'a');
 	return (1);
 }

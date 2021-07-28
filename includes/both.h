@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/24 09:31:52 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/28 13:00:49 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct	s_stack_info
 	int		min;
 	int		mean;		// leave mean for now... could turn into "pivot"...
 
+	// we could store the total, like the sum of all the nums stored
+	// in the stack, much easier to recalculate mean (if we need that...)
+
 	int		size;
 	int		rot;	// the idea being, if we store tmp elems at the bottom
 
@@ -63,6 +66,7 @@ typedef struct	s_sorting
 **		Creat Stack
 */
 
+int			ft_print_inttab(int *tab, int size);
 int			ft_create_stack(t_list **stack, int **tab, int size);
 
 
@@ -72,6 +76,9 @@ int			ft_create_stack(t_list **stack, int **tab, int size);
 
 int			ft_parser(char **av, int **tab);
 
+// might move these to their own file
+int			ft_parse_op_codes(t_list **op_codes);
+int			ft_check_add_code(char *line, t_list **op_codes, char **valid_tab);
 
 /*
 **		Operations
@@ -81,8 +88,8 @@ int			ft_op_swap(t_list **stack);
 int			ft_op_swap_both(t_list **stack_a, t_list **stack_b);
 
 int			ft_op_push_to_from(t_list **stack_to, t_list **stack_from);
-int			ft_all_push_to_from(t_list **stack_to, t_list **stack_from);
-
+//int			ft_all_push_to_from(t_list **stack_to, t_list **stack_from);
+ int			ft_all_push_to_from(t_sorting *all, char id);
 	// not actually a thing... oops
 //int			ft_push_both(t_list **stack_a, t_list **stack_b);
 
@@ -108,6 +115,8 @@ int			ft_wr_ratate(t_sorting *all, char id);
 // create and put in libft, but for now...
 
 void		ft_free_int(void *content);
+//void		ft_print_inttab(int *tab, int size);
+int			ft_strcmp_to_strtab(char *input, char **tab);
 
 
 /*

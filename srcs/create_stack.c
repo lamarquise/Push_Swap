@@ -6,14 +6,11 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:40:15 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/23 10:02:00 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/25 19:33:38 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// do i also need to #include "push_swap.h"?
-
 #include "both.h"
-
 
 	// both of these go in the Libft
 
@@ -53,6 +50,7 @@ int		ft_create_stack(t_list **stack, int **tab, int size)
 	t_list	*new;
 	int		i;
 
+//	printf("top of create stack tab pointer: %p\n", *tab);
 //	printf("create stack test 1\n");
 
 
@@ -72,15 +70,17 @@ int		ft_create_stack(t_list **stack, int **tab, int size)
 	{
 		// these do the same thing but 2nd is less ugly
 		// tab[i] does not work, increments the wrong pointer.
-	//	new = ft_lstnew(&((*tab)[i]));
+		new = ft_lstnew(&((*tab)[i]));
 	//	new = ft_lstnew((*tab)++);
 
 	//	printf("int in tab: %d, i=%d\n", (*tab)[i], i);
 
 		// not sure if this is secure, check and test when sober...
 		// just tab[i]?
-		ft_lstadd_back(stack, ft_lstnew((*tab)++));
-	//	ft_lstadd_back(stack, new);
+	// this might have been the problem, need to use a counter to inc
+//		ft_lstadd_back(stack, ft_lstnew(&((*tab)[i])));
+//		ft_lstadd_back(stack, ft_lstnew((*tab)++));
+		ft_lstadd_back(stack, new);
 		// do actually need this... ugh
 		++i;
 	}

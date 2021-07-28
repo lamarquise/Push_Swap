@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/23 10:29:08 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/25 19:32:55 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		main(int ac, char **av)
 {
 	t_list			*stack_a;
 	t_list			*stack_b;
-	int				*int_tab;		// may want a clearer name... like int_tab?
-	int				size;		// also clearer name? a long? size_t?
-	// could forgo size and use info.size_total from the start...
-	t_sorting		all;	// no need to free but should free things in it (if pointers)
+	int				*int_tab;
+
+	t_sorting		all;	// no need to free but should free 
+							// things in it (if pointers)
 
 	t_stack_info	info_a;
 	t_stack_info	info_b;
@@ -33,17 +33,20 @@ int		main(int ac, char **av)
 	stack_b = NULL;
 	int_tab = NULL;
 
-		// could send tab... easier to free?
-		// will this work? like en cas d'erreur we return 0
-	if (!(size = ft_parser(av, &int_tab)))
+	if (!(all.size_total = ft_parser(av, &int_tab)))
 		return (ft_error_msg("ERROR: Bad List\n", 0));
 
-			// not sure if this skip will work... let's try it
-	if (!ft_create_stack(&stack_a, &int_tab, size))
+
+	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
 	{
 		// may need to free some things...
 		return (ft_error_msg("ERROR: failed to create the stack\n", 0));
 	}
+
+//	printf("in main size_total: %d\n", all.size_total);
+//	ft_print_inttab(int_tab, all.size_total);
+//	printf("first elem of int_tab: %d\n", (int)*int_tab); 
+//	printf("in main, after create stack int tab pointer val: %p\n", int_tab);
 
 
 // so far this is all identical to checker.c
@@ -54,7 +57,7 @@ int		main(int ac, char **av)
 		// first i need to init the Structure...
 
 
-	if (!ft_init_stack_info(&info_a, size) || !ft_init_stack_info(&info_b, 0))
+	if (!ft_init_stack_info(&info_a, all.size_total) || !ft_init_stack_info(&info_b, 0))
 		return (ft_error_msg("ERROR: Failed to init stack_infos\n", 0));
 
 	all.info_a = &info_a;
@@ -63,7 +66,7 @@ int		main(int ac, char **av)
 	all.stack_b = stack_b;
 
 	// we setup stack info for Stack A
-	if (!ft_prep_stack_info(&info_a, int_tab))
+	if (!ft_prep_stack_info(&info_a, int_tab) || !ft_prep_stack_info(&info_b, int_tab))
 		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
 
 //	ft_printf("Pre Sorting\n");
@@ -73,13 +76,6 @@ int		main(int ac, char **av)
 
 //	printf("push main test 2\n");
 
-//	if (!ft_prep_mysort_info(&info_all, tab))
-//		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
-
-		// now size_a size_total, min, max, mean are all useful values, and the rest
-		// are also set.
-
-		// do i need anything else? int_tab?
 //	if(!ft_mysort(&all))
 //		return (ft_error_msg("ERROR: MySort failed to sort.\n", 0));
 

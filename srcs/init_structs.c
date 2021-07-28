@@ -6,30 +6,20 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 02:29:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/23 10:02:56 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/25 19:34:23 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
-	// could do a void
-	// this function is kinda useless...
 int		ft_init_stack_info(t_stack_info *info, int size)
 {
-//	printf("init stack info test 1\n");
-
-
 
 	if (!info)
 		return (0);
-//	info->max = -2147483648;	// instead we assign it the first val of the int_tab
-//	info->min = 2147483647;		// instead, so there can be no confusion
-//	info->mean_a = 0;
-//	info->mean_b = 0;
 
-		// this works for Info B but not A, i mean it would just get replaced...
-	info->max = INTMIN;	// instead we assign it the first val of the int_tab
-	info->min = INTMAX;		// instead, so there can be no confusion
+//	info->max = INTMIN;	// instead we assign it the first val of the int_tab
+//	info->min = INTMAX;		// instead, so there can be no confusion
 	info->size = size;
 	info->rot = 0;
 	return (1);
@@ -41,6 +31,8 @@ int		ft_prep_stack_info(t_stack_info *info, int *int_tab)
 
 //	printf("perp stack info test 1\n");
 
+	// we're having a problem with int_tab, does not seem to be
+	// full of anything.
 
 	i = 0;
 
@@ -52,14 +44,23 @@ int		ft_prep_stack_info(t_stack_info *info, int *int_tab)
 		// finding min and max
 	info->min = int_tab[i];
 	info->max = int_tab[i];
+
+//	printf("int_tab[i]: %d, min: %d, max: %d\n", int_tab[i], info->min, info->max);
+
+
+	// could i do this part in create Stack, like since i'm already
+	// looping through the whole thing, i might as well get something out
+	// of it
 	while (int_tab[i])
 	{
 		if (int_tab[i] < info->min)
 			info->min = int_tab[i];
 		if (int_tab[i] > info->max)
 			info->max = int_tab[i];
+		++i;
 	}
 	info->mean = info->min + (info->max - info->min)/2;
+//	printf("info mean: %d\n", info->mean);
 	return (1);
 }
 

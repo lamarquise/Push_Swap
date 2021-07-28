@@ -6,66 +6,69 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 03:23:33 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/24 09:32:56 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/07/28 13:00:41 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-	// tentatively just in Checker.h for now
 #include "checker.h"
 
 
-		// eventually there will also be some way of passing the Ops from STD IN
-		// or do i just need a read for that?
-int		ft_apply_ops(t_list **stack_a, t_list **stack_b)
+	// Should i be passing All instead?
+int		ft_apply_ops(t_sorting *all, t_list **op_codes)
 {
+	int		ret;
 
-	if (!stack_a || !stack_b)
+	ret = 0;
+	if (!all || !op_codes)
 		return (0);
 	
-//	ft_swap(stack_a);
+	// i think it's just gonna end up being a giant if forest
 
-//	ft_push_to_from(stack_b, stack_a);
-
-//	ft_push_both(stack_a, stack_b);
-
-
-//	ft_rotate(stack_a);
-
-//	ft_reverse_rotate(stack_a);
-
-
-// ok so here is where i read from the Standard Input... I will prolly have to parse
-// what i read to some degree, make sure it's not giberish
-// i think i can use my GNL!!!
-
-
-	// testing GNL
-
-	// start by writing to the Standard Output: fd=1
-//	ft_putstr("this is a test\nIt contiues on a second line\n");
-
-	int		ret;
-	char	*line;
-	char	*clip;
-//	int		fd;
-
-//	fd = open("Makefile", O_RDONLY);
-
-	ret = 1;
-	line = NULL;
-
-// could be my segfault issue, figure out how to use gnl properly and WRITE IT DOWN
-	clip = NULL;
-//	printf("pre GNL, fd: %d\n", fd);
-			// 16 is # chars to read and 0 is Stdin fd
-	while ((ret = ft_gnl(&line, 0)) > 0)
+	while (*op_codes)
 	{
-//		printf("GNL Line: |%s|\n", line);
+		if (!ft_strcmp((char*)(*op_codes)->content, "pa") \
+			&& !ft_op_push_to_from(&all->stack_a, &all->stack_b))
+			return (ft_error_msg("ERROR: PA failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "pb") \
+			&& !(ret = ft_op_push_to_from(&all->stack_b, &all->stack_a)))
+		{
+			printf("Pointers: stack_a %p, stack_b %p\n", &all->stack_a, &all->stack_b);
+			printf("ret = %d\n", ret); 
+			return (ft_error_msg("ERROR: PB failed\n", 0));
+		}
+		else if (!ft_strcmp((char*)(*op_codes)->content, "sa") \
+			&& !ft_op_swap(&all->stack_a))
+			return (ft_error_msg("ERROR: SA failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "sb") \
+			&& !ft_op_swap(&all->stack_b))
+			return (ft_error_msg("ERROR: SB failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "ss") \
+			&& !ft_op_swap_both(&all->stack_a, &all->stack_b))
+			return (ft_error_msg("ERROR: SS failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "ra") \
+			&& !ft_op_rotate(&all->stack_a))
+			return (ft_error_msg("ERROR: RA failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "rb") \
+			&& !ft_op_rotate(&all->stack_b))
+			return (ft_error_msg("ERROR: RB failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "rr") \
+			&& !ft_op_rotate_both(&all->stack_a, &all->stack_b))
+			return (ft_error_msg("ERROR: RR failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "rra") \
+			&& !ft_op_reverse_rotate(&all->stack_a))
+			return (ft_error_msg("ERROR: RRA failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "rrb") \
+			&& !ft_op_reverse_rotate(&all->stack_b))
+			return (ft_error_msg("ERROR: RRB failed\n", 0));
+		else if (!ft_strcmp((char*)(*op_codes)->content, "rrr") \
+			&& !ft_op_reverse_rotate_both(&all->stack_a, &all->stack_b))
+			return (ft_error_msg("ERROR: RRR failed\n", 0));
+
+	// or we could do the clearing of the list later... IDK we'll figure
+	// þ out later...
+//		if (!ft_lstdel_first())
+		*op_codes = (*op_codes)->next;
 	}
-//	printf("post GNL, ret: %d\n", ret);
-
-
 
 	return (1);
 }
