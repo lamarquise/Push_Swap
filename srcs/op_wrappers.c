@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/25 19:30:46 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/02 14:03:48 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 			// ok so the plan is to use ID to determin if i'm working on stack A or B
 			// for swap may not need ID...
 			// may not even need a wrapper for SWAP...
-int		ft_wr_swap(t_sorting *all, t_list **stack, char id)
+int		ft_wr_swap(t_sorting *all, char id)
 {
-	if (!all || !stack || !ft_op_swap(stack))
+	if (!all)
 		return (0);
-
+	if (id == 'a')
+		ft_op_swap(&all->stack_a);
+	else if (id == 'b')
+		ft_op_swap(&all->stack_b);
 	// we have applied the op, now we update all
 
 	// the state of the stack hasn't actually changed tho so 
@@ -135,7 +138,7 @@ int     ft_all_push_to_from(t_sorting *all, char id)
 	return (1);
 }
 
-int		ft_wr_ratate(t_sorting *all, char id)
+int		ft_wr_rotate(t_sorting *all, char id)
 {
 	int		result;
 
@@ -183,7 +186,7 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 		--all->info_a->rot;
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 
 	}
 	else if (id == 'b')
@@ -193,7 +196,7 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 		--all->info_b->rot;
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	}
 	// could add c where c is rotate both...
 

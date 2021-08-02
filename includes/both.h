@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/28 13:00:49 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:59:47 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ typedef struct	s_stack_info
 	int		size;
 	int		rot;	// the idea being, if we store tmp elems at the bottom
 
+	// we could also add a thing that tells you who many times the recursive
+	// function has been called, ie how many smaller groups there are
+	// could then have a linked list of their positions
+
+	// add a pivot value? a pivot index?
 }				t_stack_info;
 
 typedef struct	s_sorting
@@ -60,6 +65,15 @@ typedef struct	s_sorting
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	// ok so we're adding a linked list to keep track of where aleardy sorted
+	// bits are, in each Stack? or just Stack B?
+	// Lets start with just stack B
+	t_list	*g_indexes;
+	// wait, what if the number we store in each elem is the number we need
+	// to subtract from to total size 
+
+	// do i want to keep a pointer to the Table of pointers to ints
+	// in All? could be useful for freeing...
 }				t_sorting;		// t_sorting *all;
 
 /*
@@ -104,10 +118,10 @@ int			ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 **		Wrappers
 */
 
-int			ft_wr_swap(t_sorting *all, t_list **stack, char id);
+int			ft_wr_swap(t_sorting *all, char id);
 int			ft_wr_push(t_sorting *all, char id);
-int			ft_wr_ratate(t_sorting *all, char id);
-
+int			ft_wr_rotate(t_sorting *all, char id);
+int			ft_wr_reverse_rotate(t_sorting *all, char id);
 
 
 // Utils Both

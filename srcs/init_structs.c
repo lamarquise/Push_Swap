@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 02:29:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/25 19:34:23 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:14:17 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int		ft_prep_stack_info(t_stack_info *info, int *int_tab)
 //	printf("int_tab[i]: %d, min: %d, max: %d\n", int_tab[i], info->min, info->max);
 
 
+// this is exactly what ft_get_mean does, maybe i need it in Utils both...
+	// OR i could leave the mean min and max empty till we start running
+	// PS?
+
+
 	// could i do this part in create Stack, like since i'm already
 	// looping through the whole thing, i might as well get something out
 	// of it
@@ -59,7 +64,9 @@ int		ft_prep_stack_info(t_stack_info *info, int *int_tab)
 			info->max = int_tab[i];
 		++i;
 	}
-	info->mean = info->min + (info->max - info->min)/2;
+//	info->mean = info->min + (info->max - info->min)/2;
+	info->mean = (info->min + info->max - 1) / 2;
+
 //	printf("info mean: %d\n", info->mean);
 	return (1);
 }

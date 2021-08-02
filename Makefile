@@ -32,6 +32,8 @@ SRCS_PUSH_SWAP	=	push_swap_main.c \
 					op_wrappers.c \
 					my_sort.c \
 					bubble_sort.c \
+					quick_sort.c \
+					quick_sort_auxilary.c \
 
 DIR_BOTH		=	$(DIR_SRCS)
 SRCS_BOTH		=	parsing.c \

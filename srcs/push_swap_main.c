@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/25 19:32:55 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/02 14:02:35 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(int ac, char **av)
 	t_list			*stack_b;
 	int				*int_tab;
 
+	t_list			*g_indexes;
 	t_sorting		all;	// no need to free but should free 
 							// things in it (if pointers)
 
@@ -32,6 +33,7 @@ int		main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	int_tab = NULL;
+	g_indexes = NULL;
 
 	if (!(all.size_total = ft_parser(av, &int_tab)))
 		return (ft_error_msg("ERROR: Bad List\n", 0));
@@ -65,6 +67,9 @@ int		main(int ac, char **av)
 	all.stack_a = stack_a;
 	all.stack_b = stack_b;
 
+	// maybe all.int_tab = int_tab; if decide to store it there
+	all.g_indexes = g_indexes;
+
 	// we setup stack info for Stack A
 	if (!ft_prep_stack_info(&info_a, int_tab) || !ft_prep_stack_info(&info_b, int_tab))
 		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
@@ -79,11 +84,20 @@ int		main(int ac, char **av)
 //	if(!ft_mysort(&all))
 //		return (ft_error_msg("ERROR: MySort failed to sort.\n", 0));
 
-	if (!ft_bubble_sort(&all))
-		return (ft_error_msg("ERROR: Bubble Sort failed to sort.\n", 0));
+//	if (!ft_bubble_sort(&all))
+//		return (ft_error_msg("ERROR: Bubble Sort failed to sort.\n", 0));
 
-	// then we print the Operations in order to
+	// ok so instead of Bubble Sort we are trying an incomplete version of
+	// Quick Sort
 
+	int		ret1;
+
+	ret1 = 0;
+//	ret1 = ft_my_quick_sort(&all, 0, all.size_total - 1);
+
+//	ret1 = ft_bubble_sort(&all);
+//	ret1 = ft_a_quick_sort(&all, all.size_total);
+	ft_b_quick_sort(&all, 0, all.size_total);
 
 //	printf("push main test 3\n");
 
