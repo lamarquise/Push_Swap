@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 14:03:48 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/03 19:36:09 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		ft_wr_swap(t_sorting *all, char id)
 		ft_op_swap(&all->stack_a);
 	else if (id == 'b')
 		ft_op_swap(&all->stack_b);
+	else if (id == 'c')
+		ft_op_swap_both(&all->stack_a, &all->stack_b);
 	// we have applied the op, now we update all
 
 	// the state of the stack hasn't actually changed tho so 
@@ -51,10 +53,8 @@ int		ft_wr_swap(t_sorting *all, char id)
 	return (1);
 }
 
-
-	// ok so the plan is to use ID to determin if i'm working on stack A or B
-	// may also not need ID for Push...
-	// or we could do one for PA and 1 for PB...
+	// Had to switch the ifs, A and B make less sense, but work way should...
+	// i hate everything...
 int		ft_wr_push(t_sorting *all, char id)
 {
 	int		result;
@@ -64,7 +64,7 @@ int		ft_wr_push(t_sorting *all, char id)
 //	printf("Tip Top of Wr Push, id = |%c|\n", id);
 	// PA is B->A so stack_to is A and stack_from is B
 
-	if (id == 'a')
+	if (id == 'b')
 	{
 //		printf("wr push we made it to top of id 'a'\n");
 		// might need to be &(...)
@@ -87,7 +87,7 @@ int		ft_wr_push(t_sorting *all, char id)
 		// together
 
 	}
-	else if (id == 'b')		// PB A to B
+	else if (id == 'a')		// PB A to B
 	{
 //		printf("wr push we made it to top of id 'b'\n");
 		result = ft_op_push_to_from(&all->stack_b, &all->stack_a);
@@ -120,7 +120,7 @@ int     ft_all_push_to_from(t_sorting *all, char id)
 	{
 		while (all->stack_b != NULL)        // for some reason if not != NULL
 		{									// it segfaults
-			if (!ft_wr_push(all, id))
+			if (!ft_wr_push(all, 'b'))
 				return (0);
 		}
 	}
@@ -128,7 +128,7 @@ int     ft_all_push_to_from(t_sorting *all, char id)
 	{
 		while (all->stack_a != NULL)
 		{
-			if (!ft_wr_push(all, id))
+			if (!ft_wr_push(all, 'a'))
 				return (0);
 		}
 	}

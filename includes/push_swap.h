@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 20:04:36 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/03 22:31:28 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int		ft_bubble_sort(t_sorting *all);
 */
 
 int		ft_partition(t_sorting *all, int id, int size);
-void	ft_b_quick_sort(t_sorting *all, int id, int size);
+//void	ft_b_quick_sort(t_sorting *all, int id, int size);
+void	ft_my_quick_sort(t_sorting *all, int id, int size);
 
 
-int		ft_my_quick_sort(t_sorting *all, int l, int r);
+//int		ft_my_quick_sort(t_sorting *all, int l, int r);
 //int		ft_a_quick_sort(t_sorting *all, int l, int r);
-int		ft_a_quick_sort(t_sorting *all, int p_index);
+//int		ft_a_quick_sort(t_sorting *all, int p_index);
 
 /*
 **		QS Auxilary

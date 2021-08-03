@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 12:33:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/30 14:06:08 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/03 14:15:54 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ int		ft_bubble_sort(t_sorting *all)
 
 		if (*((int*)(all->stack_a->content)) > *((int*)(all->stack_a->next->content)))
 		{
+	//		ft_print_both_stacks(all);
 //			printf("Bubble Sort Swap\n");
 			// second is smaller than first so we swap
 			// must then retreive all from Stack B
-			ft_wr_swap(all, &all->stack_a, 'a');
+			ft_wr_swap(all, 'a');
 		//	ft_all_push_to_from(&all->stack_a, &all->stack_b);
-			ft_wr_push(all, 'a');
+			ft_wr_push(all, 'b');
 //			ft_op_push_to_from(&all->stack_a, &all->stack_b);
 		}
 		else if (*((int*)(all->stack_a->content)) < *((int*)(all->stack_a->next->content)))
@@ -52,7 +53,7 @@ int		ft_bubble_sort(t_sorting *all)
 //			if (!ft_op_push_to_from(&all->stack_b, &all->stack_a))
 //			if (!ft_wr_push(all, 'b'))
 //				return (0);
-			ft_wr_push(all, 'b');		// secure later...
+			ft_wr_push(all, 'a');		// secure later...
 		}
 
 //		printf("end of loop in bubble sort\n");
@@ -62,5 +63,6 @@ int		ft_bubble_sort(t_sorting *all)
 //	printf("Bubble Sort all back to A\n");
 	// now we need to return all from stack B to Stack A
 	ft_all_push_to_from(all, 'a');
+//	ft_print_both_stacks(all);
 	return (1);
 }
