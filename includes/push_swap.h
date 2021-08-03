@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 14:03:51 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/02 20:04:36 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int		ft_get_mean(t_sorting *all, int id, int size);
 void	*ft_lstlast_pointer(t_list *lst);
 void	*ft_pointer_at_index(t_list *lst, int index);
 int		ft_sort_end_cases(t_sorting *all, t_list **stack, char id);
-
+int		ft_minisort(t_sorting *all, int id, int size);
 
 #endif

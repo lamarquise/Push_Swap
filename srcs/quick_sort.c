@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 14:03:43 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/03 12:38:17 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,28 @@ void	ft_b_quick_sort(t_sorting *all, int id, int size)
 // We part again and apply quick sort to both
 // But those are in both A and B stacks, not sure how that works
 	// maybe it's the Recursive shit that just works things out...
+	int		part_size;
 
-
+	printf("---- Now in QS ----- size = %d\n", size);
+	ft_print_both_stacks(all);
 	if (size < 4)
 	{
+		printf("in QS, smaller than 4\n");
 		// apply some sort of minisort that can handle 2 or 3 numbers
-		ft_minisort(all, id);
+		ft_minisort(all, id, size);
 	}
 	else
 	{
-		part_size = ft_partition(...);
+		// OK SO THIS SHIT ISN'T WORKING!!!!!!!!!
+		part_size = ft_partition(all, id, size);
+		printf("in QS, not smaller than 4, part size: %d\n", part_size);
 		// i think part size is the size of the new parts
 		ft_b_quick_sort(all, 0, id ? part_size : size - part_size);
 		ft_b_quick_sort(all, 1, id ? size - part_size : part_size);
 
 	}
 
-
+	// ONCE Size < 4 has been reached, the Recursion Ends!!!!
 
 //	return (1);
 }
@@ -62,9 +67,16 @@ int		ft_partition(t_sorting *all, int id, int size)
 	int		part_size;
 	t_list	*stack;		// i don't think i want this actually...
 
+		// this is tmp till i make a pre-Partition
+	if (id == 1 && all->stack_b == NULL)
+		return (1);
+
+	printf("---- Now in Partition ----\n"); 
 	part_size = 0;
 	pivot = ft_get_mean(all, id, size);	// no idea if rigth args
 
+	printf("pivot = %d, size = %d\n", pivot, size);
+	ft_print_both_stacks(all);
 	while (size)
 	{
 		// not very elegant but...
@@ -89,6 +101,7 @@ int		ft_partition(t_sorting *all, int id, int size)
 		}
 		--size;
 	}
+	
 	return (part_size);
 }
 
