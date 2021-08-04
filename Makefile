@@ -3,11 +3,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 
 
-# can i do this? would it work?
-#$(NAME)	=	push_swap \
-				checker \
-
-PUSH_SWAP	=	push_swap
+NAME		=	push_swap
 CHECKER		=	checker
 
 
@@ -42,9 +38,9 @@ SRCS_BOTH		=	parsing.c \
 					op_swap.c \
 					op_rotate.c \
 					utils_both.c \
-					init_structs.c \
 					print_struct_status.c \
 
+#					init_structs.c \
 
 DIR_INC		=	includes/
 INCS		=	-I$(DIR_INC)
@@ -105,11 +101,10 @@ OBJS_CHECKER	=	$(addprefix $(DIR_OBJ),$(OBJ_CHECKER))
 OBJS_PUSH_SWAP	=	$(addprefix $(DIR_OBJ),$(OBJ_PUSH_SWAP))
 
 
+all: $(NAME)
 
-all: $(CHECKER) $(PUSH_SWAP)
-
-	# just working on Checker for now...
-#all: $(CHECKER)
+bonus: $(NAME) $(CHECKER)
+#all: $(CHECKER) $(PUSH_SWAP)
 
 $(LIBFT): $(LIBFT_INC) $(LIBFT_SRCS)
 	make -C $(DIR_LIBFT)
@@ -125,9 +120,9 @@ $(CHECKER): $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o $(CHECKER)
 	printf "$(_GREEN)\r\33[2K\r$(CHECKER) created  😎\n$(_END)"
 
-$(PUSH_SWAP): $(OBJS_PUSH_SWAP) $(LIBFT)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o $(PUSH_SWAP)
-	printf "$(_GREEN)\r\33[2K\r$(PUSH_SWAP) created  😎\n$(_END)"
+$(NAME): $(OBJS_PUSH_SWAP) $(LIBFT)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o $(NAME)
+	printf "$(_GREEN)\r\33[2K\r$(NAME) created  😎\n$(_END)"
 
 
 	### BINARY CREATION ###
@@ -158,8 +153,8 @@ clean:
 	echo "$(_RED).o Files Deleted  😱$(_END)"
 
 fclean: clean
-	rm -rf $(CHECKER) $(PUSH_SWAP)
-	echo "$(_RED)$(CHECKER) and $(PUSH_SWAP) Deleted  😱$(_END)"
+	rm -rf $(CHECKER) $(NAME)
+	echo "$(_RED)$(CHECKER) and $(NAME) Deleted  😱$(_END)"
 
 lclean:
 	make -C $(DIR_LIBFT) clean

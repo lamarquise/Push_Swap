@@ -6,22 +6,20 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 02:29:05 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 13:14:17 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:34:16 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+	// THE WHOLE FILE IS OBSOLETE
 #include "both.h"
 
 int		ft_init_stack_info(t_stack_info *info, int size)
 {
-
 	if (!info)
 		return (0);
 
-//	info->max = INTMIN;	// instead we assign it the first val of the int_tab
-//	info->min = INTMAX;		// instead, so there can be no confusion
 	info->size = size;
-	info->rot = 0;
+	//info->rot = 0;
 	return (1);
 }
 

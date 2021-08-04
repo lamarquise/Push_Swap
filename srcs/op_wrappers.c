@@ -6,14 +6,11 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 19:36:09 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:38:52 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-// functions that wrap the Op functions
 
 
 			// ok so the plan is to use ID to determin if i'm working on stack A or B

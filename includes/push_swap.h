@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 22:31:28 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:42:57 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,7 @@ int		ft_bubble_sort(t_sorting *all);
 */
 
 int		ft_partition(t_sorting *all, int id, int size);
-//void	ft_b_quick_sort(t_sorting *all, int id, int size);
 void	ft_my_quick_sort(t_sorting *all, int id, int size);
-
-
-//int		ft_my_quick_sort(t_sorting *all, int l, int r);
-//int		ft_a_quick_sort(t_sorting *all, int l, int r);
-//int		ft_a_quick_sort(t_sorting *all, int p_index);
 
 /*
 **		QS Auxilary
@@ -44,5 +38,17 @@ void	*ft_lstlast_pointer(t_list *lst);
 void	*ft_pointer_at_index(t_list *lst, int index);
 int		ft_sort_end_cases(t_sorting *all, t_list **stack, char id);
 int		ft_minisort(t_sorting *all, int id, int size);
+
+/*
+**		Wrapper Functions
+*/
+
+int		ft_wr_swap(t_sorting *all, char id);
+int		ft_wr_push(t_sorting *all, char id);
+int		ft_all_push_to_from(t_sorting *all, char id);
+int		ft_wr_rotate(t_sorting *all, char id);
+int		ft_wr_reverse_rotate(t_sorting *all, char id);
+
+
 
 #endif

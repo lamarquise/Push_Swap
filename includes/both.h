@@ -6,13 +6,14 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 15:10:19 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:42:59 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BOTH_H
 # define BOTH_H
 
+	// Don't need ?
 # include <stdio.h>
 
 
@@ -37,44 +38,44 @@
 // utils_both.c
 
 
+	// this Struct is Obsolete
+/*
 typedef struct	s_stack_info
 {
 	int		max;
 	int		min;
-	int		mean;		// leave mean for now... could turn into "pivot"...
+//	int		mean;		// leave mean for now... could turn into "pivot"...
 
 	// we could store the total, like the sum of all the nums stored
 	// in the stack, much easier to recalculate mean (if we need that...)
 
 	int		size;
-	int		rot;	// the idea being, if we store tmp elems at the bottom
 
-	// we could also add a thing that tells you who many times the recursive
-	// function has been called, ie how many smaller groups there are
-	// could then have a linked list of their positions
+	// do i even use this? I think no
+	//int		rot;	// the idea being, if we store tmp elems at the bottom
 
-	// add a pivot value? a pivot index?
 }				t_stack_info;
+*/
 
 typedef struct	s_sorting
 {
 	int				size_total;
-	t_stack_info	*info_a;	// could call it metadata, or meta...
-	t_stack_info	*info_b;
+	int				size_a;
+	int				size_b;
+//	t_stack_info	*info_a;
+//	t_stack_info	*info_b;
 
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	// ok so we're adding a linked list to keep track of where aleardy sorted
-	// bits are, in each Stack? or just Stack B?
-	// Lets start with just stack B
-	t_list	*g_indexes;
-	// wait, what if the number we store in each elem is the number we need
-	// to subtract from to total size 
 
 	// do i want to keep a pointer to the Table of pointers to ints
 	// in All? could be useful for freeing...
 }				t_sorting;		// t_sorting *all;
+
+
+
+
 
 /*
 **		Creat Stack
@@ -100,31 +101,15 @@ int			ft_check_add_code(char *line, t_list **op_codes, char **valid_tab);
 
 int			ft_op_swap(t_list **stack);
 int			ft_op_swap_both(t_list **stack_a, t_list **stack_b);
-
 int			ft_op_push_to_from(t_list **stack_to, t_list **stack_from);
-//int			ft_all_push_to_from(t_list **stack_to, t_list **stack_from);
- int			ft_all_push_to_from(t_sorting *all, char id);
-	// not actually a thing... oops
-//int			ft_push_both(t_list **stack_a, t_list **stack_b);
-
 int			ft_op_rotate(t_list **stack);
 int			ft_op_reverse_rotate(t_list **stack);
-
 int			ft_op_rotate_both(t_list **stack_a, t_list **stack_b);
 int			ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 
-
 /*
-**		Wrappers
+**	 Utils Both
 */
-
-int			ft_wr_swap(t_sorting *all, char id);
-int			ft_wr_push(t_sorting *all, char id);
-int			ft_wr_rotate(t_sorting *all, char id);
-int			ft_wr_reverse_rotate(t_sorting *all, char id);
-
-
-// Utils Both
 // Would rather not have this file, would like either to use funcs from Libft
 // create and put in libft, but for now...
 
@@ -134,13 +119,6 @@ int			ft_strcmp_to_strtab(char *input, char **tab);
 
 
 /*
-**		Init Structs
-*/
-
-int			ft_init_stack_info(t_stack_info *info, int size);
-int			ft_prep_stack_info(t_stack_info *info, int *int_tab);
-
-/*
 **		Print Struct Status
 */
 
@@ -148,6 +126,26 @@ void		ft_print_stack(t_list *stack);
 void		ft_print_both_stacks(t_sorting *all);
 void		ft_print_stack_info(t_stack_info *info);
 void		ft_print_mysort_all(t_sorting *all);
+
+/*
+**		Init Structs	// OBSOLETE !!!
+*/
+
+//int			ft_init_stack_info(t_stack_info *info, int size);
+//int			ft_prep_stack_info(t_stack_info *info, int *int_tab);
+
+/*
+**		Wrappers	Moved
+*/
+
+/*
+int			ft_wr_swap(t_sorting *all, char id);
+int			ft_wr_push(t_sorting *all, char id);
+int			ft_wr_rotate(t_sorting *all, char id);
+int			ft_wr_reverse_rotate(t_sorting *all, char id);
+//int			ft_all_push_to_from(t_list **stack_to, t_list **stack_from);
+ int			ft_all_push_to_from(t_sorting *all, char id);
+*/
 
 
 #endif

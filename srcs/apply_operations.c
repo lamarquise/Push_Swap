@@ -6,14 +6,12 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 03:23:33 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/28 13:00:41 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 13:27:30 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-
-	// Should i be passing All instead?
 int		ft_apply_ops(t_sorting *all, t_list **op_codes)
 {
 	int		ret;
