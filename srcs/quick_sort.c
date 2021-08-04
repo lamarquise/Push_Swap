@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 22:31:24 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:38:44 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_partition(t_sorting *all, int id, int size)
 {
 	int		pivot;
 	int		part_size;
+	int		rot_count;	// may be redundant cuz i was trying to keep
+						// track of that shit in INFO but... IDK rn
 	t_list	*stack;		// i don't think i want this actually...
 
 		// this is tmp till i make a pre-Partition
@@ -41,10 +43,11 @@ int		ft_partition(t_sorting *all, int id, int size)
 	ft_print_both_stacks(all);
 */
 
+	rot_count = 0;
 	part_size = 0;
 	pivot = ft_get_mean(all, id, size);	// no idea if rigth args
 
-	printf("pivot = %d, size = %d\n", pivot, size);
+//	printf("pivot = %d, size = %d\n", pivot, size);
 //	ft_print_both_stacks(all);
 	while (size)
 	{
@@ -68,6 +71,7 @@ int		ft_partition(t_sorting *all, int id, int size)
 		{
 			// rotate
 			ft_wr_rotate(all, id + 'a');
+			++rot_count;
 		}
 		--size;
 	}
@@ -75,6 +79,18 @@ int		ft_partition(t_sorting *all, int id, int size)
 //	printf("--- end of Partion ---\n");
 //	ft_print_both_stacks(all);
 	// do i need to unrotate?
+//	int		r;
+
+//	r = 0;
+//	if (id == 0)
+//	{
+	//	while (r < rot_count)
+		while (rot_count)
+		{
+			ft_wr_reverse_rotate(all, id + 'a');
+			--rot_count;
+		}
+//	}
 	return (part_size);
 }
 
@@ -88,21 +104,21 @@ void	ft_my_quick_sort(t_sorting *all, int id, int size)
 {
 	int		part_size;
 
-	printf("---- Now in QS ----- size = %d, ID: %c\n", size, id + 'A');
-	ft_print_both_stacks(all);
+//	printf("---- Now in QS ----- size = %d, ID: %c\n", size, id + 'A');
+//	ft_print_both_stacks(all);
 	if (size < 4)
 	{
 		// apply some sort of minisort that can handle 2 or 3 numbers
 		ft_minisort(all, id, size);
-		printf("in QS, smaller than 4, ID = %c\n", id + 'A');
-		ft_print_both_stacks(all);
+//		printf("in QS, smaller than 4, ID = %c\n", id + 'A');
+//		ft_print_both_stacks(all);
 	}
 	else
 	{
 		// OK SO THIS SHIT ISN'T WORKING!!!!!!!!!
 		part_size = ft_partition(all, id, size);
-		printf("in QS, not smaller than 4, part size: %d\n", part_size);
-		ft_print_both_stacks(all);
+//		printf("in QS, not smaller than 4, part size: %d, ID: %c\n", part_size, id + 'A');
+//		ft_print_both_stacks(all);
 		// i think part size is the size of the new parts
 		ft_my_quick_sort(all, 0, id ? part_size : size - part_size);
 		ft_my_quick_sort(all, 1, id ? size - part_size : part_size);

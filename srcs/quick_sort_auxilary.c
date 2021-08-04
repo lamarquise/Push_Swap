@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 22:31:22 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:48:42 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_sort_end_cases(t_sorting *all, t_list **stack, char id)
 	int		b;
 	int		c;
 
-	printf("in the end cases sort\n");
+//	printf("in the end cases sort\n");
 	ft_print_both_stacks(all);
 	if (!all || !stack)	// and !*stack?
 		return (0);
@@ -161,6 +161,7 @@ int		ft_minisort_a(t_sorting *all, int size)
 	int		b;
 	int		c;
 
+//	printf("--- In Minisort A\n");
 	if (size == 2 && *((int*)all->stack_a->content) \
 		> *((int*)all->stack_a->next->content))
 		ft_wr_swap(all, 'a');
@@ -194,6 +195,7 @@ int		ft_minisort_a(t_sorting *all, int size)
 	// as a tool for sorting...
 int		ft_minisort_b(t_sorting *all, int size)
 {
+//	printf("--- In Minisort B\n");
 	if (size == 1)
 	{
 		if (*((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))

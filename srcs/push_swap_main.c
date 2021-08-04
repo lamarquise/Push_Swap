@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 19:38:44 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:48:41 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	ft_start_push_swap(t_sorting *all, int size)
 	else
 	{
 		part_size = ft_first_partition(all, size);
+	//	printf("Start Push Swap, part_size: %d\n", part_size);
 
 //		printf("--- Partitioned stacks in Starting Push Swap\n");
 //		ft_print_both_stacks(all);
@@ -201,8 +202,8 @@ int		main(int ac, char **av)
 //	ft_b_quick_sort(&all, 0, all.size_total);
 	ft_start_push_swap(&all, all.size_total);
 
-	printf("End of Push Swap\n");
-	ft_print_both_stacks(&all);
+//	printf("End of Push Swap\n");
+//	ft_print_both_stacks(&all);
 
 
 	// this is also like checker.c
