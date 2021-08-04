@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/02 12:10:40 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:52:07 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,22 @@ int		ft_strcmp_to_strtab(char *input, char **tab)
 }
 
 
+int		ft_is_sorted(t_list *stack)
+{
+	t_list	*tmp;
 
+	if (!stack)
+		return (0);
+	tmp = stack;
+	while (tmp->next)
+	{
+			// i think this is good enough
+		if (*((int*)tmp->content) > *((int*)tmp->next->content))
+			return (0);
+		tmp = tmp->next;
+	}
+
+	return (1);
+}
 
 

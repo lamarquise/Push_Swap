@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:42:57 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 21:34:09 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int		ft_bubble_sort(t_sorting *all);
 
 int		ft_partition(t_sorting *all, int id, int size);
 void	ft_my_quick_sort(t_sorting *all, int id, int size);
+int		ft_first_partition(t_sorting *all, int size);
+void	ft_start_push_swap(t_sorting *all, int size);
 
 /*
-**		QS Auxilary
+**		Minisort
 */
 
 int		ft_get_mean(t_sorting *all, int id, int size);

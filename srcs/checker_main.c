@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/07/28 12:53:31 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 23:10:02 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 	// OMG need to check if B is empty!!!!!!!!
 
+	// This shit needs to use "is_sorted.."
 //int		ft_checker(t_list *stack_a, t_list *stack_b)
 int		ft_checker(t_sorting *all)
 {
@@ -126,32 +127,6 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: Failed to apply sorting operations.\n", 0));
 
 
-
-	// testing
-//	ft_print_both_stacks(&all);
-
-/*	int i;
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-	
-	tmp_a = stack_a;
-	tmp_b = stack_b;
-	i = 0;
-	ft_putstr("Stack A:\n------\n");
-	while (tmp_a)
-	{
-	//	printf("an int: |%d|\n", (int)(*(int*)(tmp->content)));
-		ft_putnbrnl(*((int*)(tmp_a->content)));
-		tmp_a = tmp_a->next;
-	}
-	ft_putstr("Stack B:\n------\n");
-	while (tmp_b)
-	{
-	//	printf("an int: |%d|\n", (int)(*(int*)(tmp->content)));
-		ft_putnbrnl(*((int*)(tmp_b->content)));
-		tmp_b = tmp_b->next;
-	}
-*/
 
 // This is where I do the Checking part...
 

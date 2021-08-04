@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:42:54 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 23:46:49 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int		ft_partition(t_sorting *all, int id, int size)
 	int		part_size;
 	int		rot_count;
 	t_list	*stack;	// i don't think i want this actually...
+
+	int		ret1;		// for testing, may be tmp
+
 
 	// this is tmp till i make a pre-Partition
 	if (id == 1 && all->stack_b == NULL)
@@ -45,13 +48,17 @@ int		ft_partition(t_sorting *all, int id, int size)
 		if ((id == 0 && *((int*)stack->content) <= pivot) \
 			|| (id == 1 && *((int*)stack->content) > pivot))
 		{
-			ft_wr_push(all, id + 'a' );
+			ret1 = ft_wr_push(all, id + 'a' );
+			if (ret1 != 1)
+				printf("Partition push ret1: %d\n", ret1);
 			++part_size;
 		}
 		else if ((id == 0 && *((int*)stack->content) > pivot) \
 				|| (id == 1 && *((int*)stack->content) <= pivot))
 		{
-			ft_wr_rotate(all, id + 'a');
+			ret1 = ft_wr_rotate(all, id + 'a');
+			if (ret1 != 1)
+				printf("Partition rotate ret1: %d\n", ret1);
 			++rot_count;
 		}
 		--size;
@@ -63,7 +70,9 @@ int		ft_partition(t_sorting *all, int id, int size)
 
 	while (rot_count)
 	{
-		ft_wr_reverse_rotate(all, id + 'a');
+		ret1 = ft_wr_reverse_rotate(all, id + 'a');
+		if (ret1 != 1)
+			printf("Partition reverse rotate ret1: %d\n", ret1);
 		--rot_count;
 	}
 	return (part_size);
@@ -103,11 +112,14 @@ void	ft_my_quick_sort(t_sorting *all, int id, int size)
 }
 
 
+	// should i be reverse Rotating in First Partiton???? I think NO
 int		ft_first_partition(t_sorting *all, int size)
 {
 	int	c;
 	int	pivot;
 	int	part_size;
+
+	int	ret1;
 
 	c = 0;
 	part_size = 0;
@@ -116,11 +128,17 @@ int		ft_first_partition(t_sorting *all, int size)
 	{
 		if (*((int*)all->stack_a->content) <= pivot)
 		{
-			ft_wr_push(all, 'a');
+			ret1 = ft_wr_push(all, 'a');
+			if (ret1 != 1)
+				printf("First Partition push ret1: %d\n", ret1);
 			++part_size;
 		}
 		else if (*((int*)all->stack_a->content) > pivot)
-			ft_wr_rotate(all, 'a');
+		{
+			ret1 = ft_wr_rotate(all, 'a');
+			if (ret1 != 1)
+				printf("First Partition rotate ret1: %d\n", ret1);
+		}
 		++c;
 	}
 

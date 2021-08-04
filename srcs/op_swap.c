@@ -6,20 +6,11 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 02:25:47 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/03 22:31:27 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:53:12 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	// both tentatively....
 #include "both.h"
-
-
-	// could be interesting to keep track of the Size of Stack A and B at all times
-	// That way i don't have to count everytime that is necessary?
-	// would i need to Count?
-	// Won't for now...
-
-	// IDK... seems right?
 
 int		ft_op_swap(t_list **stack)
 {
@@ -28,7 +19,7 @@ int		ft_op_swap(t_list **stack)
 
 	e1 = NULL;
 	e2 = NULL;
-	if (!stack || !*stack)
+	if (!stack || !*stack)	// is this correct?
 		return (0);
 	if ((*stack)->next)
 	{
@@ -40,6 +31,9 @@ int		ft_op_swap(t_list **stack)
 	}
 	return (1);
 }
+
+	// NVM all Op funcs just take Stacks...
+//int		ft_op_swap_both(t_sorting *all)
 
 int		ft_op_swap_both(t_list **stack_a, t_list **stack_b)
 {

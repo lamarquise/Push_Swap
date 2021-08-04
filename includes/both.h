@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:42:59 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 23:56:05 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,12 @@ typedef struct	s_sorting
 }				t_sorting;		// t_sorting *all;
 
 
+/*
+**		Push Swap Main
+*/
 
+int		ft_is_reverse_sorted(t_list *stack);
+int		ft_rev_sort(t_sorting *all, int size);
 
 
 /*
@@ -116,7 +121,7 @@ int			ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 void		ft_free_int(void *content);
 //void		ft_print_inttab(int *tab, int size);
 int			ft_strcmp_to_strtab(char *input, char **tab);
-
+int			ft_is_sorted(t_list *stack);
 
 /*
 **		Print Struct Status
@@ -124,8 +129,8 @@ int			ft_strcmp_to_strtab(char *input, char **tab);
 
 void		ft_print_stack(t_list *stack);
 void		ft_print_both_stacks(t_sorting *all);
-void		ft_print_stack_info(t_stack_info *info);
-void		ft_print_mysort_all(t_sorting *all);
+//void		ft_print_stack_info(t_stack_info *info);
+//void		ft_print_mysort_all(t_sorting *all);
 
 /*
 **		Init Structs	// OBSOLETE !!!

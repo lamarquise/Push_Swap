@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_auxilary.c                              :+:      :+:    :+:   */
+/*   minisort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:39:47 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:58:37 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		ft_sort_end_case(t_sorting *all, int size)
 	int		c;
 	char	id;
 
+	int		ret1;	// for TESTING tmp i think
+
 	id = 'a';
 	if (size == 3)
 	{
@@ -79,25 +81,39 @@ int		ft_sort_end_case(t_sorting *all, int size)
 	*/
 		if (a > b && a < c)
 		{
-			ft_wr_swap(all, id);
+			ret1 = ft_wr_swap(all, id);
+			if (ret1 != 1)
+				printf("End Case Swap 1 ret1: %d\n", ret1);
 		}
 		else if (a > b && b > c)
 		{
-			ft_wr_swap(all, id);
-			ft_wr_reverse_rotate(all, id);
+			ret1 = ft_wr_swap(all, id);
+			if (ret1 != 1)
+				printf("End Case Swap 2 ret1: %d\n", ret1);
+			ret1 = ft_wr_reverse_rotate(all, id);
+			if (ret1 != 1)
+				printf("End Case reverse rotate 1 ret1: %d\n", ret1);
 		}
 		else if (a > b && b < c)
 		{
-				ft_wr_rotate(all, id);
+			ret1 = ft_wr_rotate(all, id);
+			if (ret1 != 1)
+				printf("End Case rotate 1 ret1: %d\n", ret1);
 		} 
 		else if (a < b && a < c)
 		{
-			ft_wr_swap(all, id);
-			ft_wr_rotate(all, id);
+			ret1 = ft_wr_swap(all, id);
+			if (ret1 != 1)
+				printf("End Case Swap 3 ret1: %d\n", ret1);
+			ret1 = ft_wr_rotate(all, id);
+			if (ret1 != 1)
+				printf("End Case rotate 2 ret1: %d\n", ret1);
 		}
 		else if (a < b && a > c)
 		{
-			ft_wr_reverse_rotate(all, id);
+			ret1 = ft_wr_reverse_rotate(all, id);
+			if (ret1 != 1)
+				printf("End Case reverse rotate 2 ret1: %d\n", ret1);
 		}
 	}
 	return (1);
@@ -113,10 +129,16 @@ int		ft_minisort_a(t_sorting *all, int size)
 	int		b;
 	int		c;
 
+	int		ret1;	// for TESTING may be Tmp
+
 //	printf("--- In Minisort A\n");
 	if (size == 2 && *((int*)all->stack_a->content) \
 		> *((int*)all->stack_a->next->content))
-		ft_wr_swap(all, 'a');
+	{
+		ret1 = ft_wr_swap(all, 'a');
+		if (ret1 != 1)
+			printf("Minisort A Swap 1 ret1: %d\n", ret1);
+	}
 	else if (size == 3)
 	{
 		a = *((int*)all->stack_a->content);
@@ -128,15 +150,27 @@ int		ft_minisort_a(t_sorting *all, int size)
 		{
 			if (*((int*)all->stack_b->content) \
 				< *((int*)all->stack_b->next->content))
-				ft_wr_swap(all, 'c');
+			{
+				ret1 = ft_wr_swap(all, 'c');
+				if (ret1 != 1)
+					printf("Minisort Swap 2 ret1: %d\n", ret1);
+			}
 			else
-				ft_wr_swap(all, 'a');
+			{
+				ret1 = ft_wr_swap(all, 'a');
+				if (ret1 != 1)
+					printf("Minisort Swap 3 ret1: %d\n", ret1);
+			}
 		}
 		else
 		{
-			ft_wr_rotate(all, 'a');
+			ret1 = ft_wr_rotate(all, 'a');
+			if (ret1 != 1)
+				printf("Minisort A rotate 1 ret1: %d\n", ret1);
 			ft_minisort_a(all, size - 1);
-			ft_wr_reverse_rotate(all, 'a');
+			ret1 = ft_wr_reverse_rotate(all, 'a');
+			if (ret1 != 1)
+				printf("Minisort A reverse rotate 1 ret1: %d\n", ret1);
 		}
 		return (ft_minisort_a(all, size));
 	}
@@ -147,23 +181,40 @@ int		ft_minisort_a(t_sorting *all, int size)
 	// as a tool for sorting...
 int		ft_minisort_b(t_sorting *all, int size)
 {
+	int		ret1;		// for TESTING may be TMP
 //	printf("--- In Minisort B\n");
 	if (size == 1)
 	{
 		if (*((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
-			ft_wr_swap(all, 'a');
-		ft_wr_push(all, 'b');
+		{
+			ret1 = ft_wr_swap(all, 'a');
+			if (ret1 != 1)
+				printf("Minisort B Swap 1 ret1: %d\n", ret1);
+		}
+		ret1 = ft_wr_push(all, 'b');
+		if (ret1 != 1)
+			printf("minisort b push 1 ret1: %d\n", ret1);
 	}
 	else
 	{
 		if (*((int*)all->stack_b->content) < *((int*)all->stack_b->next->content))
 		{
 			if (*((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
-				ft_wr_swap(all, 'c');
+			{
+				ret1 = ft_wr_swap(all, 'c');
+				if (ret1 != 1)
+					printf("Minisort B Swap 2 ret1: %d\n", ret1);
+			}
 			else
-				ft_wr_swap(all, 'b');
+			{
+				ret1 = ft_wr_swap(all, 'b');
+				if (ret1 != 1)
+					printf("Minisort B Swap 3 ret1: %d\n", ret1);
+			}
 		}
-		ft_wr_push(all, 'b');
+		ret1 = ft_wr_push(all, 'b');
+		if (ret1 != 1)
+			printf("Minisort B push 2 ret1: %d\n", ret1);
 		return (ft_minisort_b(all, size - 1));
 	}
 	return (1);
@@ -176,7 +227,7 @@ int		ft_minisort(t_sorting *all, int id, int size)
 		// i think what Pascal does here is if size = size_of_a then you do
 			// a threesort (because it was sent to minisort cuz it's small)
 		// otherwise, if size != size_a you do minisort_a
-		if (size != all->info_a->size && all->info_a->size < 4)
+		if (size != all->size_a && all->size_a < 4)
 			ft_sort_end_case(all, 'a');
 		ft_minisort_a(all, size);
 
