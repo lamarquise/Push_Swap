@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 20:13:10 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/05 21:11:10 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int		main(int ac, char **av)
 	t_sorting		all;	// no need to free but should free 
 							// things in it (if pointers)
 
-//	t_stack_info	info_a;
-//	t_stack_info	info_b;
-
-//	printf("|-------Push Swap Start-------|\n");
+	// more secure
 	if (ac < 2)
 		return (ft_error_msg("ERROR: no list of ints\n", 0));
 
@@ -67,8 +64,16 @@ int		main(int ac, char **av)
 	stack_b = NULL;
 	int_tab = NULL;
 
-	if (!(all.size_total = ft_parser(av, &int_tab)))
+		// need to free stuff?
+					// could i direct send &av[1]
+	if (!(all.size_total = ft_parser(&av[1], &int_tab, ac - 1)))
 		return (ft_error_msg("ERROR: Bad List\n", 0));
+	// No need to free int tab if fails cuz would not have been alocated..
+
+
+	// here i would like to run some tests to make sure the list is all
+	// good, like numbers and shit...
+	// no duplicates
 
 
 	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
@@ -77,35 +82,17 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: failed to create the stack\n", 0));
 	}
 
-
-// so far this is all identical to checker.c
-
-
-//	if (!ft_init_stack_info(&info_a, all.size_total) || !ft_init_stack_info(&info_b, 0))
-//		return (ft_error_msg("ERROR: Failed to init stack_infos\n", 0));
-
-//	all.info_a = &info_a;
-//	all.info_b = &info_b;
 	all.stack_a = stack_a;
 	all.stack_b = stack_b;
 	all.size_a = all.size_total;
 	all.size_b = 0;
 
-	// we setup stack info for Stack A
-//	if (!ft_prep_stack_info(&info_a, int_tab) || !ft_prep_stack_info(&info_b, int_tab))
-//		return (ft_error_msg("ERROR: Failed to prep mysort_info\n", 0));
 
-	int		ret1;
-
-	ret1 = 0;
-//	ret1 = ft_bubble_sort(&all);
 	ft_start_push_swap(&all, all.size_total);
 
-//	printf("End of Push Swap\n");
 //	ft_print_both_stacks(&all);
 
-
-	// this is also like checker.c
+	// figure out how to free int_tab...
 
 	ft_lstclear(&stack_a, &ft_free_int);
 

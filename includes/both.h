@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 13:52:45 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/05 21:11:21 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int		ft_rev_sort(t_sorting *all, int size);
 */
 
 int			ft_print_inttab(int *tab, int size);
-int			ft_create_stack(t_list **stack, int **tab, int size);
+int			ft_create_stack(t_list **stack, int **int_tab, int size);
 
 
 /*
 **		Parsing
 */
 
-int			ft_parser(char **av, int **tab);
+int			ft_parser(char **av, int **tab, int i);
 
 // might move these to their own file
 int			ft_parse_op_codes(t_list **op_codes);
