@@ -6,12 +6,15 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 21:59:37 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:13:10 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+	// could put some free shit up here
+	// but may need to have some of the free funcs in utils so
+	// can be used by both!
 int		ft_is_reverse_sorted(t_list *stack)
 {
 	t_list	*tmp;

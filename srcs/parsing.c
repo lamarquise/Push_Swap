@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 20:12:50 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/05 13:35:04 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_parser(char **av, int **tab)
 //	printf("in parser, int tab pointer address val: %p\n", tab);
 //	printf("in parser, int tab pointer val: %p\n", *tab);
 
+	// you need to secure av!!!!!
 	arg_string = NULL;
 	i = 0;
 	if (!tab)

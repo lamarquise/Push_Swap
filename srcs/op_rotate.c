@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:53:53 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 23:55:59 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/05 12:48:58 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,19 @@ int		ft_op_reverse_rotate(t_list **stack)
 
 int		ft_op_rotate_both(t_list **stack_a, t_list **stack_b)
 {
+	int		ret1;
+
 	if (!stack_a || !stack_b)
 		return (0);
 
-	if (!ft_op_rotate(stack_a) || !ft_op_rotate(stack_b))
-		return (2);
+	ret1 = ft_op_rotate(stack_a);
+	if (ret1 != 1)
+		return (ret1);
+	ret1 = ft_op_rotate(stack_b);
+	if (ret1 != 1)
+		return (ret1);
+	//if (!ft_op_rotate(stack_a) || !ft_op_rotate(stack_b))
+	//	return (2);
 
 	return (1);
 }
