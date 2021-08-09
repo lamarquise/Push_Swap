@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:17:52 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 21:06:09 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: Bad List\n", 0));
 	// No need to free int tab if fails cuz would not have been alocated..
 
+//	ft_print_inttab(int_tab, all.size_total);
 
 	// here i would like to run some tests to make sure the list is all
 	// good, like numbers and shit...
@@ -94,7 +95,14 @@ int		main(int ac, char **av)
 	all.size_a = all.size_total;
 	all.size_b = 0;
 
+//	ft_print_both_stacks(&all);
 
+	if (!ft_sort_by_index(&all))
+	{
+		ft_free_nlist_elems(&stack_a);
+		ft_free_int_tab(&int_tab, all.size_total);
+		return (ft_error_msg("ERROR: failed to pre sort\n", 0));
+	}
 	if (!ft_start_push_swap(&all, all.size_total))
 	{
 		ft_free_nlist_elems(&stack_a);
@@ -111,6 +119,9 @@ int		main(int ac, char **av)
 	ft_free_int_tab(&int_tab, all.size_total);
 
 //	ft_lstclear(&stack_a, &ft_free_int);
+	ft_nlstdel_all(&stack_a);
+//	ft_nlstdel_all(&stack_b);
+
 
 //	printf("|-------Push Swap End-------|\n");
 

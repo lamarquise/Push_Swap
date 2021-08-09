@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:17:36 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 21:06:07 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,20 @@ int		ft_checker(t_sorting *all)
 
 int		main(int ac, char **av)
 {
+	t_nlist		*stack_a;
+	t_nlist		*stack_b;
+	t_list		*op_codes;
+	int			*int_tab;
 
-	printf("|-------Checker Start--------|\n");
+	t_sorting 	all;
+	// So i am going to create a t_sorting all but just not fill out 
+	// the stack info part, seems fine?
+
+//	printf("|-------Checker Start--------|\n");
 		// Should 0 be the return in case of Error?
 	if (ac < 2)
 		return (ft_error_msg("ERROR: No list of ints\n", 0));
 
-	// just testing
-//	ft_print_strtab(av);
-
-	// may move this to a separat func later
-
-	t_nlist		*stack_a;
-	t_nlist		*stack_b;
-	t_list		*op_codes;
-
-	int			*int_tab;		// may want a clearer name...
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -87,25 +85,15 @@ int		main(int ac, char **av)
 	int_tab = NULL;
 
 
-	// So i am going to create a t_sorting all but just not fill out 
-	// the stack info part, seems fine?
 
-	t_sorting all;
-
-
-
-		// could send tab... easier to free?
-		// will this work? like en cas d'erreur we return 0
-	if (!(all.size_total = ft_parser(av, &int_tab)))
+	if (!(all.size_total = ft_parser(&av[1], &int_tab, ac - 1)))
 		return (ft_error_msg("ERROR: Bad List\n", 0));
 
-	// this is where i call the ft_parse_op_codes
-
+//	ft_print_inttab(int_tab, all.size_total);
 	if (!ft_parse_op_codes(&op_codes))
 		return (ft_error_msg("ERROR: Bad OP Codes\n", 0));
 
 
-			// not sure if this skip will work... let's try it
 	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
 	{
 		// may need to free some things...
@@ -115,14 +103,8 @@ int		main(int ac, char **av)
 	all.stack_a = stack_a;
 	all.stack_b = stack_b;
 
-//	printf("checker test 1\n");
 
-
-
-/*
-**	This is the part where i Apply the Operations in whatever order they were
-**	given to me...
-*/
+//	ft_print_both_stacks(&all);
 
 	if (!ft_apply_ops(&all, &op_codes))
 		return (ft_error_msg("ERROR: Failed to apply sorting operations.\n", 0));
@@ -134,7 +116,7 @@ int		main(int ac, char **av)
 	// Don't use this cuz Info never get's inited here...
 //	ft_print_mysort_all(&all);
 
-	ft_print_both_stacks(&all);
+//	ft_print_both_stacks(&all);
 	if (!ft_checker(&all))
 	{
 		ft_putstr("KO\n");
@@ -151,10 +133,10 @@ int		main(int ac, char **av)
 ** Freeing things prolly gonna move this
 */
 
-	//using lstclear for now... kinda stupid cuz i can free the table but whateves...
-
-		// seems to work, will test properly later...
-	ft_lstclear(&stack_a, &ft_free_int);
+	// We need to free
+		// Op Codes list
+		// Stack A (and B ?)
+		// int_tab
 
 
 	// make sure you free tab properly, not sure if i can just free tab or need to
@@ -163,7 +145,7 @@ int		main(int ac, char **av)
 		// hummm this seems to freak it out...
 //	free(tab);	// do i need more ?
 
-	printf("|-------Checker End--------|\n");
+//	printf("|-------Checker End--------|\n");
 
 	return (0);
 }

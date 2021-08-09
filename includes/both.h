@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:14:52 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 21:06:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int			ft_free_int_tab(int **int_tab, int size);
 int			ft_parser(char **av, int **tab, int i);
 
 // might move these to their own file
-int			ft_parse_op_codes(t_nlist **op_codes);
-int			ft_check_add_code(char *line, t_nlist **op_codes, char **valid_tab);
+//int			ft_parse_op_codes(t_list **op_codes);
+//int			ft_check_add_code(char *line, t_nlist **op_codes, char **valid_tab);
 
 /*
 **		Operations

@@ -6,10 +6,12 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:34:01 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:53:33 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+	// my plan is to change every time i compare Content Values
+	// to be a comparison of Index, will see if it works...
 #include "push_swap.h"
 
 // no i need to do the Stack Management WAAAAY better
@@ -44,18 +46,18 @@ int		ft_partition(t_sorting *all, int id, int size)
 		else if (id == 1)
 			stack = all->stack_b;
 
-		//	printf("in Partition loop, stack content: %d\n", *((int*)stack->content));
+		//	printf("in Partition loop, stack content: %d\n", *((int*)stack->index));
 		// shit Pascal's solution is really elegant...
-		if ((id == 0 && *((int*)stack->content) <= pivot) \
-			|| (id == 1 && *((int*)stack->content) > pivot))
+		if ((id == 0 && stack->index <= pivot) \
+			|| (id == 1 && stack->index > pivot))
 		{
 			ret1 = ft_wr_push(all, id + 'a' );
 			if (ret1 != 1)
 				printf("Partition push ret1: %d\n", ret1);
 			++part_size;
 		}
-		else if ((id == 0 && *((int*)stack->content) > pivot) \
-				|| (id == 1 && *((int*)stack->content) <= pivot))
+		else if ((id == 0 && stack->index > pivot) \
+				|| (id == 1 && stack->index <= pivot))
 		{
 			ret1 = ft_wr_rotate(all, id + 'a');
 			if (ret1 != 1)
@@ -129,14 +131,14 @@ int		ft_first_partition(t_sorting *all, int size)
 	pivot = ft_get_median(all, 0, size);
 	while (c < size)
 	{
-		if (*((int*)all->stack_a->content) <= pivot)
+		if (all->stack_a->index <= pivot)
 		{
 			ret1 = ft_wr_push(all, 'a');
 			if (ret1 != 1)
 				printf("First Partition push ret1: %d\n", ret1);
 			++part_size;
 		}
-		else if (*((int*)all->stack_a->content) > pivot)
+		else if (all->stack_a->index > pivot)
 		{
 			ret1 = ft_wr_rotate(all, 'a');
 			if (ret1 != 1)

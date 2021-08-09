@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 21:02:44 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 20:40:49 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_parse_op_codes(t_list **op_codes)
 	{
 		// some function that puts the line in a linked list elem
 
-		printf("Parser iter %d, GNL Line: |%s|\n", i, line);
+//		printf("Parser iter %d, GNL Line: |%s|\n", i, line);
 
 		// ok so i want a func that makes sure the string is
 		// one of the authorized ones

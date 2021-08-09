@@ -6,10 +6,12 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:34:03 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 18:27:47 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+	// Same as in QS we are changing all times compare content values with
+		// indexes, see if it works
 #include "push_swap.h"
 
 int		ft_get_median(t_sorting *all, int id, int size)
@@ -18,7 +20,7 @@ int		ft_get_median(t_sorting *all, int id, int size)
 	int		min;
 	int		max;
 	long	total;
-	t_list	*stack;
+	t_nlist	*stack;
 
 	if (!all)
 		return (0);
@@ -36,11 +38,11 @@ int		ft_get_median(t_sorting *all, int id, int size)
 	// could just use size, no c, but meh
 	while (c < size)
 	{
-		if (*((int*)stack->index) < min)
-			min = *((int*)stack->index);
-		if (*((int*)stack->index) > max)
-			max = *((int*)stack->index); 
-		total += *((int*)stack->index);
+		if (stack->index < min)
+			min = stack->index;
+		if (stack->index > max)
+			max = stack->index; 
+		total += stack->index;
 		stack = stack->next;
 		++c;
 	}
@@ -57,7 +59,7 @@ int		ft_get_mean(t_sorting *all, int id, int size)
 	int		min;
 	int		max;
 	long	total;
-	t_list	*stack;
+	t_nlist	*stack;
 
 	if (!all)
 		return (0);
@@ -107,9 +109,9 @@ int		ft_sort_end_case(t_sorting *all, int size)
 	id = 'a';
 	if (size == 3)
 	{
-		a = *((int*)all->stack_a->content);
-		b = *((int*)all->stack_a->next->content);
-		c = *((int*)all->stack_a->next->next->content);
+		a = all->stack_a->index;
+		b = all->stack_a->next->index;
+		c = all->stack_a->next->next->index;
 	/*	while (!(a < b && b < c))
 		{
 
@@ -152,7 +154,7 @@ int		ft_sort_end_case(t_sorting *all, int size)
 				printf("End Case reverse rotate 2 ret1: %d\n", ret1);
 		}
 	}
-	else if (size == 2 && *((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
+	else if (size == 2 && all->stack_a->index > all->stack_a->next->index)
 		ft_wr_swap(all, 'a');
 	return (1);
 }
@@ -170,8 +172,8 @@ int		ft_minisort_a(t_sorting *all, int size)
 	int		ret1;	// for TESTING may be Tmp
 
 //	printf("--- In Minisort A\n");
-	if (size == 2 && *((int*)all->stack_a->content) \
-		> *((int*)all->stack_a->next->content))
+	if (size == 2 && all->stack_a->index \
+		> all->stack_a->next->index)
 	{
 		ret1 = ft_wr_swap(all, 'a');
 		if (ret1 != 1)
@@ -179,15 +181,15 @@ int		ft_minisort_a(t_sorting *all, int size)
 	}
 	else if (size == 3)
 	{
-		a = *((int*)all->stack_a->content);
-		b = *((int*)all->stack_a->next->content);
-		c = *((int*)all->stack_a->next->next->content);
+		a = all->stack_a->index;
+		b = all->stack_a->next->index;
+		c = all->stack_a->next->next->index;
 		if (a < b && b < c)
 			return (1);
 		else if (a > b)
 		{
-			if (*((int*)all->stack_b->content) \
-				< *((int*)all->stack_b->next->content))
+			if (all->stack_b->index \
+				< all->stack_b->next->index)
 			{
 				ret1 = ft_wr_swap(all, 'c');
 				if (ret1 != 1)
@@ -223,7 +225,7 @@ int		ft_minisort_b(t_sorting *all, int size)
 //	printf("--- In Minisort B\n");
 	if (size == 1)
 	{
-		if (*((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
+		if (all->stack_a->index > all->stack_a->next->index)
 		{
 			ret1 = ft_wr_swap(all, 'a');
 			if (ret1 != 1)
@@ -235,9 +237,9 @@ int		ft_minisort_b(t_sorting *all, int size)
 	}
 	else
 	{
-		if (*((int*)all->stack_b->content) < *((int*)all->stack_b->next->content))
+		if (all->stack_b->index < all->stack_b->next->index)
 		{
-			if (*((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
+			if (all->stack_a->index > all->stack_a->next->index)
 			{
 				ret1 = ft_wr_swap(all, 'c');
 				if (ret1 != 1)

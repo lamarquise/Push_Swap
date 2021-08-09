@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 03:47:49 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:12:25 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 20:07:26 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_print_stack(t_nlist *stack)
 	tmp = stack;
 	while (tmp)
 	{
-		ft_putnbrnl(*((int*)(tmp->content)));
+		ft_putnbr(*((int*)(tmp->content)));
+		write(1, "  --  index: ", 13);
+		ft_putnbrnl(tmp->index);
 		tmp = tmp->next;
 	}
 }

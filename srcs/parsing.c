@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:01:43 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 19:59:44 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int		ft_free_int_tab(int **int_tab, int size)
 			// Is this good enough ????
 			// IDK if this does what i want...
 	//	free((*int_tab)[i]);
-		free((int_tab)[i]);
+
+
+	// This crashes shit, don't do it...
+//		free((int_tab)[i]);
 
 		++i;
 	}
@@ -85,6 +88,4 @@ int		ft_parser(char **av, int **int_tab, int i)
 	}
 	return (i);
 }
-
-
 

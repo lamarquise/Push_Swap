@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 01:06:55 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:15:11 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 20:34:35 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 int		ft_apply_ops(t_sorting *all, t_list **op_codes);
 // i think this goes here...
 //int		ft_parse_op_codes(t_nlist *op_codes);
+int		ft_parse_op_codes(t_list **op_codes);
+int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 16:32:39 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 18:19:51 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 int		ft_my_sort(t_sorting *all);
 int		ft_bubble_sort(t_sorting *all);
 
-
+	// not sure where to put this...
+	// is in push main.
+int		ft_sort_by_index(t_sorting *all);
 /*
 **		Quick Sort
 */
@@ -35,6 +37,8 @@ int		ft_start_push_swap(t_sorting *all, int size);
 **		Minisort
 */
 
+int		ft_get_median(t_sorting *all, int id, int size);
+	// mean may be obsolete
 int		ft_get_mean(t_sorting *all, int id, int size);
 void	*ft_lstlast_pointer(t_nlist *lst);
 void	*ft_pointer_at_index(t_nlist *lst, int index);

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:40:15 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 16:58:13 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 20:28:21 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 	i = 0;
 	while (i < size)
 	{
+/*
 		// leave this for now, but could do like in Cub3D, cleaner...
 		new = ft_nlstnew(&((*int_tab)[i]), 0);// start by filling index with 0
 		if (!new)
@@ -58,6 +59,10 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 		// if lstnew fails i need to free the list not new
 		if (!ft_nlstadd_back(stack, new))
 			return (0);		// I think i can do this
+		++i;
+*/
+		if (!ft_nlstadd_back(stack, ft_nlstnew(&((*int_tab)[i]), 0)))
+			return (0);
 		++i;
 	}
 
@@ -67,7 +72,7 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 
 		// i think i still need this weird free func cuz of how 
 			// we deal with content, like it's in int_tab...
-int		ft_free_list_elems(t_nlist **stack)
+int		ft_free_nlist_elems(t_nlist **stack)
 {
 	t_nlist	*tmp;
 
@@ -82,3 +87,48 @@ int		ft_free_list_elems(t_nlist **stack)
 	// free (stack too?) not sure...
  	return (1);
 }
+
+
+	// almost certainly want to move this....
+	// pretty sure this checks for duplicates :)
+	// single *stack? not **stack?
+int		ft_sort_by_index(t_sorting *all)
+{
+	t_nlist	*cur;
+	t_nlist	*tmp;
+	int		i;
+	int		j;
+
+	if (!all)
+		return (0);
+	i = all->size_total;
+	cur = all->stack_a;
+	while (i)
+	{
+		cur->index = 1;
+		tmp = all->stack_a;
+		j = all->size_total;
+		while (j)
+		{
+			if (*((int*)tmp->content) < *((int*)cur->content))
+				++cur->index;
+			else if (*((int*)tmp->content) == *((int*)cur->content) \
+					&& tmp != cur)
+				return (0);
+			tmp = tmp->next;
+			--j;
+		}
+		cur = cur->next;
+		--i;
+	}
+
+	return (1);
+}
+
+
+
+
+
+
+
+

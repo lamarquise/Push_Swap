@@ -20,6 +20,7 @@ DIR_SRCS		=	./srcs/
 DIR_CHECKER		=	$(DIR_SRCS)
 SRCS_CHECKER	=	checker_main.c \
 					apply_operations.c \
+					parse_op_codes.c \
 
 
 #DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
@@ -110,6 +111,9 @@ bonus: $(NAME) $(CHECKER)
 $(LIBFT): $(LIBFT_INC) $(LIBFT_SRCS)
 	make -C $(DIR_LIBFT)
 
+# for testing Prolly don't need to keep this...
+relib:
+	make -C $(DIR_LIBFT) re
 
 	### EXECUTABLE CREATION ###
 
@@ -165,7 +169,7 @@ lfclean:
 
 re: fclean all
 
-
+# should re make push_swap AND checker?
 
 	### VARIOUS TESTS, Valgrind, leaks, etc... ###
 
