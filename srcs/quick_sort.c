@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:53:33 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 23:47:41 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 	// to be a comparison of Index, will see if it works...
 #include "push_swap.h"
 
-// no i need to do the Stack Management WAAAAY better
 int		ft_partition(t_sorting *all, int id, int size)
 {
 	int		pivot;
@@ -25,6 +24,7 @@ int		ft_partition(t_sorting *all, int id, int size)
 	int		ret1;		// for testing, may be tmp
 
 
+		// Maybe this isn't TMP !????
 	// this is tmp till i make a pre-Partition
 	if (id == 1 && all->stack_b == NULL)
 		return (1);
@@ -81,6 +81,48 @@ int		ft_partition(t_sorting *all, int id, int size)
 	return (part_size);
 }
 
+int		ft_pascal_split(t_sorting *all, int id, int part_size, int med)
+{
+	int		rot_count;
+
+	rot_count = 0;
+	while (part_size)
+	{
+		if ((id == 1 && all->stack_b->index > med) \
+			|| (id == 0 && all->stack_a->index <= med))
+		{
+			ft_wr_push(all, id + 'a');		// i think cuz i swaped it's A
+			--part_size;
+		}
+		else
+		{
+			ft_wr_rotate(all, id + 'a');
+			++rot_count;
+		}
+	}
+
+	return (rot_count);
+}
+
+int		ft_pascal_partition(t_sorting *all, int id, int size)
+{
+	int		med;
+	int		rot_count;
+	int		part_size;
+
+	med = ft_get_median(all, id, size);
+	part_size = id ? (size + 1) / 2 : size / 2;
+	size -= part_size;
+	rot_count = ft_pascal_split(all, id, part_size, med);
+	if ((id == 0 && size != all->size_a) || (id == 1 && size != all->size_b))
+	{
+		while (rot_count--)
+			ft_wr_reverse_rotate(all, id + 'a');
+	}
+	return (part_size);
+}
+
+
 
 // part_size is the Number of elems pushed to other list
 // A is 0 and B is 1
@@ -90,7 +132,11 @@ int		ft_my_quick_sort(t_sorting *all, int id, int size)
 
 	//	printf("---- Now in QS ----- size = %d, ID: %c\n", size, id + 'A');
 	//	ft_print_both_stacks(all);
-	if (size < 4)
+	if (size == 4 && id == 1)
+	{
+		ft_minisort(all, id, size);
+	}
+	else if (size < 4)
 	{
 		// apply some sort of minisort that can handle 2 or 3 numbers
 		ft_minisort(all, id, size);
@@ -99,8 +145,8 @@ int		ft_my_quick_sort(t_sorting *all, int id, int size)
 	}
 	else
 	{
-		// OK SO THIS SHIT ISN'T WORKING!!!!!!!!!
-		part_size = ft_partition(all, id, size);
+	//	part_size = ft_partition(all, id, size);
+		part_size = ft_pascal_partition(all, id, size);
 		//	printf("in QS, not smaller than 4, part size: %d, ID: %c\n", part_size, id + 'A');
 		//	ft_print_both_stacks(all);
 		// i think part size is the size of the new parts

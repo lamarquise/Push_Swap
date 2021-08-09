@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 18:27:47 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 23:47:39 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,146 @@ int		ft_minisort_a(t_sorting *all, int size)
 	return (1);
 }
 
+
+	// Here is how you could use Push to optimize a bit more
+
+/*
+
+if in correct order you push all back
+if in reverse order (there are 3)
+
+It would work better with 4
+
+if A < B >> C < D
+Push A and B SS Push C and D 5 
+
+I can do 11 Ops for 4 in reverse order, not great...
+
+Actually i can do 4 in rev order in 8, that's pretty good
+I can do any 4 in B in 9 or less
+Shit how did i do it in 8, i can do it in 9....
+
+
+*/
+
+
+	// only works for B ?
+int		ft_smallest_on_top(t_sorting *all, int id, int size)
+{
+	int		i;
+	int		top;
+	t_nlist	*stack;
+
+	if (!all || size < 0 || id != 1)
+		return (0);
+	if (size == 1)
+		return (1);
+	i = 1;
+	stack = all->stack_b;
+	top = stack->index;
+	stack = stack->next;
+	while (i < size)
+	{
+		if (top > stack->index)
+			return (0);
+		stack = stack->next;
+		++i;
+	}
+	return (1);
+}
+
+	// only works for B ?
+int		ft_largest_on_top(t_sorting *all, int id, int size)
+{
+	int		i;
+	int		top;
+	t_nlist	*stack;
+
+	if (!all || size < 0 || id != 1)
+		return (0);
+	if (size == 1)
+		return (1);
+	i = 1;
+	stack = all->stack_b;
+	top = stack->index;
+	stack = stack->next;
+	while (i < size)
+	{
+		if (top < stack->index)
+			return (0);
+		stack = stack->next;
+		++i;
+	}
+	return (1);
+}
+
+
+int		ft_b_quad_sort(t_sorting *all, int size)
+{
+	int		a;
+	int		b;
+	int		c;
+	int		d;
+	int		rot_count;
+
+	if (!all || size != 4)
+		return (0);
+	a = all->stack_b->index;
+	b = all->stack_b->next->index;
+	c = all->stack_b->next->next->index;
+	d = all->stack_b->next->next->next->index;
+	rot_count = 0;
+
+//	printf("Larg ret: %d\n", ft_largest_on_top(all, 1, size));
+
+	while (size)
+	{
+		// not this only if largest on top
+		if (size == 3)
+			// run regular minisort_b
+		else if (ft_smallest_on_top(all, 1, size))
+			// push to bottom and sort 3 then rotate and push
+
+		else if (ft_largest_on_top(all, 1, size))
+		{
+			// push to a from b and regurlar minisort
+			ft_wr_push(all, 'b');
+			return (ft_minisort_b(all, size - 1));
+		}
+
+		else
+		{
+			// push from b to a
+			
+
+		}
+
+
+
+
+	}
+	if (a < b)
+	{
+		if (b < c)
+		{
+			if (c < d)
+			{
+				
+			}
+
+		}
+		
+
+
+	}
+	if (a < c && a < d && b < c && b < d)
+	{
+		ft_wr_rotate(all, 'b');
+		ft_wr_rotate(all, 'b');
+	}
+	return (1);
+}
+
 	// this one we could improve a bit, by using the Push back to A
 	// as a tool for sorting...
 int		ft_minisort_b(t_sorting *all, int size)
@@ -234,6 +374,10 @@ int		ft_minisort_b(t_sorting *all, int size)
 		ret1 = ft_wr_push(all, 'b');
 		if (ret1 != 1)
 			printf("minisort b push 1 ret1: %d\n", ret1);
+	}
+	else if (size == 4)
+	{
+		return (ft_b_quad_sort(all, size));
 	}
 	else
 	{
