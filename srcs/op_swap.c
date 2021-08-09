@@ -6,16 +6,16 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 02:25:47 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 22:53:12 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:11:40 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
-int		ft_op_swap(t_list **stack)
+int		ft_op_swap(t_nlist **stack)
 {
-	t_list	*e1;
-	t_list	*e2;
+	t_nlist	*e1;
+	t_nlist	*e2;
 
 	e1 = NULL;
 	e2 = NULL;
@@ -35,7 +35,7 @@ int		ft_op_swap(t_list **stack)
 	// NVM all Op funcs just take Stacks...
 //int		ft_op_swap_both(t_sorting *all)
 
-int		ft_op_swap_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);

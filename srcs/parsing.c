@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 21:11:09 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:01:43 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,36 @@
 	// It's in both, this part of the Parsing is universal
 #include "both.h"
 
+
+ 	// using a dumb name but could change it and add to libft later...
+int		ft_free_int_tab(int **int_tab, int size)
+{
+	int	i;
+
+	if (!int_tab)
+		return (1);		// so it doesn't crash if no int tab
+	i = 0;
+
+	while (i < size)
+	{
+			// Is this good enough ????
+			// IDK if this does what i want...
+	//	free((*int_tab)[i]);
+		free((int_tab)[i]);
+
+		++i;
+	}
+
+	// or is it just
+	free(*int_tab);		// ????
+
+	return (1);
+}
+
+
+	// need to make sure values is between intmin and intmax
+		// for all numbs in list
+		// possibly in a dif func...
 	// Seems secure...
 int		ft_parser(char **av, int **int_tab, int i)
 {

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 20:38:34 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:17:36 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 	// OMG need to check if B is empty!!!!!!!!
 
 	// This shit needs to use "is_sorted.."
-//int		ft_checker(t_list *stack_a, t_list *stack_b)
+//int		ft_checker(t_nlist *stack_a, t_nlist *stack_b)
 int		ft_checker(t_sorting *all)
 {
 	int		prev;
@@ -60,6 +60,7 @@ int		ft_checker(t_sorting *all)
 
 
 
+	// desparately needs to be Secured!!!!!
 
 int		main(int ac, char **av)
 {
@@ -74,8 +75,8 @@ int		main(int ac, char **av)
 
 	// may move this to a separat func later
 
-	t_list		*stack_a;
-	t_list		*stack_b;
+	t_nlist		*stack_a;
+	t_nlist		*stack_b;
 	t_list		*op_codes;
 
 	int			*int_tab;		// may want a clearer name...

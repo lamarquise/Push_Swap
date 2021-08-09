@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 21:11:21 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:14:52 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct	s_sorting
 //	t_stack_info	*info_a;
 //	t_stack_info	*info_b;
 
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_nlist			*stack_a;
+	t_nlist			*stack_b;
 
 
 	// do i want to keep a pointer to the Table of pointers to ints
@@ -78,7 +78,7 @@ typedef struct	s_sorting
 **		Push Swap Main
 */
 
-int		ft_is_reverse_sorted(t_list *stack);
+int		ft_is_reverse_sorted(t_nlist *stack);
 int		ft_rev_sort(t_sorting *all, int size);
 
 
@@ -87,30 +87,32 @@ int		ft_rev_sort(t_sorting *all, int size);
 */
 
 int			ft_print_inttab(int *tab, int size);
-int			ft_create_stack(t_list **stack, int **int_tab, int size);
+int			ft_create_stack(t_nlist **stack, int **int_tab, int size);
+int			ft_free_nlist_elems(t_nlist **stack);
 
 
 /*
 **		Parsing
 */
 
+int			ft_free_int_tab(int **int_tab, int size);
 int			ft_parser(char **av, int **tab, int i);
 
 // might move these to their own file
-int			ft_parse_op_codes(t_list **op_codes);
-int			ft_check_add_code(char *line, t_list **op_codes, char **valid_tab);
+int			ft_parse_op_codes(t_nlist **op_codes);
+int			ft_check_add_code(char *line, t_nlist **op_codes, char **valid_tab);
 
 /*
 **		Operations
 */
 
-int			ft_op_swap(t_list **stack);
-int			ft_op_swap_both(t_list **stack_a, t_list **stack_b);
-int			ft_op_push_to_from(t_list **stack_to, t_list **stack_from);
-int			ft_op_rotate(t_list **stack);
-int			ft_op_reverse_rotate(t_list **stack);
-int			ft_op_rotate_both(t_list **stack_a, t_list **stack_b);
-int			ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
+int			ft_op_swap(t_nlist **stack);
+int			ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b);
+int			ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from);
+int			ft_op_rotate(t_nlist **stack);
+int			ft_op_reverse_rotate(t_nlist **stack);
+int			ft_op_rotate_both(t_nlist **stack_a, t_nlist **stack_b);
+int			ft_op_reverse_rotate_both(t_nlist **stack_a, t_nlist **stack_b);
 
 /*
 **	 Utils Both
@@ -121,13 +123,13 @@ int			ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 void		ft_free_int(void *content);
 //void		ft_print_inttab(int *tab, int size);
 int			ft_strcmp_to_strtab(char *input, char **tab);
-int			ft_is_sorted(t_list *stack);
+int			ft_is_sorted(t_nlist *stack);
 
 /*
 **		Print Struct Status
 */
 
-void		ft_print_stack(t_list *stack);
+void		ft_print_stack(t_nlist *stack);
 void		ft_print_both_stacks(t_sorting *all);
 //void		ft_print_stack_info(t_stack_info *info);
 //void		ft_print_mysort_all(t_sorting *all);
@@ -148,7 +150,7 @@ int			ft_wr_swap(t_sorting *all, char id);
 int			ft_wr_push(t_sorting *all, char id);
 int			ft_wr_rotate(t_sorting *all, char id);
 int			ft_wr_reverse_rotate(t_sorting *all, char id);
-//int			ft_all_push_to_from(t_list **stack_to, t_list **stack_from);
+//int			ft_all_push_to_from(t_nlist **stack_to, t_nlist **stack_from);
  int			ft_all_push_to_from(t_sorting *all, char id);
 */
 

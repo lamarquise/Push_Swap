@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 21:34:09 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 16:32:39 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ int		ft_bubble_sort(t_sorting *all);
 */
 
 int		ft_partition(t_sorting *all, int id, int size);
-void	ft_my_quick_sort(t_sorting *all, int id, int size);
+int		ft_my_quick_sort(t_sorting *all, int id, int size);
 int		ft_first_partition(t_sorting *all, int size);
-void	ft_start_push_swap(t_sorting *all, int size);
+int		ft_start_push_swap(t_sorting *all, int size);
 
 /*
 **		Minisort
 */
 
 int		ft_get_mean(t_sorting *all, int id, int size);
-void	*ft_lstlast_pointer(t_list *lst);
-void	*ft_pointer_at_index(t_list *lst, int index);
-int		ft_sort_end_cases(t_sorting *all, t_list **stack, char id);
+void	*ft_lstlast_pointer(t_nlist *lst);
+void	*ft_pointer_at_index(t_nlist *lst, int index);
+int		ft_sort_end_cases(t_sorting *all, t_nlist **stack, char id);
 int		ft_minisort(t_sorting *all, int id, int size);
 
 /*

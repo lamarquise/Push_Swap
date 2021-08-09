@@ -6,16 +6,16 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:53:53 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/05 12:48:58 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:11:06 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
-int		ft_op_rotate(t_list **stack)
+int		ft_op_rotate(t_nlist **stack)
 {
-	t_list	*first;
-	t_list	*last;
+	t_nlist	*first;
+	t_nlist	*last;
 
 //	printf("in Rotate 1\n");
 	first = NULL;
@@ -43,11 +43,11 @@ int		ft_op_rotate(t_list **stack)
 	return (1);
 }
 
-int		ft_op_reverse_rotate(t_list **stack)
+int		ft_op_reverse_rotate(t_nlist **stack)
 {
-	t_list	*first;
-	t_list	*last;
-	t_list	*new_last;
+	t_nlist	*first;
+	t_nlist	*last;
+	t_nlist	*new_last;
 
 	first = NULL;
 	last = NULL;
@@ -77,7 +77,7 @@ int		ft_op_reverse_rotate(t_list **stack)
 	return (1);
 }
 
-int		ft_op_rotate_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_rotate_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int		ret1;
 
@@ -96,7 +96,7 @@ int		ft_op_rotate_both(t_list **stack_a, t_list **stack_b)
 	return (1);
 }
 
-int		ft_op_reverse_rotate_both(t_list **stack_a, t_list **stack_b)
+int		ft_op_reverse_rotate_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int		ret1;
 

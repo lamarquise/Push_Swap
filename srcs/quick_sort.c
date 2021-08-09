@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 23:46:49 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:34:01 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_partition(t_sorting *all, int id, int size)
 	int		pivot;
 	int		part_size;
 	int		rot_count;
-	t_list	*stack;	// i don't think i want this actually...
+	t_nlist	*stack;	// i don't think i want this actually...
 
 	int		ret1;		// for testing, may be tmp
 
@@ -31,7 +31,8 @@ int		ft_partition(t_sorting *all, int id, int size)
 
 	rot_count = 0;
 	part_size = 0;
-	pivot = ft_get_mean(all, id, size);	// no idea if rigth args
+//	pivot = ft_get_mean(all, id, size);	// no idea if rigth args
+	pivot = ft_get_median(all, id, size);	// no idea if rigth args
 
 	//	printf("pivot = %d, size = %d\n", pivot, size);
 	//	ft_print_both_stacks(all);
@@ -81,7 +82,7 @@ int		ft_partition(t_sorting *all, int id, int size)
 
 // part_size is the Number of elems pushed to other list
 // A is 0 and B is 1
-void	ft_my_quick_sort(t_sorting *all, int id, int size)
+int		ft_my_quick_sort(t_sorting *all, int id, int size)
 {
 	int	part_size;
 
@@ -108,7 +109,7 @@ void	ft_my_quick_sort(t_sorting *all, int id, int size)
 
 	// ONCE Size < 4 has been reached, the Recursion Ends!!!!
 
-	//	return (1);
+	return (1);
 }
 
 
@@ -123,7 +124,9 @@ int		ft_first_partition(t_sorting *all, int size)
 
 	c = 0;
 	part_size = 0;
-	pivot = ft_get_mean(all, 0, size);
+		// change to get_median...
+//	pivot = ft_get_mean(all, 0, size);
+	pivot = ft_get_median(all, 0, size);
 	while (c < size)
 	{
 		if (*((int*)all->stack_a->content) <= pivot)
@@ -147,16 +150,18 @@ int		ft_first_partition(t_sorting *all, int size)
 
 
 // we can make it an int and return 1 or whatever if we want later...
-void	ft_start_push_swap(t_sorting *all, int size)
+int		ft_start_push_swap(t_sorting *all, int size)
 {
 	int	part_size;
 
+	// may change these to look at indexes... rather than values?
+	// but other than that, could keep them here?
 	if (ft_is_sorted(all->stack_a))
-		return ;
-	else if (ft_is_reverse_sorted(all->stack_a))
-		ft_rev_sort(all, size);
-	else if (size < 4)
-		ft_minisort(all, 0, size);
+		return (1);
+	else if (ft_is_reverse_sorted(all->stack_a) && !ft_rev_sort(all, size))
+		return (0);
+	else if (size < 4 && !ft_minisort(all, 0, size))
+		return (0);
 	else
 	{
 		part_size = ft_first_partition(all, size);
@@ -168,6 +173,7 @@ void	ft_start_push_swap(t_sorting *all, int size)
 		ft_my_quick_sort(all, 0, size - part_size);
 		ft_my_quick_sort(all, 1, part_size);
 	}
+	return (1);
 }
 
 

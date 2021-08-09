@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:52:07 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:14:23 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ int		ft_strcmp_to_strtab(char *input, char **tab)
 }
 
 
-int		ft_is_sorted(t_list *stack)
+		// should i change to look only at index or will i not do the
+			// pre sorting in Checker????
+int		ft_is_sorted(t_nlist *stack)
 {
-	t_list	*tmp;
+	t_nlist	*tmp;
 
 	if (!stack)
 		return (0);

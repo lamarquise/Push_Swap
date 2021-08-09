@@ -6,16 +6,16 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 03:47:49 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 19:55:16 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:12:25 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
 
-void	ft_print_stack(t_list *stack)
+void	ft_print_stack(t_nlist *stack)
 {
-	t_list	*tmp;
+	t_nlist	*tmp;
 
 	tmp = stack;
 	while (tmp)

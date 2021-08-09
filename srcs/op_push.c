@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:04:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 22:52:46 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:10:06 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 	// Push A is push from B to A
 	// Push B is from A to B
 
-int		ft_op_push_to_from(t_list **stack_to, t_list **stack_from)
+int		ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from)
 {
-	t_list	*tmp_from;
+	t_nlist	*tmp_from;
 
 //	tmp_from = NULL;		// necessary?
 	if (!stack_from || !*stack_from || !stack_to)

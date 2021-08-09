@@ -6,17 +6,51 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/04 22:58:37 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:34:03 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int		ft_get_median(t_sorting *all, int id, int size)
+{
+	int		c;
+	int		min;
+	int		max;
+	long	total;
+	t_list	*stack;
 
-// My own get_mean
-	// Ok so this one gets me the mean Value of a subset of a Stack
-	// we want size so we know where to stop
-	// this assumes we are always starting at the top
+	if (!all)
+		return (0);
+	c = 0;
+	total = 0;
+	min = INTMAX;
+	max = 0;
+	if (id == 0 && all->stack_a)
+		stack = all->stack_a;
+	else if (id == 1 && all->stack_b)
+		stack = all->stack_b;
+	else
+		return (0);	// maybe excessive...
+
+	// could just use size, no c, but meh
+	while (c < size)
+	{
+		if (*((int*)stack->index) < min)
+			min = *((int*)stack->index);
+		if (*((int*)stack->index) > max)
+			max = *((int*)stack->index); 
+		total += *((int*)stack->index);
+		stack = stack->next;
+		++c;
+	}
+//	printf("end of get_mean, total: %ld\n", total);
+	return ((min + max - 1) / 2);
+}
+
+
+	// is secure i think
+	// may need more clean up
 int		ft_get_mean(t_sorting *all, int id, int size)
 {
 	int		c;
@@ -25,15 +59,18 @@ int		ft_get_mean(t_sorting *all, int id, int size)
 	long	total;
 	t_list	*stack;
 
-//	printf("--- Now in Get Mean --- size = %d, id = %d\n", size, id);
+	if (!all)
+		return (0);
 	c = 0;
 	total = 0;
 	min = INTMAX;
 	max = INTMIN;
-	if (id == 0)
+	if (id == 0 && all->stack_a)
 		stack = all->stack_a;
-	else if (id == 1)
+	else if (id == 1 && all->stack_b)
 		stack = all->stack_b;
+	else
+		return (0);	// maybe excessive...
 
 	while (c < size)
 	{
@@ -41,17 +78,17 @@ int		ft_get_mean(t_sorting *all, int id, int size)
 			min = *((int*)stack->content);
 		if (*((int*)stack->content) > max)
 			max = *((int*)stack->content); 
-		// might not be next????
 		total += *((int*)stack->content);
-//		printf("size: %d, min: %d, max: %d, total: %ld\n", size, min, max, total);
 		stack = stack->next;
 		++c;
-		//--size;
 	}
 //	printf("end of get_mean, total: %ld\n", total);
 	return ((int)(total / size));
 }
 
+
+	// this one is a fucking disaster...
+		// doesn't actualy do anything for lists of size 2 or 1...
 
 	// Threesort is for when the stack is Empty except 3 values
 	// ok i just used the End cases i found from that other guy,
@@ -65,6 +102,8 @@ int		ft_sort_end_case(t_sorting *all, int size)
 
 	int		ret1;	// for TESTING tmp i think
 
+	if (!all)
+		return (0);
 	id = 'a';
 	if (size == 3)
 	{
@@ -73,9 +112,6 @@ int		ft_sort_end_case(t_sorting *all, int size)
 		c = *((int*)all->stack_a->next->next->content);
 	/*	while (!(a < b && b < c))
 		{
-
-
-
 
 		}
 	*/
@@ -116,6 +152,8 @@ int		ft_sort_end_case(t_sorting *all, int size)
 				printf("End Case reverse rotate 2 ret1: %d\n", ret1);
 		}
 	}
+	else if (size == 2 && *((int*)all->stack_a->content) > *((int*)all->stack_a->next->content))
+		ft_wr_swap(all, 'a');
 	return (1);
 }
 
@@ -220,23 +258,35 @@ int		ft_minisort_b(t_sorting *all, int size)
 	return (1);
 }
 
+	// i think it's secure...
+	// may be a little excessive check again before push
 int		ft_minisort(t_sorting *all, int id, int size)
 {
+	if (!all)
+		return (0);
 	if (id == 0)
 	{
 		// i think what Pascal does here is if size = size_of_a then you do
 			// a threesort (because it was sent to minisort cuz it's small)
 		// otherwise, if size != size_a you do minisort_a
 		if (size != all->size_a && all->size_a < 4)
-			ft_sort_end_case(all, 'a');
-		ft_minisort_a(all, size);
-
+		{
+			if (!ft_sort_end_case(all, 'a'))
+				return (0);
+		}
+		else 
+		{
+			if (!ft_minisort_a(all, size))
+				return (0);
+		}
 	}
 	else if (id == 1)
 	{
-		ft_minisort_b(all, size);
+		if (!ft_minisort_b(all, size))
+			return (0);
 	}
-
+	else
+		return (0);
 	return (1);
 }
 
