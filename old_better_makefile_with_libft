@@ -6,6 +6,14 @@ CFLAGS		=	-Wall -Werror -Wextra
 NAME		=	push_swap
 CHECKER		=	checker
 
+
+	# prolly gonna have to change this when i have some files compiled into
+	# both, but i can prolly just have another folder for those...
+
+	# so that if i want to put both folders in a srcs folder, it's super easy
+	# WOOOOOW This was super helpful, cuz the way i had it setup, it deleted my 
+		# checker and push_swap folders along with the executable when i did
+		# make re... LOL
 DIR_SRCS		=	./srcs/
 
 #DIR_CHECKER		=	$(DIR_SRCS)checker/
@@ -23,6 +31,9 @@ SRCS_PUSH_SWAP	=	push_swap_main.c \
 					quick_sort.c \
 					minisort.c \
 
+#					bubble_sort.c \
+#					my_sort.c \
+
 DIR_BOTH		=	$(DIR_SRCS)
 SRCS_BOTH		=	parsing.c \
 					create_stack.c \
@@ -33,6 +44,8 @@ SRCS_BOTH		=	parsing.c \
 					print_struct_status.c \
 					free.c \
 
+#					init_structs.c \
+
 DIR_INC		=	includes/
 INCS		=	-I$(DIR_INC)
 
@@ -40,13 +53,6 @@ INCS		=	-I$(DIR_INC)
 # This is where it would be nice to have an include file, one i could bring in
 # for libft that i also use in libft, where all the include files and sources files
 # are stored...
-
-MINILIB_DIR	=	./minlib
-
-include $(MINILIB_DIR)minilib.mk
-
-
-
 
 LIBFT_NAME	=	libft.a
 DIR_LIBFT	=	../libft/
