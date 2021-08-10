@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 23:47:39 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:32:53 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ Shit how did i do it in 8, i can do it in 9....
 
 */
 
-
+/*
 	// only works for B ?
 int		ft_smallest_on_top(t_sorting *all, int id, int size)
 {
@@ -356,7 +356,7 @@ int		ft_b_quad_sort(t_sorting *all, int size)
 	}
 	return (1);
 }
-
+*/
 	// this one we could improve a bit, by using the Push back to A
 	// as a tool for sorting...
 int		ft_minisort_b(t_sorting *all, int size)
@@ -375,10 +375,10 @@ int		ft_minisort_b(t_sorting *all, int size)
 		if (ret1 != 1)
 			printf("minisort b push 1 ret1: %d\n", ret1);
 	}
-	else if (size == 4)
+/*	else if (size == 4)
 	{
 		return (ft_b_quad_sort(all, size));
-	}
+	}*/
 	else
 	{
 		if (all->stack_b->index < all->stack_b->next->index)
@@ -404,6 +404,44 @@ int		ft_minisort_b(t_sorting *all, int size)
 	return (1);
 }
 
+int		ft_pascal_threesort(t_sorting *all, int id, int size)
+{
+//	int		a;
+//	int		b;
+//	int		c;
+	t_nlist	*stack;
+
+	if (!all || id != 0)
+		return (0);
+	stack = all->stack_a;
+//			a = stack->index;
+//			b = stack->index;
+//			c = stack->index;
+	if (size == 3)
+	{
+		while (!(stack->index < stack->next->index \
+				&& stack->next->index < stack->next->next->index))
+		{
+			if (stack->next->index > stack->index \
+				&& stack->next->index > stack->next->next->index)
+				ft_wr_reverse_rotate(all, 'a');
+			else if (stack->next->index < stack->index \
+				&& stack->next->index > stack->next->next->index)
+				ft_wr_rotate(all, 'a');
+			else if (stack->next->index > stack->index \
+				&& stack->next->index < stack->next->next->index)
+				ft_wr_swap(all, 'a');
+			else if (stack->next->index < stack->index \
+				&& stack->index > stack->next->next->index)
+				ft_wr_rotate(all, 'a');
+			stack = all->stack_a;
+		}
+	}
+	else if (size == 2 && stack->index > stack->next->index)
+		ft_wr_swap(all, 'a');
+	return (1);
+}
+
 	// i think it's secure...
 	// may be a little excessive check again before push
 int		ft_minisort(t_sorting *all, int id, int size)
@@ -417,7 +455,8 @@ int		ft_minisort(t_sorting *all, int id, int size)
 		// otherwise, if size != size_a you do minisort_a
 		if (size != all->size_a && all->size_a < 4)
 		{
-			if (!ft_sort_end_case(all, 'a'))
+//			if (!ft_sort_end_case(all, 'a'))
+			if (!ft_pascal_threesort(all, 0, size))
 				return (0);
 		}
 		else 
@@ -435,8 +474,6 @@ int		ft_minisort(t_sorting *all, int id, int size)
 		return (0);
 	return (1);
 }
-
-
 
 
 

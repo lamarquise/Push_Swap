@@ -26,6 +26,7 @@ SRCS_CHECKER	=	checker_main.c \
 #DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
 DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap_main.c \
+					pre_sorting.c \
 					op_wrappers.c \
 					quick_sort.c \
 					minisort.c \
@@ -41,6 +42,7 @@ SRCS_BOTH		=	parsing.c \
 					op_rotate.c \
 					utils_both.c \
 					print_struct_status.c \
+					free.c \
 
 #					init_structs.c \
 
@@ -175,9 +177,13 @@ re: fclean all
 
 	# works for just Checker...
 	# also, dosen't work on Mac with Big Sur atm... ugh
-testl: $(OBJS_CHECKER) $(LIBFT)
+testlc: $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_valgrind -g
-	echo "$(_GREEN)\r\33[2K\rValgrind is ready  😎\n$(_END)"
+	echo "$(_GREEN)\r\33[2K\rChecker Valgrind is ready  😎\n$(_END)"
+
+testlp: $(OBJS_PUSH_SWAP) $(LIBFT)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o push_swap_valgrind -g
+	echo "$(_GREEN)\r\33[2K\rPush Swap Valgrind is ready  😎\n$(_END)"
 
 testsc: $(OBJS_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_sanitize -g3 -fsanitize=address

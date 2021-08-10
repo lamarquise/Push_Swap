@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 23:47:41 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 00:44:21 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,13 @@ int		ft_my_quick_sort(t_sorting *all, int id, int size)
 
 	//	printf("---- Now in QS ----- size = %d, ID: %c\n", size, id + 'A');
 	//	ft_print_both_stacks(all);
-	if (size == 4 && id == 1)
+/*	if (size == 4 && id == 1)
 	{
 		ft_minisort(all, id, size);
 	}
 	else if (size < 4)
+*/
+	if (size < 4)
 	{
 		// apply some sort of minisort that can handle 2 or 3 numbers
 		ft_minisort(all, id, size);
@@ -195,7 +197,27 @@ int		ft_first_partition(t_sorting *all, int size)
 
 	return (part_size);
 }
+int		ft_pascal_first_partition(t_sorting *all, int size)
+{
+	int		med;
+	int		push_count;
 
+	med = size / 2;
+	push_count = size / 2;
+	while (push_count)
+	{
+		if (all->stack_a->index <= med)
+		{
+			ft_wr_push(all, 'a');
+			--push_count;
+		}
+		else
+			ft_wr_rotate(all, 'a');
+		if (all->size_b > 1 && all->stack_b->index < med / 2)
+			ft_wr_rotate(all, 'b');
+	}
+	return (med);
+}
 
 // we can make it an int and return 1 or whatever if we want later...
 int		ft_start_push_swap(t_sorting *all, int size)
@@ -212,7 +234,8 @@ int		ft_start_push_swap(t_sorting *all, int size)
 		return (0);
 	else
 	{
-		part_size = ft_first_partition(all, size);
+		part_size = ft_pascal_first_partition(all, size);
+	//	part_size = ft_first_partition(all, size);
 		//	printf("Start Push Swap, part_size: %d\n", part_size);
 
 		//	printf("--- Partitioned stacks in Starting Push Swap\n");

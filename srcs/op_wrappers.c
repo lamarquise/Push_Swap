@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:08:42 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:37:45 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,6 @@ int		ft_wr_swap(t_sorting *all, char id)
 		write(1, "ss\n", 3);
 		return (1);
 	}
-/*
-	if (id == 'a')
-	{
-		write(1, "sa\n", 3);
-		return (1);		// not sure if necessary to ret here
-	}
-	else if (id == 'b')
-	{
-		write(1, "sb\n", 3);
-		return (1);
-	}
-	else if (id == 'c')		// i think this is how i wanna do this
-	{
-		write(1, "ss\n", 3);
-		return (1);
-	}
-*/
 	return (0);
 }
 

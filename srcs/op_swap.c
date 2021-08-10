@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 02:25:47 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:11:40 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:36:35 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int		ft_op_swap(t_nlist **stack)
 	return (1);
 }
 
-	// NVM all Op funcs just take Stacks...
-//int		ft_op_swap_both(t_sorting *all)
-
 int		ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	if (!stack_a || !stack_b)
@@ -45,5 +42,3 @@ int		ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
 
 	return (1);
 }
-
-

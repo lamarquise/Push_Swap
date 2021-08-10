@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 03:47:49 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 20:07:26 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:28:04 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,19 @@ void	ft_print_mysort_all(t_sorting *all)
 }
 */
 
+// this could actually be worth putting in Libft if not already there...
+// i actually already made one of these...
+/*
+void	ft_print_inttab(int *tab, int size)
+{
+	int		i;
+
+	if (!tab)
+		return;
+	i = 0;
+	while (i < size)
+		ft_putnbr(tab[i++]);
+
+
+}
+*/

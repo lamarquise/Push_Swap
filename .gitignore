@@ -4,3 +4,7 @@ pus_swap_sanitize
 push_swap_visualizer
 tester1
 .DS_Store
+checker_valgrind
+push_swap_valgrind
+push_swap_valgrind.dSYM/
+

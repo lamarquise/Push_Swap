@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:53:53 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 17:11:06 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:35:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@ int		ft_op_rotate(t_nlist **stack)
 	t_nlist	*first;
 	t_nlist	*last;
 
-//	printf("in Rotate 1\n");
 	first = NULL;
 	last = NULL;
 	if (!stack)
 		return (0);
 
-//	printf("in Rotate 2\n");
 	first = *stack;
 	last = *stack;
 
-//	printf("in Rotate 3\n");
+	// Yea we really need to figure this out...
 //	if (!first || !first->next)
 	if (!first->next)
 		return (2);
 
-//	printf("in Rotate 4\n");
 	// doesn't happen if only 1 elem
 	while (last->next)
 		last = last->next;

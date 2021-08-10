@@ -6,15 +6,14 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:40:15 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/09 20:28:21 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/10 04:14:16 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
-	// both of these go in the Libft
-		// Maybe after this projec tho, focus for now...
 
+	// NOT IN FINAL PUSH TO VOG
 	// does it need to return an int?
 int		ft_print_inttab(int *tab, int size)
 {
@@ -25,13 +24,6 @@ int		ft_print_inttab(int *tab, int size)
 		ft_putnbrnl(tab[i++]);
 	return (1);
 }
-
-/*
-void	ft_print_lstelem_int(t_nlist *elem)
-{
-	ft_putnbrnl((int *)(elem->content));
-}
-*/
 
 
 	// what if we never reallocated a copy of the ints in Tab, 
@@ -61,6 +53,7 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 			return (0);		// I think i can do this
 		++i;
 */
+		// like Cub3d so should be fine?
 		if (!ft_nlstadd_back(stack, ft_nlstnew(&((*int_tab)[i]), 0)))
 			return (0);
 		++i;
@@ -87,48 +80,6 @@ int		ft_free_nlist_elems(t_nlist **stack)
 	// free (stack too?) not sure...
  	return (1);
 }
-
-
-	// almost certainly want to move this....
-	// pretty sure this checks for duplicates :)
-	// single *stack? not **stack?
-int		ft_sort_by_index(t_sorting *all)
-{
-	t_nlist	*cur;
-	t_nlist	*tmp;
-	int		i;
-	int		j;
-
-	if (!all)
-		return (0);
-	i = all->size_total;
-	cur = all->stack_a;
-	while (i)
-	{
-		cur->index = 1;
-		tmp = all->stack_a;
-		j = all->size_total;
-		while (j)
-		{
-			if (*((int*)tmp->content) < *((int*)cur->content))
-				++cur->index;
-			else if (*((int*)tmp->content) == *((int*)cur->content) \
-					&& tmp != cur)
-				return (0);
-			tmp = tmp->next;
-			--j;
-		}
-		cur = cur->next;
-		--i;
-	}
-
-	return (1);
-}
-
-
-
-
-
 
 
 
