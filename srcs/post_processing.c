@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:28:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 17:17:13 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 22:58:31 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_post_processing(t_sorting *all)
 	if (!all || !all->op_list)
 		return (0);
 
+	printf("in Post Processing\n");
 		// some giant algo to figure all this shit out...
 	tmp = all->op_list;
 	while (tmp->next->next->next)

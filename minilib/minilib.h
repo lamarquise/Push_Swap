@@ -51,8 +51,15 @@ long		ft_scott_free(char **str, int ret);
 /*
 **		TEST GNL
 */
-
-char		*get_next_line(int fd);
+int			get_next_line(char **line, int fd);
+// char		*get_next_line(int fd);
+/*
+ft_substr
+ft_strdup
+ft_ibzero
+ft_strjoin
+ft_strchr
+*/
 
 /*
 **		GNL
@@ -114,6 +121,8 @@ long		ft_error_msg(char *str, int ret);
 int			ft_strcmp(const char *s1, const char *s2);
 size_t		ft_strlen(const char *s);
 void		ft_bzero(void *s, size_t n);
+// move later
+char		*ft_strchr(const char *s, int c);
 
 /*
 **		Big Str Funcs

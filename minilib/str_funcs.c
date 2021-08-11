@@ -70,3 +70,20 @@ void	ft_bzero(void *s, size_t n)
 		++a;
 	}
 }
+
+	// move it later...
+char	*ft_strchr(const char *s, int c)
+{
+	int		a;
+	char	*tmp;
+
+	tmp = (char*)s;
+	a = 0;
+	while (tmp[a] || (tmp[a] == '\0' && (char)c == '\0'))
+	{
+		if (tmp[a] == (char)c)
+			return (&tmp[a]);
+		++a;
+	}
+	return (NULL);
+}

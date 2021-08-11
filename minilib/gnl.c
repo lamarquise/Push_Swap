@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 00:09:33 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 02:50:18 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:39:03 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,3 +140,17 @@ int	ft_gnl(char **line, int fd)
 
 	return ((i > 0) ? ft_gnl(line, fd) : 0);
 }
+
+
+/*
+int	ft_gnl(char **line, int fd)
+{
+
+
+
+
+
+
+
+}
+*/
