@@ -8,14 +8,12 @@ CHECKER		=	checker
 
 DIR_SRCS		=	./srcs/
 
-#DIR_CHECKER		=	$(DIR_SRCS)checker/
 DIR_CHECKER		=	$(DIR_SRCS)
 SRCS_CHECKER	=	checker_main.c \
 					apply_operations.c \
 					parse_op_codes.c \
 
 
-#DIR_PUSH_SWAP	=	$(DIR_SRCS)push_swap/
 DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap_main.c \
 					pre_sorting.c \
@@ -32,68 +30,45 @@ SRCS_BOTH		=	parsing.c \
 					utils_both.c \
 					print_struct_status.c \
 					free.c \
+					ilist_more.c \
+					post_processing.c \
 
-DIR_INC		=	includes/
-INCS		=	-I$(DIR_INC)
-
+# might move the last one..
 
 # This is where it would be nice to have an include file, one i could bring in
 # for libft that i also use in libft, where all the include files and sources files
 # are stored...
 
-MINILIB_DIR	=	./minlib
-
-include $(MINILIB_DIR)minilib.mk
-
-
-
-
-LIBFT_NAME	=	libft.a
-DIR_LIBFT	=	../libft/
-LIBFT		=	$(DIR_LIBFT)$(LIBFT_NAME)
-
-
-DIR_LIBFT_INC	=	$(DIR_LIBFT)includes/
-
-	# these names don't make sense, should be swapped or changed...
-LIBFT_INC		=	$(wildcard $(DIR_LIBFT_INC)*.h)
-LIBFT_INCS	=	-I$(DIR_LIBFT_INC)
+DIR_MINILIB		=	./minilib/
+SRCS_MINILIB	=	atoi_funcs.c \
+					big_str_funcs.c \
+					ft_split.c \
+					ft_strjoin.c \
+					list_funcs.c \
+					nlist_funcs.c \
+					nlstdel_n_one.c \
+					ilist_funcs.c \
+					put_funcs.c \
+					str_funcs.c \
+					tab_funcs.c \
+					gnl.c \
+					gnl_utils.c \
 
 
-
-DIR_LIBFT_SRC	=	$(DIR_LIBFT)srcs/
-
-	# You could easily use a wildcard to get all these...
-DIR_LIBFT_SRCS	=	atoi_funcs/ \
-					is_funcs/ \
-					linked_list_funcs/list_funcs/ \
-					linked_list_funcs/nlist_funcs/ \
-					mem_plus_funcs/ \
-					mem_funcs_more/ \
-					printf/ \
-					put_funcs/ \
-					simple_funcs/ \
-					str_funcs/ \
-					str_funcs_more/ \
-					tab_funcs/ \
-
-LIBFT_SRC	=	$(addprefix $(DIR_LIBFT_SRC),$(DIR_LIBFT_SRCS))
-LIBFT_SRCS	=	$(foreach dir, $(LIBFT_SRC), $(wildcard $(dir)*.c))
+DIR_INC		=	includes/
+INCS		=	-I$(DIR_INC)
 
 
-#ALL_LIBS	=	$(DIR_LIBFT)$(LIBFT_NAME)
-ALL_LIBS	=	-L$(DIR_LIBFT) -lft
-#ALL_LIBS	=	-L$(DIR_LIBFT)
-
-ALL_INCS	=	$(INCS) $(LIBFT_INCS)
+ALL_INCS	=	$(INCS) -I./minilib/
 
 
 
 DIR_OBJ		=	./objs/
 
+OBJ_MINILIB	=	$(SRCS_MINILIB:.c=.o)
 OBJ_BOTH	=	$(SRCS_BOTH:.c=.o)
-OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH)
-OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH)
+OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
+OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
 
 OBJS_CHECKER	=	$(addprefix $(DIR_OBJ),$(OBJ_CHECKER))
 OBJS_PUSH_SWAP	=	$(addprefix $(DIR_OBJ),$(OBJ_PUSH_SWAP))
@@ -104,24 +79,17 @@ all: $(NAME)
 bonus: $(NAME) $(CHECKER)
 #all: $(CHECKER) $(PUSH_SWAP)
 
-$(LIBFT): $(LIBFT_INC) $(LIBFT_SRCS)
-	make -C $(DIR_LIBFT)
-
-# for testing Prolly don't need to keep this...
-relib:
-	make -C $(DIR_LIBFT) re
-
 	### EXECUTABLE CREATION ###
 
 	# don't forget to add more dependancies, like $(LIBFT) and whatever else
 	# fairly certain the includes and libs and stuff need to be in both
 		# the "Name" rules and the "Obj" rules... I think.
 
-$(CHECKER): $(OBJS_CHECKER) $(LIBFT)
+$(CHECKER): $(OBJS_CHECKER)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o $(CHECKER)
 	printf "$(_GREEN)\r\33[2K\r$(CHECKER) created  😎\n$(_END)"
 
-$(NAME): $(OBJS_PUSH_SWAP) $(LIBFT)
+$(NAME): $(OBJS_PUSH_SWAP)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o $(NAME)
 	printf "$(_GREEN)\r\33[2K\r$(NAME) created  😎\n$(_END)"
 
@@ -145,6 +113,11 @@ $(DIR_OBJ)%.o: $(DIR_BOTH)%.c
 	mkdir -p $(DIR_OBJ)
 	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
 	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
+
+$(DIR_OBJ)%.o: $(DIR_MINILIB)%.c
+	mkdir -p $(DIR_OBJ)
+	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
+	echo "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
 
 
 	### CLEANING ###

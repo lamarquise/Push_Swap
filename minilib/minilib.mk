@@ -1,18 +1,18 @@
 
 
-
-
-MINILIBFILES	=	atoi_funcs.c \
+SRCS_MINILIB	=	atoi_funcs.c \
 					big_str_funcs.c \
-					ft_memalloc.c \
 					ft_split.c \
 					ft_strjoin.c \
 					list_funcs.c \
 					nlist_funcs.c \
 					nlstdel_n_one.c \
+					ilist_funcs.c \
 					put_funcs.c \
 					str_funcs.c \
 					tab_funcs.c \
+					gnl.c \
+					gnl_utils.c \
 
-MINILIBINCSRC	=	./
-MINILIBINC		=	$(MINILIBINCSRC)minilib.h
+DIR_MINILIB_INC	=	./
+MINILIB_INC		=	$(MINILIBINCSRC)minilib.h

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 19:32:43 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 20:19:21 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 02:14:50 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	ft_putnbr(int n)
 	write(1, &ret, 1);
 }
 
+void	ft_putnbrnl(int nbr)
+{
+	ft_putnbr(nbr);
+	ft_putchar('\n');
+}
+
 void	ft_putstr(char const *s)
 {
 	int		a;
@@ -46,4 +52,15 @@ void	ft_putstr(char const *s)
 		write(1, (void *)&s[a], 1);
 		++a;
 	}
+}
+
+long	ft_scott_free(char **str, int ret)
+{
+	if (str && *str)
+	{
+		ft_bzero(*str, (int)ft_strlen(*str));
+		free(*str);
+		*str = NULL;
+	}
+	return (ret);
 }

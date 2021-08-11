@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:26:11 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:17:18 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 	// already has libft and stdio.h
 # include "both.h"
 
-
-	// Obsolete
-int		ft_my_sort(t_sorting *all);
-int		ft_bubble_sort(t_sorting *all);
 
 /*
 **		Pre Sorting
@@ -60,6 +56,24 @@ int		ft_all_push_to_from(t_sorting *all, char id);
 int		ft_wr_rotate(t_sorting *all, char id);
 int		ft_wr_reverse_rotate(t_sorting *all, char id);
 
+/*
+**		iList More
+*/
+
+int		ft_print_ilist(t_ilist *lst);
+int		ft_print_op_codes(t_ilist *op_codes);
+int		ft_remove_next_two(t_sorting *all, t_ilist **cur);
+int		ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep);
+
+/*
+**		Post Processing
+*/
+
+int		ft_post_processing(t_sorting *all);
+
+	// Obsolete
+int		ft_my_sort(t_sorting *all);
+int		ft_bubble_sort(t_sorting *all);
 
 
 #endif

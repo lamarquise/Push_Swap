@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:37:45 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:29:22 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@ int		ft_wr_swap(t_sorting *all, char id)
 		return (0);
 	if (id == 'a' && ft_op_swap(&all->stack_a))
 	{
-		write(1, "sa\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(1));
+		++all->size_op;
+//		write(1, "sa\n", 3);
 		return (1);
 	}
 	else if (id == 'b' && ft_op_swap(&all->stack_b))
 	{
-		write(1, "sb\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(5));
+		++all->size_op;
+//		write(1, "sb\n", 3);
 		return (1);
 	}
 	else if (id == 'c' && ft_op_swap_both(&all->stack_a, &all->stack_b))
 	{
-		write(1, "ss\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(8));
+		++all->size_op;
+//		write(1, "ss\n", 3);
 		return (1);
 	}
 	return (0);
@@ -52,7 +58,9 @@ int		ft_wr_push(t_sorting *all, char id)
 		result = ft_op_push_to_from(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		write(1, "pa\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(0));
+		++all->size_op;
+//		write(1, "pa\n", 3);
 
 /*		++all->info_a->size;
 		--all->info_b->size;
@@ -74,7 +82,9 @@ int		ft_wr_push(t_sorting *all, char id)
 		result = ft_op_push_to_from(&all->stack_b, &all->stack_a);
 		if (result != 1)
 			return (result);
-		write(1, "pb\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(4));
+		++all->size_op;
+//		write(1, "pb\n", 3);
 
 //		printf("wr push we made it to mid of id 'b'\n");
 //		++all->info_b->size;
@@ -139,7 +149,9 @@ int		ft_wr_rotate(t_sorting *all, char id)
 			return (result);
 
 //		++all->info_a->rot;
-		write(1, "ra\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(2));
+		++all->size_op;
+//		write(1, "ra\n", 3);
 
 	}
 	else if (id == 'b')
@@ -149,14 +161,18 @@ int		ft_wr_rotate(t_sorting *all, char id)
 			return (result);
 
 //		++all->info_b->rot;
-		write(1, "rb\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(6));
+		++all->size_op;
+//		write(1, "rb\n", 3);
 	}
 	else if (id == 'r')
 	{
 		result = ft_op_rotate_both(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		write(1, "rr\n", 3);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(9));
+		++all->size_op;
+//		write(1, "rr\n", 3);
 	}
 
 	return (1);
@@ -177,7 +193,9 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 //		--all->info_a->rot;
-		write(1, "rra\n", 4);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(3));
+		++all->size_op;
+//		write(1, "rra\n", 4);
 
 	}
 	else if (id == 'b')
@@ -187,14 +205,18 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 //		--all->info_b->rot;
-		write(1, "rrb\n", 4);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(7));
+		++all->size_op;
+//		write(1, "rrb\n", 4);
 	}
 	else if (id == 'c')
 	{
 		result = ft_op_reverse_rotate_both(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		write(1, "rrr\n", 4);
+		ft_ilstadd_back(&all->op_list, ft_ilstnew(10));
+		++all->size_op;
+//		write(1, "rrr\n", 4);
 	}
 	return (1);
 }

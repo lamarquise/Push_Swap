@@ -66,7 +66,7 @@ static int	wl(char *s, int start, char *set)
 	return (a + 1);
 }
 
-int	fill_ret(char **ret, char const *s, int a)
+int	fill_ret(char **ret, char const *s, char *set, int a)
 {
 	int		b;
 	int		d;
@@ -96,7 +96,6 @@ char	**ft_split(char const *s, char *set)
 {
 	int		a;
 	int		b;
-	int		d;
 	char	**ret;
 
 	if (!s || !ft_check_set(set))
@@ -106,7 +105,7 @@ char	**ft_split(char const *s, char *set)
 	ret = (char **)ft_memalloc(sizeof(char *) * ws((char *)s, set));
 	if (!ret)
 		return (NULL);
-	b = fill_ret(ret, s, a);
+	b = fill_ret(ret, s, set, a);
 	if (b == -1)
 	{
 		ft_free_strtab(ret);

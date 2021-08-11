@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:44:20 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:01:05 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,27 @@
 	// Don't need ?
 # include <stdio.h>
 
-
-# include "libft.h"
+	// NOT ANYMORE... sad
+//# include "libft.h"
+#include "minilib.h"
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647
 
-
+/*
+	// do i need to swap val of PA and PB???
+	PA = 0
+	SA = 1
+	RA = 2
+	RRA = 3
+	PB = 4
+	SB = 5
+	RB = 6
+	RRB = 7
+	SS = 8
+	RR = 9
+	RRR = 10
+*/
 
 typedef struct	s_sorting
 {
@@ -31,6 +45,10 @@ typedef struct	s_sorting
 	int				size_b;
 	t_nlist			*stack_a;
 	t_nlist			*stack_b;
+
+	int				size_op;
+	t_ilist			*op_list;
+
 }				t_sorting;		// t_sorting *all;
 
 

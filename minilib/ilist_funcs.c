@@ -1,76 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nlist_funcs.c                                      :+:      :+:    :+:   */
+/*   ilist_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 19:38:06 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 15:09:15 by ericlazo         ###   ########.fr       */
+/*   Created: 2021/08/11 15:09:36 by ericlazo          #+#    #+#             */
+/*   Updated: 2021/08/11 15:13:07 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilib.h"
 
-int	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
+t_ilist	*ft_ilstnew(int num)
 {
-	size_t	i;
-	t_nlist	*tmp;
+	t_ilist	*elem;
 
-	i = 0;
+	elem = (t_ilist *)malloc(sizeof(t_ilist));
+	if (!elem)
+		return (NULL);
+	elem->num = num;
+	elem->next = NULL;
+	return (elem);
+}
+
+int	ft_ilstadd_back(t_ilist **lst, t_ilist *new)
+{
+	t_ilist	*tmp;
+
 	if (!lst || !new)
 		return (0);
 	if (!*lst)
 	{
 		*lst = new;
-		new->index = i;
 		return (1);
 	}
 	tmp = *lst;
 	while (tmp->next)
-	{
 		tmp = tmp->next;
-		++i;
-	}
 	tmp->next = new;
-	new->index = ++i;
 	new->next = NULL;
 	return (1);
 }
 
-int	ft_nlstadd_front(t_nlist **lst, t_nlist *new)
+int	ft_ilstadd_front(t_ilist **lst, t_ilist *new)
 {
 	if (!lst || !new)
 		return (0);
 	new->next = *lst;
 	*lst = new;
-	new->index = 0;
-	while (*lst)
-	{
-		++(*lst)->index;
-		(*lst) = (*lst)->next;
-	}
 	return (1);
 }
 
-t_nlist	*ft_nlstnew(void *content, int index)
+int	ft_ilstdel_all(t_ilist **lst)
 {
-	t_nlist	*elem;
-
-	elem = (t_nlist *)malloc(sizeof(t_nlist));
-	if (!elem)
-		return (NULL);
-	if (!content)
-		elem->content = NULL;
-	elem->content = content;
-	elem->index = index;
-	elem->next = NULL;
-	return (elem);
-}
-
-int	ft_nlstdel_all(t_nlist **lst)
-{
-	t_nlist	*tmp;
+	t_ilist	*tmp;
 
 	if (!lst)
 		return (0);
@@ -78,7 +62,6 @@ int	ft_nlstdel_all(t_nlist **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		free((*lst)->content);
 		free(*lst);
 		*lst = tmp;
 	}

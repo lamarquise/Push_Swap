@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:45:00 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 17:13:57 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		main(int ac, char **av)
 {
-	t_nlist			*stack_a;
-	t_nlist			*stack_b;
+	t_nlist			*stack_a;		// i may not actually need these
+	t_nlist			*stack_b;		// could just send all.stack_a
 	int				*int_tab;
 
 	t_sorting		all;	// no need to free but should free 
@@ -56,6 +56,8 @@ int		main(int ac, char **av)
 	all.stack_b = stack_b;
 	all.size_a = all.size_total;
 	all.size_b = 0;
+	all.size_op = 0;
+	all.op_list = NULL;
 
 //	ft_print_both_stacks(&all);
 
@@ -73,7 +75,21 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: failed to Sort\n", 0));
 	}
 
-	ft_print_both_stacks(&all);
+//	ft_print_both_stacks(&all);
+
+
+//	ft_print_op_codes(all.op_list);
+
+//	printf("op codes size: %d\n", all.size_op);
+
+	// here we do post processing...
+
+	ft_post_processing(&all);
+
+//	printf("op codes size: %d\n", all.size_op);
+
+	ft_print_op_codes(all.op_list);
+
 
 		// in theory if the stack is empty nothing happens...
 	ft_free_nlist_elems(&stack_a);
@@ -90,7 +106,7 @@ int		main(int ac, char **av)
 	all.stack_a = NULL;
 	all.stack_b = NULL;
 */
-	ft_print_both_stacks(&all);
+//	ft_print_both_stacks(&all);
 
 //	printf("|-------Push Swap End-------|\n");
 /*

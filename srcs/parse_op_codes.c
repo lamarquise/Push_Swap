@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:50:37 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:35:26 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 	// I hate that lstadd_back returns a void, makes it way harder to check
 	// if everything has gone right...
 	// may need to use a "new" var and do lstnew & dup separately...
-	if (!(new = ft_lstnew(ft_strdup(line)))
+	if (!(new = ft_lstnew(ft_strdup(line))))
 		return (0);
 
 //	ft_lstadd_back(op_codes, ft_lstnew(ft_strdup(line)));

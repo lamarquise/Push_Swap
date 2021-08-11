@@ -15,18 +15,60 @@
 
 //# include something for something
 
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+typedef struct s_nlist
+{
+	int				index;
+	void			*content;
+	struct s_nlist	*next;
+}				t_nlist;
+
+typedef struct s_ilist
+{
+	int				num;
+	struct s_ilist	*next;
+}				t_ilist;
+
 /*
 **		Put Funcs
 */
 
 void		ft_putchar(char c);
 void		ft_putnbr(int n);
-void		ft_putstr(char const *s)
+void		ft_putnbrnl(int nbr);
+void		ft_putstr(char const *s);
+long		ft_scott_free(char **str, int ret);
+
+/*
+**		TEST GNL
+*/
+
+char		*get_next_line(int fd);
 
 /*
 **		GNL
 */
 
+int			ft_gnl(char **line, int fd);
+
+/*
+**		GNL Utils
+*/
+
+size_t		ft_sstrlen(const char *s);
+int			ft_sfindchar(char *str, char c);
+char		*ft_strsub(char *s, unsigned int start, size_t len);
+int			ft_ibzero(void *s, size_t n);
+char		*ft_gstrjoin(char **s1, char *s2);
 
 /*
 **		List Funcs
@@ -46,6 +88,16 @@ int			ft_nlstadd_back(t_nlist **lst, t_nlist *new);
 int			ft_nlstadd_front(t_nlist **lst, t_nlist *new);
 t_nlist		*ft_nlstnew(void *content, int index);
 int			ft_nlstdel_all(t_nlist **lst);
+
+/*
+**		iList Funcs
+*/
+
+t_ilist		*ft_ilstnew(int num);
+int			ft_ilstadd_back(t_ilist **lst, t_ilist *new);
+int			ft_ilstadd_front(t_ilist **lst, t_ilist *new);
+int			ft_ilstdel_all(t_ilist **lst);
+
 
 /*
 **		Stand Alone nList Funcs
