@@ -12,7 +12,6 @@ SRCS_MINILIB	=	atoi_funcs.c \
 					str_funcs.c \
 					tab_funcs.c \
 					gnl.c \
-					gnl_utils.c \
 
 DIR_MINILIB_INC	=	./
 MINILIB_INC		=	$(MINILIBINCSRC)minilib.h

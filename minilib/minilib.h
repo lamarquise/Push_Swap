@@ -49,19 +49,6 @@ void		ft_putstr(char const *s);
 long		ft_scott_free(char **str, int ret);
 
 /*
-**		TEST GNL
-*/
-int			get_next_line(char **line, int fd);
-// char		*get_next_line(int fd);
-/*
-ft_substr
-ft_strdup
-ft_ibzero
-ft_strjoin
-ft_strchr
-*/
-
-/*
 **		GNL
 */
 
@@ -73,9 +60,7 @@ int			ft_gnl(char **line, int fd);
 
 size_t		ft_sstrlen(const char *s);
 int			ft_sfindchar(char *str, char c);
-char		*ft_strsub(char *s, unsigned int start, size_t len);
 int			ft_ibzero(void *s, size_t n);
-char		*ft_gstrjoin(char **s1, char *s2);
 
 /*
 **		List Funcs

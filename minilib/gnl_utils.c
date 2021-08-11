@@ -41,23 +41,6 @@ int		ft_sfindchar(char *str, char c)
 	return (-1);
 }
 
-char	*ft_strsub(char *s, unsigned int start, size_t len)
-{
-	unsigned int	a;
-	char			*ret;
-
-	a = 0;
-	if (!(ret = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (a < len)
-	{
-		ret[a] = s[start + a];
-		++a;
-	}
-	ret[a] = '\0';
-	return (ret);
-}
-
 int		ft_ibzero(void *s, size_t n)
 {
 	unsigned int	a;
@@ -71,33 +54,4 @@ int		ft_ibzero(void *s, size_t n)
 		++a;
 	}
 	return (1);
-}
-
-char	*ft_gstrjoin(char **s1, char *s2)
-{
-	int		a;
-	char	*ret;
-	int		c;
-
-	ret = NULL;
-	if ((!s1 || !*s1) && !s2)
-		return (NULL);
-	a = ft_sstrlen(*s1) + ft_sstrlen(s2) + 1;
-	if (!(ret = (char*)malloc(sizeof(char) * a)))
-		return (NULL);
-	ft_ibzero(ret, a);
-	a = 0;
-	c = 0;
-	while (*s1 && (*s1)[c])
-	{
-		ret[a++] = (*s1)[c];
-		++c;
-	}
-	while (s2 && *s2)
-	{
-		ret[a++] = *s2;
-		++s2;
-	}
-	ret[a] = '\0';
-	return (ret);
 }

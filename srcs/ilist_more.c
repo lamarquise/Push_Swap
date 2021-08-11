@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:49:50 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 22:58:16 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 00:10:00 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	ft_remove_next_two(t_sorting *all, t_ilist **cur)
 	(*cur)->next = tmp;
 	all->size_op -= 2;
 
-	printf("removed 2\n");
+//	printf("removed 2\n");
 	return (1);
 }
 
@@ -110,7 +110,7 @@ int	ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep)
 	(*cur)->next = tmp;
 	--all->size_op;
 
-	printf("replaced 2 with 1\n");
+//	printf("replaced 2 with 1\n");
 
 	return (1);
 }

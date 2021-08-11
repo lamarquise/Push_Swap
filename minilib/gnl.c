@@ -13,144 +13,70 @@
 #include "minilib.h"
 
 
-static char	*fill_s(char *s, char **line, ssize_t i)
+char	*get_line(char **line, char **b_read)
 {
-	char	*p;
+	size_t	i;
+	char	*new_b;
 
-	p = NULL;
-	*line = ft_strsub(s, 0, (size_t)i++);
-	if (!*line)
-		return (NULL);
-	p = ft_strsub(s, i, ft_sstrlen(s) - (size_t)i);
-	if (!p)
-		return (NULL);
-	free(s);	// i'm just gonna assume this free should work...
-//	s = NULL;
-//	s = p;
-	return (p);
+	i = 0;
+	new_b = NULL;
+	while (((*b_read)[i] != '\n') && ((*b_read)[i] != '\0'))
+		i++;
+	if ((*b_read)[i] == '\n')
+	{
+//		++i;
+		*line = ft_substr((*b_read), 0, i++);
+//		new_b = ft_strdup(&(*b_read)[i]);
+//		++i;
+//		new_b = ft_strdup((*b_read) + i);
+		new_b = ft_substr((*b_read), i, ft_sstrlen(*b_read) - i);
+	}
+	else
+		*line = ft_strdup(*b_read);
+	ft_scott_free(b_read, 0);
+	return (new_b);
 }
-/*
-static char	*fill_from_buffer(char *s, char **line, ssize_t i, char *b)
+
+ssize_t	read_file(char **line, char **b, char **b_read, int fd)
 {
-	char *p;
+	char	*temp;
+	ssize_t	n;
 
-	p = NULL;
-	if (i > 0)
+	n = 1;
+	while (!ft_strchr(*b_read, '\n') && n)
 	{
-		p = ft_gstrjoin(&s, b);
-		if (!p)
-			return (NULL);
+		n = read(fd, *b, 16);
+		(*b)[n] = '\0';
+		temp = *b_read;
+		*b_read = ft_strjoin(temp, *b);
+		free(temp);
 	}
-	if (s && s[0] && ++i == 1 && !*line)
-	{
-		*line = ft_gstrjoin(&s, (void*)0);
-		if (!*line)
-			return (NULL);
-	}
-//	if (i < 1 && !(*line))
-//	{
-//		*line = ft_strsub(NULL, 0, 0);
-//		if (!*line)
-//			return (-1);
-//	}
-
-	free(s);		// IDK if i do that here
-	return (p);
+	ft_scott_free(b, 0);
+	*b_read = get_line(line, b_read);
+	if (**line == '\0')
+		ft_scott_free(line, 0);
+	return (n);
 }
-*/
 
 int	ft_gnl(char **line, int fd)
 {
-	static char	*s;
-	ssize_t		i;
-	char		*p;
-	char		b[17];
+	static char		*b_read = NULL;
+	char			*b;
+	ssize_t			n;
 
-	p = NULL;
-	i = ft_sfindchar(s, '\n');
-	if (i != -1)
-	{
-		s = fill_s(s, line, i);
-		if (!s)
-			return (-1);
-		return (1);
-	}
-/*	if ((i = ft_sfindchar(s, '\n')) != -1)
-	{
-		if (!(*line = ft_strsub(s, 0, (size_t)i++)) \
-			|| (!(p = ft_strsub(s, i, ft_sstrlen(s) - (size_t)i))))
-			return (-1);
-		free(s);
-		s = p;
-		return (1);
-	}
-*/
-
-// This shit works too
-// Still worried about Leaks from this end too
-// no idea how to put in other funcs...
-		// I don't know how to translate this
-		// (i = read(fd, b, 16)) < -1
-
-	if (!line || !ft_ibzero(b, 17))
+	if (fd < 0)
 		return (-1);
-	i = read(fd, b, 16);
-	if (i < 0)
+	b = (char *)ft_memalloc(sizeof(char) * 17);
+	if (!b)
 		return (-1);
-
-//	s = fill_from_buff(s, line, i, b);
-//	if (!s)
-//		return (-1);
-
-
-	if (i > 0)
-	{
-		p = ft_gstrjoin(&s, b);
-		if (!p)
-			return (-1);
-	}
-	if (s && s[0] && ++i == 1 && !*line)
-	{
-		*line = ft_gstrjoin(&s, (void*)0);
-		if (!*line)
-			return (-1);
-	}
-
-
-	if (i < 1 && !(*line))
-	{
-		*line = ft_strsub(NULL, 0, 0);
-		if (!*line)
-			return (-1);
-	}
-
-/*
-	if (!line || !ft_ibzero(b, 17) || (i = read(fd, b, 16)) < -1
-		|| (i > 0 && !(p = ft_gstrjoin(&s, b)))
-		|| (s && s[0] && ++i == 1 && !(*line = ft_gstrjoin(&s, (void*)0)))
-		|| (i < 1 && !(*line) && !(*line = ft_strsub(NULL, 0, 0))) || i < 0)
-		return (-1);
-
-*/
-
-
-	free(s);
-	s = p;
-
-
-	return ((i > 0) ? ft_gnl(line, fd) : 0);
+	if (read(fd, b, 0) < 0)
+		ft_scott_free(&b, -1);
+	if (!b_read)
+		b_read = ft_strdup("");
+	n = read_file(line, &b, &b_read, fd);
+	if (n == 0 && !*line)
+		return (0);
+	return (1);
 }
 
 
-/*
-int	ft_gnl(char **line, int fd)
-{
-
-
-
-
-
-
-
-}
-*/

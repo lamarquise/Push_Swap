@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 23:39:39 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 00:47:40 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		main(int ac, char **av)
 
 	// here we do post processing...
 
-	printf("pre Post Processing\n");
+//	printf("pre Post Processing\n");
 	ft_post_processing(&all);
 
 
