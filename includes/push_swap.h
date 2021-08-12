@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:57:40 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 23:39:42 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 18:39:32 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	*ft_lstlast_pointer(t_nlist *lst);
 void	*ft_pointer_at_index(t_nlist *lst, int index);
 int		ft_sort_end_cases(t_sorting *all, t_nlist **stack, char id);
 int		ft_minisort(t_sorting *all, int id, int size);
-
+int		ft_pascal_threesort(t_sorting *all, int id, int size);
+ 
 /*
 **		Wrapper Functions
 */

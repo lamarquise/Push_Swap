@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 16:28:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 18:10:55 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 18:27:16 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_post_processing(t_sorting *all)
 	while (tmp->next->next->next)
 	{
 
-		if ((tmp->next->num == 0 && tmp->next->next->num == 4 \
+		if ((tmp->next->num == 0 && tmp->next->next->num == 4) \
 			|| (tmp->next->num == 4 && tmp->next->next->num == 0))
 			ft_remove_next_two(all, &tmp);
 		else if ((tmp->next->num == 1 && tmp->next->next->num == 1) \

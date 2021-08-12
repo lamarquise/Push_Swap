@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 17:54:17 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 20:31:14 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,8 +216,12 @@ int		ft_pascal_first_partition(t_sorting *all, int size)
 		}
 		else
 			ft_wr_rotate(all, 'a');
+//		printf("first partition pre rot size B: %d, size A: %d\n", all->size_b, all->size_a);
 		if (all->size_b > 1 && all->stack_b->index < med / 2)
+		{
+//			printf("fist partition rot B\n");
 			ft_wr_rotate(all, 'b');
+		}
 	}
 	return (med);
 }
@@ -233,7 +237,7 @@ int		ft_start_push_swap(t_sorting *all, int size)
 		return (1);
 	else if (ft_is_reverse_sorted(all->stack_a) && !ft_rev_sort(all, size))
 		return (0);
-	else if (size < 4 && !ft_minisort(all, 0, size))
+	else if (size < 4 && !ft_pascal_threesort(all, 0, size))	// make Threesort
 		return (0);
 	else
 	{

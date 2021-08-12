@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 18:04:37 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 18:58:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -453,15 +453,17 @@ int		ft_minisort(t_sorting *all, int id, int size)
 		// i think what Pascal does here is if size = size_of_a then you do
 			// a threesort (because it was sent to minisort cuz it's small)
 		// otherwise, if size != size_a you do minisort_a
-		if (size != all->size_a && all->size_a < 4)
+	// i think i have this Backwards...
+		// Swaping them around
+		if (size != all->size_a)
 		{
 //			if (!ft_sort_end_case(all, 'a'))
-			if (!ft_pascal_threesort(all, 0, size))
+			if (!ft_minisort_a(all, size))
 				return (0);
 		}
 		else 
 		{
-			if (!ft_minisort_a(all, size))
+			if (!ft_pascal_threesort(all, 0, size))
 				return (0);
 		}
 	}

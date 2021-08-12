@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 23:53:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/11 16:29:22 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:05:09 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int		ft_wr_push(t_sorting *all, char id)
 			return (result);
 		ft_ilstadd_back(&all->op_list, ft_ilstnew(0));
 		++all->size_op;
+		++all->size_a;
+		--all->size_b;
 //		write(1, "pa\n", 3);
 
 /*		++all->info_a->size;
@@ -84,6 +86,8 @@ int		ft_wr_push(t_sorting *all, char id)
 			return (result);
 		ft_ilstadd_back(&all->op_list, ft_ilstnew(4));
 		++all->size_op;
+		--all->size_a;
+		++all->size_b;
 //		write(1, "pb\n", 3);
 
 //		printf("wr push we made it to mid of id 'b'\n");
