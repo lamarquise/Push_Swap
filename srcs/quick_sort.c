@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 00:44:21 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 17:54:17 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int		ft_pascal_partition(t_sorting *all, int id, int size)
 	int		part_size;
 
 	med = ft_get_median(all, id, size);
+//	printf("pascal Partition Median: %d\n", med);
 	part_size = id ? (size + 1) / 2 : size / 2;
 	size -= part_size;
 	rot_count = ft_pascal_split(all, id, part_size, med);
@@ -177,6 +178,7 @@ int		ft_first_partition(t_sorting *all, int size)
 		// change to get_median...
 //	pivot = ft_get_mean(all, 0, size);
 	pivot = ft_get_median(all, 0, size);
+//	printf("FIRST Partition Median: %d\n", pivot);
 	while (c < size)
 	{
 		if (all->stack_a->index <= pivot)
@@ -203,6 +205,7 @@ int		ft_pascal_first_partition(t_sorting *all, int size)
 	int		push_count;
 
 	med = size / 2;
+//	printf("pascal First Partition Median: %d\n", med);
 	push_count = size / 2;
 	while (push_count)
 	{

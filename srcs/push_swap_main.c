@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 00:47:40 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 17:03:14 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		main(int ac, char **av)
 {
-	t_nlist			*stack_a;		// i may not actually need these
-	t_nlist			*stack_b;		// could just send all.stack_a
 	int				*int_tab;
 
 	t_sorting		all;	// no need to free but should free 
@@ -25,8 +23,8 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		return (ft_error_msg("ERROR: no list of ints\n", 0));
 
-	stack_a = NULL;
-	stack_b = NULL;
+	all.stack_a = NULL;
+	all.stack_b = NULL;
 	int_tab = NULL;
 
 		// need to free stuff?
@@ -42,18 +40,16 @@ int		main(int ac, char **av)
 	// no duplicates
 
 
-	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
+	if (!ft_create_stack(&all.stack_a, &int_tab, all.size_total))
 	{
 		// i need a free stack that doesn't crash if there is no
 			// stack...
 		// also free int_tab
-		ft_free_nlist_elems(&stack_a);
+		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
 		return (ft_error_msg("ERROR: failed to create the stack\n", 0));
 	}
 
-	all.stack_a = stack_a;
-	all.stack_b = stack_b;
 	all.size_a = all.size_total;
 	all.size_b = 0;
 	all.size_op = 0;
@@ -63,14 +59,14 @@ int		main(int ac, char **av)
 
 	if (!ft_sort_by_index(&all))
 	{
-		ft_free_nlist_elems(&stack_a);
+		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
 		return (ft_error_msg("ERROR: failed to pre sort\n", 0));
 	}
 	if (!ft_start_push_swap(&all, all.size_total))
 	{
-		ft_free_nlist_elems(&stack_a);
-		ft_free_nlist_elems(&stack_b);
+		ft_free_nlist_elems(&all.stack_a);
+		ft_free_nlist_elems(&all.stack_b);
 		ft_free_int_tab(&int_tab, all.size_total);
 		return (ft_error_msg("ERROR: failed to Sort\n", 0));
 	}
@@ -94,18 +90,16 @@ int		main(int ac, char **av)
 
 
 		// in theory if the stack is empty nothing happens...
-	ft_free_nlist_elems(&stack_a);
-	ft_free_nlist_elems(&stack_b);
+	ft_free_nlist_elems(&all.stack_a);
+	ft_free_nlist_elems(&all.stack_b);
 	ft_free_int_tab(&int_tab, all.size_total);
 
 //	ft_lstclear(&stack_a, &ft_free_int);
-	ft_nlstdel_all(&stack_a);
+	ft_nlstdel_all(&all.stack_a);
 //	ft_nlstdel_all(&stack_b);
 
 	// this leads to Leaks
-/*	stack_a = NULL;
-	stack_b = NULL;
-	all.stack_a = NULL;
+/*	all.stack_a = NULL;
 	all.stack_b = NULL;
 */
 //	ft_print_both_stacks(&all);

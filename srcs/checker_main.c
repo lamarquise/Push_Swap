@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 02:49:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 00:04:36 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/12 17:03:16 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ int		ft_checker(t_sorting *all)
 
 int		main(int ac, char **av)
 {
-	t_nlist		*stack_a;
-	t_nlist		*stack_b;
-	t_list		*op_codes;
+	t_list		*op_codes;		// i could put op_codes in op_list in all..
+				// DO that if you feel you have time...
 	int			*int_tab;
 
 	t_sorting 	all;
@@ -79,8 +78,8 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: No list of ints\n", 0));
 
 
-	stack_a = NULL;
-	stack_b = NULL;
+	all.stack_a = NULL;
+	all.stack_b = NULL;
 	op_codes = NULL;
 	int_tab = NULL;
 
@@ -94,14 +93,12 @@ int		main(int ac, char **av)
 		return (ft_error_msg("ERROR: Bad OP Codes\n", 0));
 
 
-	if (!ft_create_stack(&stack_a, &int_tab, all.size_total))
+	if (!ft_create_stack(&all.stack_a, &int_tab, all.size_total))
 	{
 		// may need to free some things...
 		return (ft_error_msg("ERROR: failed to create the stack\n", 0));
 	}
 
-	all.stack_a = stack_a;
-	all.stack_b = stack_b;
 
 
 //	ft_print_both_stacks(&all);
