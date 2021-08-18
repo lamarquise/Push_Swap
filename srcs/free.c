@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 04:06:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:24:59 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:26:22 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 	We want to free nlists -> The Stacks
 	We want to free int_tab
-	We want to free list -> Op_Codes
+	We want to free list -> Op_Codes in Checker
+	We want to free iLists -> op codes in Push Swap
 
 	We may need to free the list of Pre Writing Opcodes (not sure how it
 	will be stored

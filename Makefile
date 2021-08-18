@@ -86,11 +86,11 @@ bonus: $(NAME) $(CHECKER)
 		# the "Name" rules and the "Obj" rules... I think.
 
 $(CHECKER): $(OBJS_CHECKER)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o $(CHECKER)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(OBJS_CHECKER) -o $(CHECKER)
 	printf "$(_GREEN)\r\33[2K\r$(CHECKER) created  😎\n$(_END)"
 
 $(NAME): $(OBJS_PUSH_SWAP)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o $(NAME)
+	$(CC) $(CFLAGS) $(ALL_INCS) $(OBJS_PUSH_SWAP) -o $(NAME)
 	printf "$(_GREEN)\r\33[2K\r$(NAME) created  😎\n$(_END)"
 
 
@@ -117,7 +117,7 @@ $(DIR_OBJ)%.o: $(DIR_BOTH)%.c
 $(DIR_OBJ)%.o: $(DIR_MINILIB)%.c
 	mkdir -p $(DIR_OBJ)
 	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
-	echo "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
+	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
 
 
 	### CLEANING ###
@@ -129,12 +129,6 @@ clean:
 fclean: clean
 	rm -rf $(CHECKER) $(NAME)
 	echo "$(_RED)$(CHECKER) and $(NAME) Deleted  😱$(_END)"
-
-lclean:
-	make -C $(DIR_LIBFT) clean
-
-lfclean:
-	make -C $(DIR_LIBFT) fclean
 
 re: fclean all
 
@@ -161,7 +155,7 @@ testsp: $(OBJS_PUSH_SWAP) $(LIBFT)
 	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
 
 
-.PHONY: all clean fclean re lclean lfclean libft_1 testl tests
+.PHONY: all clean fclean re testlc testlp testsc testsp
 
 .SILENT:
 

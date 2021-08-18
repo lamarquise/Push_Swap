@@ -18,7 +18,7 @@
 
 	// NOT ANYMORE... sad
 //# include "libft.h"
-#include "minilib.h"
+# include "minilib.h"
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647
