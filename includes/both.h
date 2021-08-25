@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/12 18:11:00 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/24 21:35:05 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct	s_sorting
 
 int			ft_print_inttab(int *tab, int size);
 int			ft_create_stack(t_nlist **stack, int **int_tab, int size);
-int			ft_free_nlist_elems(t_nlist **stack);
 
 /*
 **		Parsing
@@ -94,7 +93,9 @@ int			ft_is_sorted(t_nlist *stack);
 void		ft_free_int(void *content);
 int			ft_free_int_tab(int **int_tab, int size);
 
-
+int			ft_free_nlist_elems(t_nlist **stack);
+int			ft_free_ilist(t_nlist **stack);
+int			ft_free_list_of_str(t_list **lst);
 
 
 /*

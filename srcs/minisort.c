@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/13 19:44:27 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/24 21:25:02 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,9 @@ int		ft_minisort_a(t_sorting *all, int size)
 	int		b;
 	int		c;
 
-	int		ret1;	// for TESTING may be Tmp
-
-//	printf("--- In Minisort A\n");
 	if (size == 2 && all->stack_a->index \
 		> all->stack_a->next->index)
-	{
-		ret1 = ft_wr_swap(all, 'a');
-		if (ret1 != 1)
-			printf("Minisort A Swap 1 ret1: %d\n", ret1);
-	}
+		ft_wr_swap(all, 'a');
 	else if (size == 3)
 	{
 		a = all->stack_a->index;
@@ -109,27 +102,15 @@ int		ft_minisort_a(t_sorting *all, int size)
 		{
 			if (all->stack_b->index \
 				< all->stack_b->next->index)
-			{
-				ret1 = ft_wr_swap(all, 'c');
-				if (ret1 != 1)
-					printf("Minisort Swap 2 ret1: %d\n", ret1);
-			}
+				ft_wr_swap(all, 'c');
 			else
-			{
-				ret1 = ft_wr_swap(all, 'a');
-				if (ret1 != 1)
-					printf("Minisort Swap 3 ret1: %d\n", ret1);
-			}
+				ft_wr_swap(all, 'a');
 		}
 		else
 		{
-			ret1 = ft_wr_rotate(all, 'a');
-			if (ret1 != 1)
-				printf("Minisort A rotate 1 ret1: %d\n", ret1);
+			ft_wr_rotate(all, 'a');
 			ft_minisort_a(all, size - 1);
-			ret1 = ft_wr_reverse_rotate(all, 'a');
-			if (ret1 != 1)
-				printf("Minisort A reverse rotate 1 ret1: %d\n", ret1);
+			ft_wr_reverse_rotate(all, 'a');
 		}
 		return (ft_minisort_a(all, size));
 	}
@@ -140,44 +121,22 @@ int		ft_minisort_a(t_sorting *all, int size)
 	// as a tool for sorting...
 int		ft_minisort_b(t_sorting *all, int size)
 {
-	int		ret1;		// for TESTING may be TMP
-//	printf("--- In Minisort B\n");
 	if (size == 1)
 	{
 		if (all->stack_a->index > all->stack_a->next->index)
-		{
-			ret1 = ft_wr_swap(all, 'a');
-			if (ret1 != 1)
-				printf("Minisort B Swap 1 ret1: %d\n", ret1);
-		}
-		ret1 = ft_wr_push(all, 'b');
-		if (ret1 != 1)
-			printf("minisort b push 1 ret1: %d\n", ret1);
+			ft_wr_swap(all, 'a');
+		ft_wr_push(all, 'b');
 	}
-/*	else if (size == 4)
-	{
-		return (ft_b_quad_sort(all, size));
-	}*/
 	else
 	{
 		if (all->stack_b->index < all->stack_b->next->index)
 		{
 			if (all->stack_a->index > all->stack_a->next->index)
-			{
-				ret1 = ft_wr_swap(all, 'c');
-				if (ret1 != 1)
-					printf("Minisort B Swap 2 ret1: %d\n", ret1);
-			}
+				ft_wr_swap(all, 'c');
 			else
-			{
-				ret1 = ft_wr_swap(all, 'b');
-				if (ret1 != 1)
-					printf("Minisort B Swap 3 ret1: %d\n", ret1);
-			}
+				ft_wr_swap(all, 'b');
 		}
-		ret1 = ft_wr_push(all, 'b');
-		if (ret1 != 1)
-			printf("Minisort B push 2 ret1: %d\n", ret1);
+		ft_wr_push(all, 'b');
 		return (ft_minisort_b(all, size - 1));
 	}
 	return (1);

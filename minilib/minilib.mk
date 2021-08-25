@@ -10,6 +10,7 @@ SRCS_MINILIB	=	atoi_funcs.c \
 					ilist_funcs.c \
 					put_funcs.c \
 					str_funcs.c \
+					error_funcs.c \
 					tab_funcs.c \
 					gnl.c \
 

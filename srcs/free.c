@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 04:06:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/16 17:26:22 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/24 21:21:30 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,54 @@ void	ft_free_int(void *content)
 }
 
 
+int		ft_free_nlist_elems(t_nlist **stack)
+{
+	t_nlist	*tmp;
 
+	if (!stack)
+		return (1);		// if nothing to do we gucci
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	// free (stack too?) not sure...
+ 	return (1);
+}
+
+int		ft_free_ilist(t_nlist **stack)
+{
+	t_nlist	*tmp;
+
+	// shouldn't it be if (!*stack) ??? it's 1 and
+	// (!stack) is 0 ???
+	if (!stack)
+		return (1);		// if nothing to do we gucci
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	// free (stack too?) not sure...
+ 	return (1);
+}
+
+int	ft_free_list_of_str(t_list **lst)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return (1);
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free((*lst)->content);
+		free(*lst);
+		*lst = tmp;
+	}
+	return (1);
+}
 
 

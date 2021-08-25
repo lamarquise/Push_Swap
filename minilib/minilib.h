@@ -46,7 +46,7 @@ void		ft_putchar(char c);
 void		ft_putnbr(int n);
 void		ft_putnbrnl(int nbr);
 void		ft_putstr(char const *s);
-long		ft_scott_free(char **str, int ret);
+void		ft_putstr_fd(char const *s, int fd);
 
 /*
 **		GNL
@@ -102,12 +102,19 @@ int			ft_nlstdel_n_one(t_nlist **lst, int n);
 */
 
 int			ft_findchar(char *str, char c);
-long		ft_error_msg(char *str, int ret);
 int			ft_strcmp(const char *s1, const char *s2);
 size_t		ft_strlen(const char *s);
 void		ft_bzero(void *s, size_t n);
 // move later
 char		*ft_strchr(const char *s, int c);
+
+/*
+**		Error Funcs
+*/
+
+long		ft_error_msg(char *str, int ret);
+long		ft_error_msg_fd(char *str, int fd, int ret);
+long		ft_scott_free(char **str, int ret);
 
 /*
 **		Big Str Funcs

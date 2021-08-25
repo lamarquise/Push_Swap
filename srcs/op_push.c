@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 05:04:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/10 04:33:56 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/24 21:25:45 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from)
 
 //	tmp_from = NULL;		// necessary?
 	if (!stack_from || !*stack_from || !stack_to)
-		return (ft_error_msg("ERROR: OP Push missing  pointer to stack\n", 0));
+		return (0);
 
 	tmp_from = *stack_from;
 	if (tmp_from == NULL)	// overly explicit

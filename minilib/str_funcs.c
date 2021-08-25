@@ -26,14 +26,6 @@ int	ft_findchar(char *str, char c)
 	return (-1);
 }
 
-long	ft_error_msg(char *str, int ret)
-{
-	if (!str)
-		return (ret);
-	ft_putstr(str);
-	return (ret);
-}
-
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	while ((char)*s1 && (char)*s2 && (char)*s1 == (char)*s2)

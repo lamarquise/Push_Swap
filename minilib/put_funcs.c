@@ -54,13 +54,16 @@ void	ft_putstr(char const *s)
 	}
 }
 
-long	ft_scott_free(char **str, int ret)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (str && *str)
+	int		a;
+
+	a = 0;
+	if (!s)
+		return ;
+	while ((char)s[a])
 	{
-		ft_bzero(*str, (int)ft_strlen(*str));
-		free(*str);
-		*str = NULL;
+		write(fd, (void*)&s[a], 1);
+		++a;
 	}
-	return (ret);
 }

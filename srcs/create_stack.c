@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:40:15 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/13 19:45:29 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/24 21:07:46 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,6 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 	i = 0;
 	while (i < size)
 	{
-/*
-		// leave this for now, but could do like in Cub3D, cleaner...
-		new = ft_nlstnew(&((*int_tab)[i]), 0);// start by filling index with 0
-		if (!new)
-			return (0);
-		// if lstnew fails i need to free the list not new
-		if (!ft_nlstadd_back(stack, new))
-			return (0);		// I think i can do this
-		++i;
-*/
 		// like Cub3d so should be fine?
 		if (!ft_nlstadd_back(stack, ft_nlstnew(&((*int_tab)[i]), 0)))
 			return (0);
@@ -61,25 +51,3 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 
 	return (1);
 }
-
-
-		// i think i still need this weird free func cuz of how 
-			// we deal with content, like it's in int_tab...
-int		ft_free_nlist_elems(t_nlist **stack)
-{
-	t_nlist	*tmp;
-
-	if (!stack)
-		return (1);		// if nothing to do we gucci
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
-	// free (stack too?) not sure...
- 	return (1);
-}
-
-
-

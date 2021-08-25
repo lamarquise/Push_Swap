@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tab_funcs.c                                        :+:      :+:    :+:   */
+/*   error_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 19:59:16 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/23 18:13:37 by ericlazo         ###   ########.fr       */
+/*   Created: 2021/08/24 20:46:56 by ericlazo          #+#    #+#             */
+/*   Updated: 2021/08/24 20:46:58 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "minilib.h"
 
-int	ft_free_strtab(char **tab)
+long	ft_error_msg(char *str, int ret)
 {
-	int		a;
-
-	a = 0;
-	if (!tab || !*tab)
-		return (0);
-	while (tab[a])
-	{
-		ft_scott_free(&(tab[a]), 1);
-		++a;
-	}
-	return (1);
+	if (!str)
+		return (ret);
+	ft_putstr(str);
+	return (ret);
 }
 
-int	ft_print_strtab(char **tab)
+long		ft_error_msg_fd(char *str, int fd, int ret)
 {
-	int		a;
+	if (!str)
+		return (ret);
+	ft_putstr_fd(str, fd);
+	return (ret);
+}
 
-	if (!tab)
-		return (0);
-	a = 0;
-	while (tab[a])
+long	ft_scott_free(char **str, int ret)
+{
+	if (str && *str)
 	{
-		write(1, tab[a], ft_strlen(tab[a]));
-		write(1, "\n", 1);
-		++a;
+		ft_bzero(*str, (int)ft_strlen(*str));
+		free(*str);
+		*str = NULL;
 	}
-	return (1);
+	return (ret);
 }
