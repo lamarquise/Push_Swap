@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:56:32 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/24 21:43:20 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/26 17:34:22 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 
 	// more secure
 	if (ac < 2)
-		return (ft_error_msg_fd("ERROR: no list of ints\n", 2, 0));
+		return (0);
 
 	all.stack_a = NULL;
 	all.stack_b = NULL;
@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 
 		// need to free stuff?
 	if (!(all.size_total = ft_parser(&av[1], &int_tab, ac - 1)))
-		return (ft_error_msg_fd("ERROR: Bad List\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	// No need to free int tab if fails cuz would not have been alocated..
 
 	// here i would like to run some tests to make sure the list is all
@@ -44,7 +44,7 @@ int		main(int ac, char **av)
 		// also free int_tab
 		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
-		return (ft_error_msg_fd("ERROR: failed to create the stack\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 
 	all.size_a = all.size_total;
@@ -57,7 +57,7 @@ int		main(int ac, char **av)
 	{
 		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
-		return (ft_error_msg_fd("ERROR: failed to pre sort\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	if (!ft_start_push_swap(&all, all.size_total))
 	{
@@ -65,7 +65,7 @@ int		main(int ac, char **av)
 		ft_free_nlist_elems(&all.stack_b);
 		ft_free_int_tab(&int_tab, all.size_total);
 		ft_ilstdel_all(&all.op_list);
-		return (ft_error_msg_fd("ERROR: failed to Sort\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 
 		// Secure this shit!!!!!!

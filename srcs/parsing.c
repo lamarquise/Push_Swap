@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/24 21:39:58 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/26 17:34:21 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ int		ft_parser(char **av, int **int_tab, int i)
 		i = 0;
 		while (av[i])
 		{
-			(*int_tab)[i] = ft_atoi(av[i]);
-			++i;
+			if (!ft_satoi(av[i], &(*int_tab)[i]))
+				return (0);
+	//		(*int_tab)[i] = ft_atoi(av[i]);
+	//		++i;
 		}
 	}
 	return (i);
