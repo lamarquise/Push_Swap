@@ -14,3 +14,6 @@ empty, they represent the Stacks, A and B.
 
 Checker uses the same system of linked lists representing Stacks, and tables of ints, but
 a different linked list to store the op codes gathered from the standard input.
+
+
+Testing
