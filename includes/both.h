@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/26 17:31:53 by erlazo           ###   ########.fr       */
+/*   Updated: 2021/09/10 06:52:54 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ int			ft_op_reverse_rotate_both(t_nlist **stack_a, t_nlist **stack_b);
 int			ft_strcmp_to_strtab(char *input, char **tab);
 int			ft_is_sorted(t_nlist *stack);
 int			ft_satoi(const char *str, int *num);
+
+/*
+**	 Utils More Both
+*/
+
+char		**ft_simple_split(char *s);
+	// potencially put in minilib...
+int			ft_split_ints(char *str, int **int_tab);
 
 /*
 **		Free

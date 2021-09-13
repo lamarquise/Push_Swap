@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/24 21:25:02 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:23:52 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_threesort(t_sorting *all, int id, int size)
 			else if (stack->next->index < stack->index \
 				&& stack->next->index > stack->next->next->index)
 				ft_wr_rotate(all, 'a');
-			else if (stack->next->index > stack->index \
+			else if (stack->index > stack->next->index \
 				&& stack->next->index < stack->next->next->index)
 				ft_wr_swap(all, 'a');
 			else if (stack->next->index < stack->index \

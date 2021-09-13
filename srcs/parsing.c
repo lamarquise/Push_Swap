@@ -6,12 +6,13 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/26 17:34:21 by erlazo           ###   ########.fr       */
+/*   Updated: 2021/09/10 06:53:11 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "both.h"
 
+/*
 	// need to make sure values is between intmin and intmax
 		// for all numbs in list
 		// possibly in a dif func...
@@ -27,7 +28,8 @@ int		ft_parser(char **av, int **int_tab, int i)
 	if (i == 1)
 	{
 		// is secure
-		if (!(arg_string = ft_split(av[0], " ")))
+	//	if (!(arg_string = ft_split(av[0], " ")))
+		if (!(arg_string = ft_simple_split(av[0])))
 			return (0);
 		i = 0;
 		while (arg_string[i])
@@ -37,10 +39,17 @@ int		ft_parser(char **av, int **int_tab, int i)
 		i = 0;
 		while (arg_string[i])
 		{
-			(*int_tab)[i] = ft_atoi(arg_string[i]);
+			if (!ft_satoi(arg_string[i], &(*int_tab)[i]))
+			{
+				ft_free_strtab(arg_string);
+				return (0);
+			}
+//			(*int_tab)[i] = ft_atoi(arg_string[i]);
 			++i;
 		}
-		ft_scott_free(arg_string, 0);
+	//	ft_print_strtab(arg_string);
+		ft_free_strtab(arg_string);
+	//	free(arg_string);	// now done in  free_strtab... might keep...
 	}
 	else
 	{
@@ -51,10 +60,82 @@ int		ft_parser(char **av, int **int_tab, int i)
 		{
 			if (!ft_satoi(av[i], &(*int_tab)[i]))
 				return (0);
-	//		(*int_tab)[i] = ft_atoi(av[i]);
-	//		++i;
+//				return (ft_error_msg("there is an error\n", 0));
+		//	(*int_tab)[i] = ft_atoi(av[i]);
+			++i;
 		}
 	}
 	return (i);
 }
+*/
+
+
+
+// New Parser, this one will be a generic Int List converter...
+
+/*
+
+	We got 2 options, a list of int in a single arg
+	or a list of ints each in their own arg
+
+	Ideally use a regular Atoi, and do the checking externally
+*/
+
+
+//int		ft_check_is_number_str(char *str, int end)
+int		ft_check_is_number_full_str(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] == '+' || str[i] == '-') && (str[i + 1] < '0' || str[i + 1] > '9'))
+			return (0);
+		else if (ft_findchar("+-0123456789", str[i]) == -1)
+			return (0);
+		++i;
+	}
+	return (1);
+}
+
+	// Str could be a single string or many
+	// same as before, int_tab gets invoked above, then send a pointer
+int		ft_parser(char **str, int **int_tab, int size)
+{
+	if (!str || !int_tab)	// is this how you secure AV ???
+		return (0);
+	if (size == 1)
+	{	// A single String needs to be cut up
+//		printf("in size 1 parser\n");
+		size = ft_split_ints(str[0], int_tab);
+//		printf("in parser size: %d\n", size);
+//		ft_print_inttab(*int_tab, size);
+	}
+	else
+	{	// Multiple strings
+		*int_tab = ft_memalloc(sizeof(int *) * size);
+		if (!*int_tab)
+			return (0);
+		size = 0;
+		while (str[size]) 
+		{
+			if (!ft_check_is_number_full_str(str[size]))
+				return (0);
+			// i do actually need to use satoi, check if INTMIN or INTMAX...
+			if (!ft_satoi(str[size], &(*int_tab)[size]))
+				return (0);
+	//		(*int_tab)[size] = ft_atoi(str[size]);
+			++size;
+		}
+	}
+	return (size);
+}
+
+
+
+
+
+
+
 

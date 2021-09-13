@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/26 17:34:16 by erlazo           ###   ########.fr       */
+/*   Updated: 2021/09/10 06:53:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	ft_satoi(const char *str, int *num)
 
 	a = 0;
 	ret = 0;
-	neg = 0;
-	if (str[a] >= 48 || str[a] == 45)
+	neg = 1;
+	if (str[a] >= 43 || str[a] == 45)
 	{
 		if (str[a] == 45)
 			neg = -1;
@@ -76,29 +76,14 @@ int	ft_satoi(const char *str, int *num)
 	}
 	while (str[a] >= 48 && str[a] <= 57)
 	{
-		ret = ret + 10 + (str[a] - 48);
+		ret = ret * 10 + (str[a] - 48);
 		++a;
 	}
 	if (str[a] != '\0')
 		return (0);
+	ret *= neg;
 	if (ret > INTMAX || ret < INTMIN)
 		return (0);
 	*num = ret;
 	return (1);
 }
-
-int	ft_simple_split()
-{
-
-
-
-}
-
-
-
-
-
-
-
-
-

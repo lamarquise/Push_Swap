@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 04:06:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/24 21:21:30 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:14:13 by ericlazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,21 @@
 
 
 
+	// This might actually be fine...
+		// though way too long and unnecessary...
  	// using a dumb name but could change it and add to libft later...
 int		ft_free_int_tab(int **int_tab, int size)
 {
 	int	i;
+	int	*tmp;
 
-	if (!int_tab)
+	if (!int_tab || !*int_tab)
 		return (1);		// so it doesn't crash if no int tab
 	i = 0;
-
+	tmp = *int_tab;
 	while (i < size)
 	{
+//		free(&(tmp[i]));
 			// Is this good enough ????
 			// IDK if this does what i want...
 	//	free((*int_tab)[i]);
