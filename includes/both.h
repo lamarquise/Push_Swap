@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:37:36 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/09/10 06:52:54 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/11/09 14:51:31 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int			ft_create_stack(t_nlist **stack, int **int_tab, int size);
 
 /*
 **		Parsing
+**
+**		For some reason this is here in push_swap.h but Parsing file includes both.h
+**		Sort this out...
 */
 
+int			ft_check_is_number_full_str(char *str);
 int			ft_parser(char **av, int **tab, int i);
 
 /*

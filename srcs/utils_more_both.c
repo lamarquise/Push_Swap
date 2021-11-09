@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/09/10 06:53:04 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:09:42 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ char	**ft_simple_split(char *s)
 	return (ret);
 }
 
+// There is no way this shit works!!!!!
+// Wait ok nvm this might be ok...
 	// what happens when we give it " 23 34 543 433"
 	// or "2341 1234 234 "
 int		ft_check_str(char *str)
@@ -123,6 +125,7 @@ int		ft_check_str(char *str)
 	// find a way to check if str[i] is + or - then must be nothing or empty before
 	while (str[i])
 	{
+		// saying if current char is + or - then next must be 0-9
 		if ((str[i] == '+' || str[i] == '-') \
 			&& (str[i + 1] < '0' || str[i + 1] > '9'))
 			return (0);
@@ -204,6 +207,7 @@ int		ft_split_ints(char *str, int **int_tab)
 	int	a;
 	int	size;
 
+//	printf("split ints str: |%s|\n", str);
 //	printf("start split\n");
 	if (!str)
 		return (0);
@@ -211,7 +215,10 @@ int		ft_split_ints(char *str, int **int_tab)
 		return (-1);
 	//if (!str || !int_tab || !ft_check_str(str))
 	if (!int_tab || !ft_check_str(str))
+	{
+//		printf("check str returned bad\n");
 		return (-2);
+	}
 	a = 0;
 	size = ns(str);
 	if (size < 1)

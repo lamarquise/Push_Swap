@@ -53,15 +53,23 @@ SRCS_MINILIB	=	atoi_funcs.c \
 					str_funcs.c \
 					error_funcs.c \
 					tab_funcs.c \
-					gnl.c \
-					gnl_utils.c \
+#					gnl.c \
+#					gnl_utils.c \
 
 
 DIR_INC		=	includes/
 INCS		=	-I$(DIR_INC)
 
+# TMP for testing with my old GNL
+DIR_GNL		=	../libft/srcs/gnl/
+SRCS_GNL	=	gnl.c \
+				utils.c \
 
-ALL_INCS	=	$(INCS) -I./minilib/
+OBJ_GNL		=	$(SRCS_GNL:.c=.o)
+# don't forget to remove from OBJ_CHECKER & OBJ_PUSH_SWAP
+
+# Remove -I for GNL
+ALL_INCS	=	$(INCS) -I./minilib/ -I../libft/includes/
 
 
 
@@ -69,8 +77,8 @@ DIR_OBJ		=	./objs/
 
 OBJ_MINILIB	=	$(SRCS_MINILIB:.c=.o)
 OBJ_BOTH	=	$(SRCS_BOTH:.c=.o)
-OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
-OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
+OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB) $(OBJ_GNL)
+OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB) $(OBJ_GNL)
 
 OBJS_CHECKER	=	$(addprefix $(DIR_OBJ),$(OBJ_CHECKER))
 OBJS_PUSH_SWAP	=	$(addprefix $(DIR_OBJ),$(OBJ_PUSH_SWAP))
@@ -117,6 +125,12 @@ $(DIR_OBJ)%.o: $(DIR_BOTH)%.c
 	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
 
 $(DIR_OBJ)%.o: $(DIR_MINILIB)%.c
+	mkdir -p $(DIR_OBJ)
+	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
+	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
+
+# TMP only for testing with my old GNL
+$(DIR_OBJ)%.o: $(DIR_GNL)%.c
 	mkdir -p $(DIR_OBJ)
 	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
 	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"

@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:49:04 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/09/10 06:53:11 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:09:37 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ int		ft_parser(char **str, int **int_tab, int size)
 	if (size == 1)
 	{	// A single String needs to be cut up
 //		printf("in size 1 parser\n");
+		ft_putstr(str[0]);
+//		printf("in parser str: |%s|\n", str[0]);
 		size = ft_split_ints(str[0], int_tab);
 //		printf("in parser size: %d\n", size);
 //		ft_print_inttab(*int_tab, size);

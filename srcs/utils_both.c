@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 00:43:28 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/09/10 06:53:13 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:09:45 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_satoi(const char *str, int *num)
 	a = 0;
 	ret = 0;
 	neg = 1;
-	if (str[a] >= 43 || str[a] == 45)
+	if (str[a] == 43 || str[a] == 45)
 	{
 		if (str[a] == 45)
 			neg = -1;
@@ -85,5 +85,6 @@ int	ft_satoi(const char *str, int *num)
 	if (ret > INTMAX || ret < INTMIN)
 		return (0);
 	*num = ret;
+//	printf("end of satoi num: %d\n", *num);
 	return (1);
 }

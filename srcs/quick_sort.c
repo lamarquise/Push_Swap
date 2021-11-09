@@ -6,7 +6,7 @@
 /*   By: ericlazo <erlazo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 13:04:34 by ericlazo          #+#    #+#             */
-/*   Updated: 2021/08/31 17:49:01 by ericlazo         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:09:16 by erlazo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,10 @@ int	ft_start_push_swap(t_sorting *all, int size)
 	// may change these to look at indexes... rather than values?
 	// but other than that, could keep them here?
 	if (ft_is_sorted(all->stack_a))
+	{
+	//	printf("stack is sorted!\n");
 		return (1);
+	}
 	else if (ft_is_reverse_sorted(all->stack_a) && !ft_rev_sort(all, size))
 		return (0);
 	else if (size < 4 && !ft_threesort(all, 0, size))
