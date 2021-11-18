@@ -19,15 +19,22 @@ int	ft_post_processing(t_sorting *all)
 	if (!all || !all->op_list)
 		return (0);
 
-//	printf("in Post Processing\n");
+	printf("in Post Processing, printing the ilist:\n");
+	ft_print_ilist(all->op_list);
 		// some giant algo to figure all this shit out...
 	tmp = all->op_list;
 	while (tmp->next->next->next)
 	{
+	// try adding a check in funcs called
+		printf("in post processing loop! Printing tmp ilist:\n");
+		ft_print_ilist(tmp);
 
 		if ((tmp->next->num == 0 && tmp->next->next->num == 4) \
 			|| (tmp->next->num == 4 && tmp->next->next->num == 0))
+		{
+			printf("post processing we should be removing next 2\n");
 			ft_remove_next_two(all, &tmp);
+		}
 		else if ((tmp->next->num == 1 && tmp->next->next->num == 1) \
 				|| (tmp->next->num == 5 && tmp->next->next->num == 5))
 			ft_remove_next_two(all, &tmp);

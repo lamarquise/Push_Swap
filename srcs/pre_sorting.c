@@ -73,7 +73,7 @@ int		ft_sort_by_index(t_sorting *all)
 			else if (*((int*)tmp->content) == *((int*)cur->content) \
 				&& tmp != cur)
 			{
-				printf("sort by index error int is equal: %d\n", *((int*)tmp->content)); 
+			//	printf("sort by index error int is equal: %d\n", *((int*)tmp->content)); 
 				return (0);
 			}
 			tmp = tmp->next;

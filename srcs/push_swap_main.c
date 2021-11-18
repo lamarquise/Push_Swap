@@ -35,7 +35,8 @@ int		main(int ac, char **av)
 		ft_free_int_tab(&int_tab, all.size_total);
 		if (all.size_total == -1)
 			return (0);
-		return (ft_error_msg_fd("Error 1\n", 2, 0));
+		//return (ft_error_msg_fd("Error 1\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	// No need to free int tab if fails cuz would not have been alocated..
 
@@ -43,8 +44,8 @@ int		main(int ac, char **av)
 	// good, like numbers and shit...
 	// no duplicates
 
-	printf("int tab size: %d\n", all.size_total);
-	ft_print_inttab(int_tab, all.size_total);
+//	printf("int tab size: %d\n", all.size_total);
+//	ft_print_inttab(int_tab, all.size_total);
 
 	if (!ft_create_stack(&all.stack_a, &int_tab, all.size_total))
 	{
@@ -53,7 +54,8 @@ int		main(int ac, char **av)
 		// also free int_tab
 		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
-		return (ft_error_msg_fd("Error 2\n", 2, 0));
+		//return (ft_error_msg_fd("Error 2\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 
 	all.size_a = all.size_total;
@@ -66,7 +68,8 @@ int		main(int ac, char **av)
 	{
 		ft_free_nlist_elems(&all.stack_a);
 		ft_free_int_tab(&int_tab, all.size_total);
-		return (ft_error_msg_fd("Error 3\n", 2, 0));
+		//return (ft_error_msg_fd("Error 3\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	if (!ft_start_push_swap(&all, all.size_total))
 	{
@@ -74,7 +77,8 @@ int		main(int ac, char **av)
 		ft_free_nlist_elems(&all.stack_b);
 		ft_free_int_tab(&int_tab, all.size_total);
 		ft_ilstdel_all(&all.op_list);
-		return (ft_error_msg_fd("Error 4\n", 2, 0));
+		//return (ft_error_msg_fd("Error 4\n", 2, 0));
+		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 //	ft_print_both_stacks(&all);
 

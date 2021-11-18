@@ -92,7 +92,7 @@ int			ft_is_sorted(t_nlist *stack);
 int			ft_satoi(const char *str, int *num);
 
 /*
-**	 Utils More Both
+**	 Split Ints List
 */
 
 char		**ft_simple_split(char *s);

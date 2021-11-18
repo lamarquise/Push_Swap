@@ -28,7 +28,7 @@ SRCS_BOTH		=	parsing.c \
 					op_swap.c \
 					op_rotate.c \
 					utils_both.c \
-					utils_more_both.c \
+					split_ints_list.c \
 					print_struct_status.c \
 					free.c \
 					ilist_more.c \
