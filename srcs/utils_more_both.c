@@ -131,7 +131,10 @@ int		ft_check_str(char *str)
 			return (0);
 		else if (str[i] == ' ' && str[i + 1] \
 				&& ft_findchar("+-0123456789", str[i + 1]) == -1)
+		{
+			printf("space and nothing after\n");
 			return (0);
+		}
 		else if (ft_findchar("+- 0123456789", str[i]) == -1)
 		{
 //			printf("check str and not a valid char\n");
@@ -186,7 +189,7 @@ int		ft_fill_int_tab(char *str, int **int_tab)
 		tmp *= neg;
 		if (tmp < INTMIN || tmp > INTMAX)
 		{
-			//printf("tmp: %ld not valid\n", tmp);
+			printf("tmp: %ld not valid\n", tmp);
 			return (0);
 		}
 		(*int_tab)[i] = tmp;
@@ -221,13 +224,15 @@ int		ft_split_ints(char *str, int **int_tab)
 	}
 	a = 0;
 	size = ns(str);
+	printf("in split ints int tab size: %d\n", size);
 	if (size < 1)
 		return (-3);
 	*int_tab = ft_memalloc(sizeof(int *) * size);
 	if (!*int_tab)
 		return (-4);
 
-	if (!ft_fill_int_tab(str, int_tab))
+//	printf("made it to fill int tab\n");
+ 	if (!ft_fill_int_tab(str, int_tab))
 		return (-5);
 //	printf("end split\n");
 

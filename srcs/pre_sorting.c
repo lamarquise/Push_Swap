@@ -52,35 +52,38 @@ int		ft_rev_sort(t_sorting *all, int size)
 // single *stack? not **stack?
 int		ft_sort_by_index(t_sorting *all)
 {
-		t_nlist	*cur;
-		t_nlist	*tmp;
-		int		i;
-		int		j;
+	t_nlist	*cur;
+	t_nlist	*tmp;
+	int		i;
+	int		j;
 
-		if (!all)
-				return (0);
-		i = all->size_total;
-		cur = all->stack_a;
-		while (i)
+	if (!all)
+		return (0);
+	i = all->size_total;
+	cur = all->stack_a;
+	while (i)
+	{
+		cur->index = 1;
+		tmp = all->stack_a;
+		j = all->size_total;
+		while (j)
 		{
-				cur->index = 1;
-				tmp = all->stack_a;
-				j = all->size_total;
-				while (j)
-				{
-						if (*((int*)tmp->content) < *((int*)cur->content))
-								++cur->index;
-						else if (*((int*)tmp->content) == *((int*)cur->content) \
-										&& tmp != cur)
-								return (0);
-						tmp = tmp->next;
-						--j;
-				}
-				cur = cur->next;
-				--i;
+			if (*((int*)tmp->content) < *((int*)cur->content))
+				++cur->index;
+			else if (*((int*)tmp->content) == *((int*)cur->content) \
+				&& tmp != cur)
+			{
+				printf("sort by index error int is equal: %d\n", *((int*)tmp->content)); 
+				return (0);
+			}
+			tmp = tmp->next;
+			--j;
 		}
+		cur = cur->next;
+		--i;
+	}
 
-		return (1);
+	return (1);
 }
 
 

@@ -108,7 +108,7 @@ int		ft_parser(char **str, int **int_tab, int size)
 	if (size == 1)
 	{	// A single String needs to be cut up
 //		printf("in size 1 parser\n");
-		ft_putstr(str[0]);
+//		ft_putstr(str[0]);
 //		printf("in parser str: |%s|\n", str[0]);
 		size = ft_split_ints(str[0], int_tab);
 //		printf("in parser size: %d\n", size);
