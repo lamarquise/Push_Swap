@@ -86,7 +86,10 @@ int	ft_remove_next_two(t_sorting *all, t_ilist **cur)
 
 	if (!all || !cur)
 		return (0);
-	tmp = (*cur)->next->next->next;
+	if ((*cur)->next->next->next)
+		tmp = (*cur)->next->next->next;
+	else
+		tmp = NULL;
 	free((*cur)->next);
 	free((*cur)->next->next);
 	(*cur)->next = tmp;
