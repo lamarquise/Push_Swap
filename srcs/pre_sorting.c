@@ -16,34 +16,41 @@
 // seems secure, doesn't mess with memory
 int		ft_is_reverse_sorted(t_nlist *stack)
 {
-		t_nlist	*tmp;
+	t_nlist	*tmp;
 
-		if (!stack)
-				return (0);		// ret 0? like what if there's no list, is that bad?
-		tmp = stack;
-		while (tmp->next)
-		{
-				// i think this is good enough
-				if (*((int*)tmp->content) < *((int*)tmp->next->content))
-						return (0);
-				tmp = tmp->next;
-		}
-		return (1);
+//	printf("in is it REV sorted\n");
+	if (!stack)
+		return (0);		// ret 0? like what if there's no list, is that bad?
+	tmp = stack;
+	while (tmp->next)
+	{
+		// i think this is good enough
+		if (*((int*)tmp->content) < *((int*)tmp->next->content))
+			return (0);
+		tmp = tmp->next;
+	}
+//	printf("end of is it REV sorted\n");
+	return (1);
 }
 
 // need to secure this i think, the WR calls.
 int		ft_rev_sort(t_sorting *all, int size)
 {
-		// swap and push to b
-		// then push all back
-		while (size > 3)
-		{
-				ft_wr_reverse_rotate(all, 'a');
-				ft_wr_push(all, 'b');
-		}
-		ft_minisort(all, 'a', 3);
-		ft_all_push_to_from(all, 'a');
-		return (1);
+//	printf("in do REV Sort, size var: %d\n", size);
+	// swap and push to b
+	// then push all back
+	size = 0;
+	while (all->size_a > 3)
+	{
+//		printf("in REV sort loop\n");
+		ft_wr_reverse_rotate(all, 'a');
+		ft_wr_push(all, 'a');
+	}
+	ft_minisort(all, 'a', 3);
+	ft_all_push_to_from(all, 'a');
+//	printf("in end of do REV sort, printing stack:\n");
+//	ft_print_both_stacks(all);
+	return (1);
 }
 
 

@@ -82,9 +82,11 @@ int		main(int ac, char **av)
 	}
 //	ft_print_both_stacks(&all);
 
+//	printf("main made it out of quicksort\n");
 		// Secure this shit!!!!!!
 	ft_post_processing(&all);
 
+//	printf("main made it out of PP\n");
 
 
 	ft_print_op_codes(all.op_list);

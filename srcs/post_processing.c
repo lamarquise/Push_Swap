@@ -33,16 +33,16 @@ int	ft_post_processing(t_sorting *all)
 	//while (tmp->next->next->next)
 
 	// could do a thing to be safe?
-//	while (tmp && tmp->next && tmp->next->next)
 	//while (tmp->next->next->next)
-	while (tmp && tmp->next->next)
+//	while (tmp && tmp->next->next)
+	while (tmp && tmp->next && tmp->next->next)
 	{
-	// try adding a check in funcs called
-/*		printf("in post processing loop! Printing full op list ilist:\n");
-		ft_print_ilist(all->op_list);
-		printf("in post processing loop! Printing tmp ilist:\n");
-		ft_print_ilist(tmp);
-*/
+//		printf("in the PP loop\n");
+//		printf("in post processing loop! Printing full op list ilist:\n");
+//		ft_print_ilist(all->op_list);
+//		printf("in post processing loop! Printing tmp ilist:\n");
+//		ft_print_ilist(tmp);
+
 		if ((tmp->next->num == 0 && tmp->next->next->num == 4) \
 			|| (tmp->next->num == 4 && tmp->next->next->num == 0))
 		{
@@ -69,11 +69,13 @@ int	ft_post_processing(t_sorting *all)
 			ft_replace_next_two_with_one(all, &tmp->next, 10);
 
 		tmp = tmp->next;
-
+//		printf("in PP loop end\n");
+//		printf("End PP loop! Printing tmp ilist:\n");
+//		ft_print_ilist(tmp);
 	}
 
 	// do i need a double pointer???
-
+//	printf("PP made it to the end\n");
 
 	return (1);
 }

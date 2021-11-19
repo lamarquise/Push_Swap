@@ -108,6 +108,7 @@ int	ft_start_push_swap(t_sorting *all, int size)
 {
 	int	part_size;
 
+//	printf("made it to start of Quicksort\n");
 	// may change these to look at indexes... rather than values?
 	// but other than that, could keep them here?
 	if (ft_is_sorted(all->stack_a))
@@ -116,7 +117,10 @@ int	ft_start_push_swap(t_sorting *all, int size)
 		return (1);
 	}
 	else if (ft_is_reverse_sorted(all->stack_a) && !ft_rev_sort(all, size))
+	{
+	//	printf("failed to Rev sort");
 		return (0);
+	}
 	else if (size < 4 && !ft_threesort(all, 0, size))
 		return (0);
 	else
@@ -125,5 +129,6 @@ int	ft_start_push_swap(t_sorting *all, int size)
 		ft_my_quick_sort(all, 0, size - part_size);
 		ft_my_quick_sort(all, 1, part_size);
 	}
+//	printf("in end of QS\n");
 	return (1);
 }

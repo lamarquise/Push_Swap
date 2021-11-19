@@ -146,6 +146,7 @@ int		ft_minisort_b(t_sorting *all, int size)
 	// may be a little excessive check again before push
 int		ft_minisort(t_sorting *all, int id, int size)
 {
+//	printf("made it to start of Minisort\n");
 	if (!all)
 		return (0);
 	if (id == 0)
