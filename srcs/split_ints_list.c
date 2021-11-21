@@ -137,7 +137,7 @@ int		ft_check_str(char *str)
 		{	// this could be bad logic, letting things through cracks
 			// saying if ' ' and another char exits, but what if space at end!
 			// may have to change
-			printf("space and nothing after\n");
+//			printf("space and nothing after\n");
 			return (0);
 		}
 		else if (ft_findchar("+- 0123456789", str[i]) == -1)
