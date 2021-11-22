@@ -17,16 +17,13 @@ int		ft_op_rotate(t_nlist **stack)
 	t_nlist	*first;
 	t_nlist	*last;
 
-	first = NULL;
-	last = NULL;
 	if (!stack)
 		return (0);
-
 	first = *stack;
 	last = *stack;
-
 	// Yea we really need to figure this out...
 //	if (!first || !first->next)
+	//if (!*stack || !first->next)
 	if (!first->next)
 		return (2);
 

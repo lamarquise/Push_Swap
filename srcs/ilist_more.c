@@ -10,16 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-	// not in Minilib for now
 #include "push_swap.h"
 
 // Is Secure!
 	// no leaks but other checks never get used upstream...
-
-// remove node 
-// replace node
-// combine nodes...
-
 
 int	ft_print_ilist(t_ilist *lst)
 {
@@ -36,8 +30,29 @@ int	ft_print_ilist(t_ilist *lst)
 	return (1);
 }
 
-	// may move...
-	// ugly but should work...
+int	ft_print_op_codes_p2(t_ilist *op_code)
+{
+	if (!op_code)
+		return (1);
+	if (op_code->num == 4)
+		write(1, "pb\n", 3);
+	else if (op_code->num == 5)
+		write(1, "sb\n", 3);
+	else if (op_code->num == 6)
+		write(1, "rb\n", 3);
+	else if (op_code->num == 7)
+		write(1, "rrb\n", 4);
+	else if (op_code->num == 8)
+		write(1, "ss\n", 3);
+	else if (op_code->num == 9)
+		write(1, "rr\n", 3);
+	else if (op_code->num == 10)
+		write(1, "rrr\n", 4);
+	else
+		return (0);
+	return (1);
+}
+
 int	ft_print_op_codes(t_ilist *op_codes)
 {
 	t_ilist	*tmp;
@@ -55,33 +70,13 @@ int	ft_print_op_codes(t_ilist *op_codes)
 			write(1, "ra\n", 3);
 		else if (tmp->num == 3)
 			write(1, "rra\n", 4);
-		else if (tmp->num == 4)
-			write(1, "pb\n", 3);
-		else if (tmp->num == 5)
-			write(1, "sb\n", 3);
-		else if (tmp->num == 6)
-			write(1, "rb\n", 3);
-		else if (tmp->num == 7)
-			write(1, "rrb\n", 4);
-		else if (tmp->num == 8)
-			write(1, "ss\n", 3);
-		else if (tmp->num == 9)
-			write(1, "rr\n", 3);
-		else if (tmp->num == 10)
-			write(1, "rrr\n", 4);
-		else
+		else if (!ft_print_op_codes_p2(tmp))
 			return (0);
 		tmp = tmp->next;
 	}
 	return (1);
 }
 
-
-// need some funcs that remove nodes and such 
-
-
-	// we send it 1 of 4
-	// should be fine but IDK may need to secure...
 int	ft_remove_next_two(t_sorting *all, t_ilist **cur)
 {
 	t_ilist	*tmp;
@@ -96,13 +91,9 @@ int	ft_remove_next_two(t_sorting *all, t_ilist **cur)
 	free((*cur)->next->next);
 	(*cur)->next = tmp;
 	all->size_op -= 2;
-
-//	printf("removed 2\n");
 	return (1);
 }
 
-	// we send it 1 of 2
-	// should be fine but IDK may need to secure...
 int	ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep)
 {
 	t_ilist	*tmp;
@@ -114,17 +105,5 @@ int	ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep)
 	(*cur)->num = rep;
 	(*cur)->next = tmp;
 	--all->size_op;
-
-//	printf("replaced 2 with 1\n");
-
 	return (1);
 }
-
-
-
-
-
-
-
-
-

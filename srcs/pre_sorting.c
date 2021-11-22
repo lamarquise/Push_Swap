@@ -35,20 +35,23 @@ int		ft_is_reverse_sorted(t_nlist *stack)
 }
 
 // need to secure this i think, the WR calls.
-int		ft_rev_sort(t_sorting *all, int size)
+	// yea decided not to worry about that...
+int		ft_rev_sort(t_sorting *all)
 {
-//	printf("in do REV Sort, size var: %d\n", size);
+//	printf("in do REV Sort, size var: %d\n", all->size_a);
 	// swap and push to b
 	// then push all back
-	size = 0;
 	while (all->size_a > 3)
 	{
 //		printf("in REV sort loop\n");
 		ft_wr_reverse_rotate(all, 'a');
 		ft_wr_push(all, 'a');
 	}
-	if (!ft_minisort(all, 'a', 3))
-		return (0);
+//	if (!ft_minisort(all, 'a', 3))
+//		return (0);
+	//ft_minisort(all, 'a', 3);
+	//ft_minisort(all, 0, 3);
+	ft_threesort(all, 0, all->size_a);
 	ft_all_push_to_from(all, 'a');
 //	printf("in end of do REV sort, printing stack:\n");
 //	ft_print_both_stacks(all);

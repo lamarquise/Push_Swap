@@ -14,7 +14,9 @@
 
 // Is Secure!
 	// like i'm not gonna add a bunch of if-checks, there's no leaks, good enough
-int		ft_get_median(t_sorting *all, int id, int size)
+
+	// needs to be much shorter...
+int	ft_get_median(t_sorting *all, int id, int size)
 {
 	int		c;
 	int		min;
@@ -34,27 +36,26 @@ int		ft_get_median(t_sorting *all, int id, int size)
 		stack = all->stack_b;
 	else
 		return (0);	// maybe excessive...
-
-	// could just use size, no c, but meh
 	while (c < size)
 	{
 		if (stack->index < min)
 			min = stack->index;
 		if (stack->index > max)
-			max = stack->index; 
+			max = stack->index;
 		total += stack->index;
 		stack = stack->next;
 		++c;
 	}
-//	printf("end of get_mean, total: %ld\n", total);
 	return ((min + max - 1) / 2);
 }
 
-int		ft_threesort(t_sorting *all, int id, int size)
+	// func too long...
+int	ft_threesort(t_sorting *all, int id, int size)
 {
 	t_nlist	*stack;
 
-	if (!all || id != 0)
+//	printf("in Threesort\n");
+	if (!all || id != 0) // i mean, i guess, but really this doesn't even get used...
 		return (0);
 	stack = all->stack_a;
 	if (size == 3)
@@ -84,7 +85,8 @@ int		ft_threesort(t_sorting *all, int id, int size)
 
 	// The Minisorts A and B are for sorting Partitions of size 3 or less
 	// Stolen and Adapted Directly from Pascal, thanks
-int		ft_minisort_a(t_sorting *all, int size)
+// Func too long...
+int	ft_minisort_a(t_sorting *all, int size)
 {
 	int		a;
 	int		b;
@@ -121,7 +123,7 @@ int		ft_minisort_a(t_sorting *all, int size)
 
 	// this one we could improve a bit, by using the Push back to A
 	// as a tool for sorting...
-int		ft_minisort_b(t_sorting *all, int size)
+int	ft_minisort_b(t_sorting *all, int size)
 {
 	if (size == 1)
 	{
@@ -144,38 +146,20 @@ int		ft_minisort_b(t_sorting *all, int size)
 	return (1);
 }
 
-	// i think it's secure...
-	// may be a little excessive check again before push
-	// I guess i should be consistent and make cleaner again...
-int		ft_minisort(t_sorting *all, int id, int size)
+int	ft_minisort(t_sorting *all, int id, int size)
 {
-//	printf("made it to start of Minisort\n");
 	if (!all)
 		return (0);
 	if (id == 0)
 	{
 		if (size != all->size_a)
-		{
-			if (!ft_minisort_a(all, size))
-				return (0);
-		}
-		else 
-		{
-			if (!ft_threesort(all, 0, size))
-				return (0);
-		}
+			ft_minisort_a(all, size);
+		else
+			ft_threesort(all, 0, size);
 	}
 	else if (id == 1)
-	{
-		if (!ft_minisort_b(all, size))
-			return (0);
-	}
+		ft_minisort_b(all, size);
 	else
 		return (0);
 	return (1);
 }
-
-
-
-
-

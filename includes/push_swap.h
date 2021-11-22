@@ -22,7 +22,7 @@
 */
 
 int		ft_is_reverse_sorted(t_nlist *stack);
-int		ft_rev_sort(t_sorting *all, int size);
+int		ft_rev_sort(t_sorting *all);
 int		ft_sort_by_index(t_sorting *all);
 
 /*

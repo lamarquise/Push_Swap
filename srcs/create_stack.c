@@ -16,7 +16,7 @@
 
 	// NOT IN FINAL PUSH TO VOG
 	// does it need to return an int?
-int		ft_print_inttab(int *tab, int size)
+int	ft_print_inttab(int *tab, int size)
 {
 	int		i;
 
@@ -26,15 +26,7 @@ int		ft_print_inttab(int *tab, int size)
 	return (1);
 }
 
-
-// I did end up doing it this way:
-	// what if we never reallocated a copy of the ints in Tab, 
-	// we just point to them
-	// so each elem points to an int in tab. when it comes to
-	// freeing at the end
-	// we just have to free tab!!!! not the contents of the Linked list!
-
-int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
+int	ft_create_stack(t_nlist **stack, int **int_tab, int size)
 {
 	t_nlist	*new;
 	int		i;
@@ -45,7 +37,6 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 	i = 0;
 	while (i < size)
 	{
-		// like Cub3d so is fine 
 		if (!ft_nlstadd_back(stack, ft_nlstnew(&((*int_tab)[i]), 0)))
 			return (0);
 		++i;
