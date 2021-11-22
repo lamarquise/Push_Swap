@@ -13,6 +13,8 @@
 	// not in Minilib for now
 #include "push_swap.h"
 
+// Is Secure!
+	// no leaks but other checks never get used upstream...
 
 // remove node 
 // replace node

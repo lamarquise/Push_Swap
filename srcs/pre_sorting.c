@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+// Is Secure!
 
 // seems secure, doesn't mess with memory
 int		ft_is_reverse_sorted(t_nlist *stack)
@@ -46,7 +47,8 @@ int		ft_rev_sort(t_sorting *all, int size)
 		ft_wr_reverse_rotate(all, 'a');
 		ft_wr_push(all, 'a');
 	}
-	ft_minisort(all, 'a', 3);
+	if (!ft_minisort(all, 'a', 3))
+		return (0);
 	ft_all_push_to_from(all, 'a');
 //	printf("in end of do REV sort, printing stack:\n");
 //	ft_print_both_stacks(all);
@@ -92,11 +94,6 @@ int		ft_sort_by_index(t_sorting *all)
 
 	return (1);
 }
-
-
-
-
-
 
 
 

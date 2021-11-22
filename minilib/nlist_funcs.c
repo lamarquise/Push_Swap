@@ -19,7 +19,12 @@ int	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
 
 	i = 0;
 	if (!lst || !new)
+	{
+		// this only works because the contents of *new are freed elsewere
+		if (new)
+			free(new);
 		return (0);
+	}
 	if (!*lst)
 	{
 		*lst = new;
@@ -41,7 +46,11 @@ int	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
 int	ft_nlstadd_front(t_nlist **lst, t_nlist *new)
 {
 	if (!lst || !new)
+	{
+		if (new)
+			free(new);
 		return (0);
+	}
 	new->next = *lst;
 	*lst = new;
 	new->index = 0;

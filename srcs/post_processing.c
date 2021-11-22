@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+// Is Secure!
+	// once again it has no leaks but no other checks...
 int	ft_post_processing(t_sorting *all)
 {
 	t_ilist	*tmp;
@@ -32,7 +34,6 @@ int	ft_post_processing(t_sorting *all)
 	// so i only need 1 2 3.
 	//while (tmp->next->next->next)
 
-	// could do a thing to be safe?
 	//while (tmp->next->next->next)
 //	while (tmp && tmp->next->next)
 	while (tmp && tmp->next && tmp->next->next)

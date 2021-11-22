@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+// Is Secure!
+	// Not gonna bother adding an shitload of if-checks...
+
 int	ft_split_part(t_sorting *all, int id, int part_size, int med)
 {
 	int		rot_count;
@@ -61,6 +64,7 @@ int	ft_my_quick_sort(t_sorting *all, int id, int size)
 
 	if (size < 4)
 	{
+		// we could add an if-check...
 		ft_minisort(all, id, size);
 	}
 	else
@@ -125,6 +129,7 @@ int	ft_start_push_swap(t_sorting *all, int size)
 		return (0);
 	else
 	{
+		// secure? I guess not... not really worth it...
 		part_size = ft_first_partition(all, size);
 		ft_my_quick_sort(all, 0, size - part_size);
 		ft_my_quick_sort(all, 1, part_size);

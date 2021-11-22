@@ -16,6 +16,7 @@
 
 #include "both.h"
 
+// Is Secure! (nothing allocated)
 
 // this might be another one i should add to Libft...
 // basically i want a func þ compares a string to a table to strings

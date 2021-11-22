@@ -12,11 +12,11 @@
 
 #include "both.h"
 
-// rename this shit...
+// Is Secure :)
 
-// This simple split should only break up numbers with 1 space between each...
-
-// this needs to be fixed, i don't take into account + or - ...
+// Simple split might have been a good idea, and i may keep it around elsewhere for 
+// future use, but i don't need it here...
+	// This simple split should only break up numbers with 1 space between each...
 
 	// this does both the checking of the list of numbers and the counting of # of #s
 int	ns(char *str)
@@ -48,7 +48,7 @@ int	ns(char *str)
 	}
 	return (numbers + 1);
 }
-
+/*
 int		nl(char *s, int start)
 {
 	int	i;
@@ -60,7 +60,8 @@ int		nl(char *s, int start)
 		++i;
 	return (i + 1);
 }
-
+*/
+/*
 int		fill_sret(char **ret, char *s, int a)
 {
 	int		b;
@@ -86,7 +87,8 @@ int		fill_sret(char **ret, char *s, int a)
 	}
 	return (b);
 }
-
+*/
+/*
 char	**ft_simple_split(char *s)
 {
 	int		a;
@@ -113,7 +115,7 @@ char	**ft_simple_split(char *s)
 	}
 	return (ret);
 }
-
+*/
 // There is no way this shit works!!!!!
 // Wait ok nvm this might be ok...
 	// what happens when we give it " 23 34 543 433"

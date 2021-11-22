@@ -12,6 +12,8 @@
 
 #include "both.h"
 
+// Is Secure!
+
 /*
 	// need to make sure values is between intmin and intmax
 		// for all numbs in list

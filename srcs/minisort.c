@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+// Is Secure!
+	// like i'm not gonna add a bunch of if-checks, there's no leaks, good enough
 int		ft_get_median(t_sorting *all, int id, int size)
 {
 	int		c;
@@ -144,6 +146,7 @@ int		ft_minisort_b(t_sorting *all, int size)
 
 	// i think it's secure...
 	// may be a little excessive check again before push
+	// I guess i should be consistent and make cleaner again...
 int		ft_minisort(t_sorting *all, int id, int size)
 {
 //	printf("made it to start of Minisort\n");

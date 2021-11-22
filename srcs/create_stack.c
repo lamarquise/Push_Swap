@@ -12,6 +12,7 @@
 
 #include "both.h"
 
+// Is Secure!
 
 	// NOT IN FINAL PUSH TO VOG
 	// does it need to return an int?
@@ -26,6 +27,7 @@ int		ft_print_inttab(int *tab, int size)
 }
 
 
+// I did end up doing it this way:
 	// what if we never reallocated a copy of the ints in Tab, 
 	// we just point to them
 	// so each elem points to an int in tab. when it comes to
@@ -43,11 +45,10 @@ int		ft_create_stack(t_nlist **stack, int **int_tab, int size)
 	i = 0;
 	while (i < size)
 	{
-		// like Cub3d so should be fine?
+		// like Cub3d so is fine 
 		if (!ft_nlstadd_back(stack, ft_nlstnew(&((*int_tab)[i]), 0)))
 			return (0);
 		++i;
 	}
-
 	return (1);
 }

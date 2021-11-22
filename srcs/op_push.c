@@ -20,6 +20,7 @@ int		ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from)
 	t_nlist	*tmp_from;
 
 //	tmp_from = NULL;		// necessary?
+	// correct considitons?
 	if (!stack_from || !*stack_from || !stack_to)
 		return (0);
 

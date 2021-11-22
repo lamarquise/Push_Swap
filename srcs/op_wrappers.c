@@ -12,27 +12,32 @@
 
 #include "push_swap.h"
 
+// Is Secure!
+
 int		ft_wr_swap(t_sorting *all, char id)
 {
 	if (!all)
 		return (0);
 	if (id == 'a' && ft_op_swap(&all->stack_a))
 	{
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(1));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(1)))
+			return (0);
 		++all->size_op;
 //		write(1, "sa\n", 3);
 		return (1);
 	}
 	else if (id == 'b' && ft_op_swap(&all->stack_b))
 	{
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(5));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(5)))
+			return (0);
 		++all->size_op;
 //		write(1, "sb\n", 3);
 		return (1);
 	}
 	else if (id == 'c' && ft_op_swap_both(&all->stack_a, &all->stack_b))
 	{
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(8));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(8)))
+			return (0);
 		++all->size_op;
 //		write(1, "ss\n", 3);
 		return (1);
@@ -58,7 +63,8 @@ int		ft_wr_push(t_sorting *all, char id)
 		result = ft_op_push_to_from(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(0));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(0)))
+			return (0);
 		++all->size_op;
 		++all->size_a;
 		--all->size_b;
@@ -84,7 +90,8 @@ int		ft_wr_push(t_sorting *all, char id)
 		result = ft_op_push_to_from(&all->stack_b, &all->stack_a);
 		if (result != 1)
 			return (result);
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(4));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(4)))
+			return (0);
 		++all->size_op;
 		--all->size_a;
 		++all->size_b;
@@ -153,7 +160,8 @@ int		ft_wr_rotate(t_sorting *all, char id)
 			return (result);
 
 //		++all->info_a->rot;
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(2));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(2)))
+			return (0);
 		++all->size_op;
 //		write(1, "ra\n", 3);
 
@@ -165,7 +173,8 @@ int		ft_wr_rotate(t_sorting *all, char id)
 			return (result);
 
 //		++all->info_b->rot;
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(6));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(6)))
+			return (0);
 		++all->size_op;
 //		write(1, "rb\n", 3);
 	}
@@ -174,7 +183,8 @@ int		ft_wr_rotate(t_sorting *all, char id)
 		result = ft_op_rotate_both(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(9));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(9)))
+			return (0);
 		++all->size_op;
 //		write(1, "rr\n", 3);
 	}
@@ -197,7 +207,8 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 //		--all->info_a->rot;
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(3));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(3)))
+			return (0);
 		++all->size_op;
 //		write(1, "rra\n", 4);
 
@@ -209,7 +220,8 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 			return (result);
 
 //		--all->info_b->rot;
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(7));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(7)))
+			return (0);
 		++all->size_op;
 //		write(1, "rrb\n", 4);
 	}
@@ -218,7 +230,8 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 		result = ft_op_reverse_rotate_both(&all->stack_a, &all->stack_b);
 		if (result != 1)
 			return (result);
-		ft_ilstadd_back(&all->op_list, ft_ilstnew(10));
+		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(10)))
+			return (0);
 		++all->size_op;
 //		write(1, "rrr\n", 4);
 	}

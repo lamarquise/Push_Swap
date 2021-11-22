@@ -89,6 +89,8 @@ int		ft_free_nlist_elems(t_nlist **stack)
 		*stack = tmp;
 	}
 	// free (stack too?) not sure...
+	// don't free stack because it's allocated in struct t_sorting meaning when *all
+	// gets freed its vars get freed, so don't touch or would be a double free.
  	return (1);
 }
 
