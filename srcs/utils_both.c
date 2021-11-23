@@ -34,8 +34,6 @@ int	ft_strcmp_to_strtab(char *input, char **tab)
 			return (1);
 		++i;
 	}
-
-
 	return (0);
 }
 

@@ -104,7 +104,7 @@ int			ft_split_ints(char *str, int **int_tab);
 */
 
 void		ft_free_int(void *content);
-int			ft_free_int_tab(int **int_tab, int size);
+int			ft_free_int_tab(int **int_tab);
 
 int			ft_free_nlist_elems(t_nlist **stack);
 int			ft_free_ilist(t_nlist **stack);

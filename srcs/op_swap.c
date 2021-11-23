@@ -12,6 +12,8 @@
 
 #include "both.h"
 
+// Is Secure!
+	// like nothing happens here, the if-checks never get used
 int		ft_op_swap(t_nlist **stack)
 {
 	t_nlist	*e1;

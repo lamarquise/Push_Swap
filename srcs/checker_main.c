@@ -64,28 +64,29 @@ int		main(int ac, char **av)
 	// So i am going to create a t_sorting all but just not fill out 
 	// the stack info part, seems fine?
 
-//	printf("|-------Checker Start--------|\n");
-		// Should 0 be the return in case of Error?
 	if (ac < 2)
-		return (ft_error_msg_fd("Error\n", 2, 0));
-
-
+		return (0);
 	all.stack_a = NULL;
 	all.stack_b = NULL;
 	all.op_list = NULL;
 	op_codes = NULL;
 	int_tab = NULL;
 
-
-
-	if (!(all.size_total = ft_parser(&av[1], &int_tab, ac - 1)))
+	all.size_total = ft_parser(&av[1], &int_tab, ac - 1);
+	if (all.size_total < 1)
+	{
+		ft_free_int_tab(&int_tab);
+		if (all.size_total == -1)
+			return (0);
 		return (ft_error_msg_fd("Error\n", 2, 0));
+	}
 
 //	ft_print_inttab(int_tab, all.size_total);
 	if (!ft_parse_op_codes(&op_codes))
 	{
+		// Parse op codes is where i check if anything in STDIN vs STDERR
 		ft_free_list_of_str(&op_codes);
-		ft_free_int_tab(&int_tab, all.size_total);
+		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 
@@ -93,11 +94,9 @@ int		main(int ac, char **av)
 	{
 		ft_free_list_of_str(&op_codes);
 		ft_free_nlist_elems(&all.stack_a);
-		ft_free_int_tab(&int_tab, all.size_total);
+		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
-
 
 //	ft_print_both_stacks(&all);
 
@@ -106,15 +105,9 @@ int		main(int ac, char **av)
 		ft_free_list_of_str(&op_codes);
 		ft_free_nlist_elems(&all.stack_a);
 		ft_free_nlist_elems(&all.stack_b);
-		ft_free_int_tab(&int_tab, all.size_total);
+		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
-
-
-
-	// Don't use this cuz Info never get's inited here...
-//	ft_print_mysort_all(&all);
 
 //	ft_print_both_stacks(&all);
 	if (!ft_checker(&all))
@@ -126,21 +119,12 @@ int		main(int ac, char **av)
 		ft_putstr("OK\n");
 	}
 
-
-/*
-** Freeing things prolly gonna move this
-*/
+// hold up, is there an oplist to free?
 	ft_free_list_of_str(&op_codes);
 	ft_free_nlist_elems(&all.stack_a);
 	ft_free_nlist_elems(&all.stack_b);
-	ft_free_int_tab(&int_tab, all.size_total);
-
-	// We need to free
-		// Op Codes list
-		// Stack A (and B ?)
-		// int_tab
-
-
+	ft_free_int_tab(&int_tab);
+	ft_ilstdel_all(&all.op_list);
 	return (0);
 }
 
