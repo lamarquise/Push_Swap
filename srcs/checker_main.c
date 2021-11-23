@@ -23,25 +23,26 @@
 int		ft_checker(t_sorting *all)
 {
 	int		prev;
+	t_nlist	*tmp;
 
 	if (!all->stack_a || all->stack_b)
 		return (0);
-
+	tmp = all->stack_a;
 		// super ulgy but we want to grab the void* and have it be an int* 
 		// and dereference that int* into an int, with the * at the front...
 	// May need to add some () somewhere... IDK
-	prev = *((int*)all->stack_a->content);
-	all->stack_a = all->stack_a->next;
+	prev = *((int*)tmp->content);
+	tmp = tmp->next;
 
 		// if there is only 1 elem in the list, no loop, and order is Good?
 		// check sujet...
-	while (all->stack_a)
+	while (tmp)
 	{
 //		printf("prev: %d\n", prev);
-		if (*((int*)all->stack_a->content) <= prev)
+		if (*((int*)tmp->content) <= prev)
 			return (0);
-		prev = *((int*)all->stack_a->content);
-		all->stack_a = all->stack_a->next;
+		prev = *((int*)tmp->content);
+		tmp = tmp->next;
 	}
 //	ft_print_both_stacks(all);
 	return (1);
@@ -124,7 +125,7 @@ int		main(int ac, char **av)
 	ft_free_nlist_elems(&all.stack_a);
 	ft_free_nlist_elems(&all.stack_b);
 	ft_free_int_tab(&int_tab);
-	ft_ilstdel_all(&all.op_list);
+//	ft_ilstdel_all(&all.op_list); // I'm not convinced i use all.op_list
 	return (0);
 }
 

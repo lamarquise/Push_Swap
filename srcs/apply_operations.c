@@ -12,57 +12,52 @@
 
 #include "checker.h"
 
+// Op_codes part is secure, not sure about the rest...
+	// if it was good enough for push_swap, it's good enough for checker.
+
 int		ft_apply_ops(t_sorting *all, t_list **op_codes)
 {
-	int		ret;
+	t_list	*tmp;
 
-	ret = 0;
 	if (!all || !op_codes)
 		return (0);
-	
-	// i think it's just gonna end up being a giant if forest
-
-	while (*op_codes)
+	tmp = *op_codes;
+	while (tmp)
 	{
-		if (!ft_strcmp((char*)(*op_codes)->content, "pa") \
+		if (!ft_strcmp((char*)(tmp)->content, "pa") \
 			&& !ft_op_push_to_from(&all->stack_a, &all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "pb") \
-			&& !(ret = ft_op_push_to_from(&all->stack_b, &all->stack_a)))
+		else if (!ft_strcmp((char*)(tmp)->content, "pb") \
+			&& !ft_op_push_to_from(&all->stack_b, &all->stack_a))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "sa") \
+		else if (!ft_strcmp((char*)(tmp)->content, "sa") \
 			&& !ft_op_swap(&all->stack_a))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "sb") \
+		else if (!ft_strcmp((char*)(tmp)->content, "sb") \
 			&& !ft_op_swap(&all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "ss") \
+		else if (!ft_strcmp((char*)(tmp)->content, "ss") \
 			&& !ft_op_swap_both(&all->stack_a, &all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "ra") \
+		else if (!ft_strcmp((char*)(tmp)->content, "ra") \
 			&& !ft_op_rotate(&all->stack_a))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "rb") \
+		else if (!ft_strcmp((char*)(tmp)->content, "rb") \
 			&& !ft_op_rotate(&all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "rr") \
+		else if (!ft_strcmp((char*)(tmp)->content, "rr") \
 			&& !ft_op_rotate_both(&all->stack_a, &all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "rra") \
+		else if (!ft_strcmp((char*)(tmp)->content, "rra") \
 			&& !ft_op_reverse_rotate(&all->stack_a))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "rrb") \
+		else if (!ft_strcmp((char*)(tmp)->content, "rrb") \
 			&& !ft_op_reverse_rotate(&all->stack_b))
 			return (0);
-		else if (!ft_strcmp((char*)(*op_codes)->content, "rrr") \
+		else if (!ft_strcmp((char*)(tmp)->content, "rrr") \
 			&& !ft_op_reverse_rotate_both(&all->stack_a, &all->stack_b))
 			return (0);
-
-	// or we could do the clearing of the list later... IDK we'll figure
-	// þ out later...
-//		if (!ft_lstdel_first())
-		*op_codes = (*op_codes)->next;
+		tmp = (tmp)->next;
 	}
-
 	return (1);
 }
