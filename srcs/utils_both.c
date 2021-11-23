@@ -10,16 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-	// do not love the name, would prefere these sort of funcs come from or be
-	// put in the Libft...
-
 #include "both.h"
 
 // Is Secure! (nothing allocated)
-
-// this might be another one i should add to Libft...
-// basically i want a func þ compares a string to a table to strings
 
 int	ft_strcmp_to_strtab(char *input, char **tab)
 {
@@ -37,9 +30,6 @@ int	ft_strcmp_to_strtab(char *input, char **tab)
 	return (0);
 }
 
-
-		// should i change to look only at index or will i not do the
-			// pre sorting in Checker????
 int	ft_is_sorted(t_nlist *stack)
 {
 	t_nlist	*tmp;
@@ -49,12 +39,10 @@ int	ft_is_sorted(t_nlist *stack)
 	tmp = stack;
 	while (tmp->next)
 	{
-			// i think this is good enough
 		if (*((int*)tmp->content) > *((int*)tmp->next->content))
 			return (0);
 		tmp = tmp->next;
 	}
-
 	return (1);
 }
 
@@ -84,6 +72,5 @@ int	ft_satoi(const char *str, int *num)
 	if (ret > INTMAX || ret < INTMIN)
 		return (0);
 	*num = ret;
-//	printf("end of satoi num: %d\n", *num);
 	return (1);
 }

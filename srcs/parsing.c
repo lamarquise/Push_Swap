@@ -14,78 +14,7 @@
 
 // Is Secure!
 
-/*
-	// need to make sure values is between intmin and intmax
-		// for all numbs in list
-		// possibly in a dif func...
-	// Seems secure...
-int		ft_parser(char **av, int **int_tab, int i)
-{
-	char	**arg_string;
-
-	arg_string = NULL;
-	if (!av || !int_tab)	// is this how you secure AV ???
-		return (0);
-
-	if (i == 1)
-	{
-		// is secure
-	//	if (!(arg_string = ft_split(av[0], " ")))
-		if (!(arg_string = ft_simple_split(av[0])))
-			return (0);
-		i = 0;
-		while (arg_string[i])
-			++i;
-		if (!(*int_tab = ft_memalloc(sizeof(int *) * i)))
-			return (ft_scott_free(arg_string, 0));
-		i = 0;
-		while (arg_string[i])
-		{
-			if (!ft_satoi(arg_string[i], &(*int_tab)[i]))
-			{
-				ft_free_strtab(arg_string);
-				return (0);
-			}
-//			(*int_tab)[i] = ft_atoi(arg_string[i]);
-			++i;
-		}
-	//	ft_print_strtab(arg_string);
-		ft_free_strtab(arg_string);
-	//	free(arg_string);	// now done in  free_strtab... might keep...
-	}
-	else
-	{
-		if (!(*int_tab = ft_memalloc(sizeof(int *) * (i))))
-			return (0);
-		i = 0;
-		while (av[i])
-		{
-			if (!ft_satoi(av[i], &(*int_tab)[i]))
-				return (0);
-//				return (ft_error_msg("there is an error\n", 0));
-		//	(*int_tab)[i] = ft_atoi(av[i]);
-			++i;
-		}
-	}
-	return (i);
-}
-*/
-
-
-
-// New Parser, this one will be a generic Int List converter...
-
-/*
-
-	We got 2 options, a list of int in a single arg
-	or a list of ints each in their own arg
-
-	Ideally use a regular Atoi, and do the checking externally
-*/
-
-
-//int		ft_check_is_number_str(char *str, int end)
-int		ft_check_is_number_full_str(char *str)
+int	ft_check_is_number_full_str(char *str)
 {
 	int		i;
 
@@ -103,7 +32,7 @@ int		ft_check_is_number_full_str(char *str)
 
 	// Str could be a single string or many
 	// same as before, int_tab gets invoked above, then send a pointer
-int		ft_parser(char **str, int **int_tab, int size)
+int	ft_parser(char **str, int **int_tab, int size)
 {
 	if (!str || !int_tab)	// is this how you secure AV ???
 		return (0);

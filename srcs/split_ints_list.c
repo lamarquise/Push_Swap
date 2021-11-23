@@ -14,11 +14,6 @@
 
 // Is Secure :)
 
-// Simple split might have been a good idea, and i may keep it around elsewhere for 
-// future use, but i don't need it here...
-	// This simple split should only break up numbers with 1 space between each...
-
-	// this does both the checking of the list of numbers and the counting of # of #s
 int	ns(char *str)
 {
 	int	i;
@@ -34,93 +29,11 @@ int	ns(char *str)
 		if (str[i] == ' ' && str[i + 1])
 			++numbers;
 		++i;
-
-
-/*
-
-		if ((s[i] >= '0' && s[i] <= '9') && (s[i + 1] == ' ' || s[i + 1] == '\0'))
-			++numbers;
-		else if (s[i] == ' ' && (!(s[i + 1] >= '0' && s[i + 1] <= '9') \
-				&& s[i + 1] != '\0'))
-			return (-1);
-		++i;
-*/
 	}
 	return (numbers + 1);
 }
-/*
-int		nl(char *s, int start)
-{
-	int	i;
 
-	i = 0;
-	if (!s)
-		return (1);
-	while (s[start + i] && s[start + i] != ' ')
-		++i;
-	return (i + 1);
-}
-*/
-/*
-int		fill_sret(char **ret, char *s, int a)
-{
-	int		b;
-	int		d;
-
-	if (!ret || !s)
-		return (-1);
-	b = 0;
-	while (s[a])
-	{
-		if (s[a] == ' ')
-			++a;
-		else
-		{
-			d = 0;
-			ret[b] = ft_memalloc(sizeof(char) * nl(s, a));
-			if (!ret[b])
-				return (-1);
-			while (s[a] && s[a] != ' ')
-				ret[b][d++] = s[a++];
-			ret[b++][d] = '\0';
-		}
-	}
-	return (b);
-}
-*/
-/*
-char	**ft_simple_split(char *s)
-{
-	int		a;
-	int		b;
-	int		numbers;
-	char	**ret;
-
-	if (!s)
-		return (NULL);
-	a = 0;
-	b = 0;
-	numbers = ns(s);
-//	printf("numbers: %d\n", numbers);
-	if (numbers == -1)
-		return (NULL);
-	ret = (char **)ft_memalloc(sizeof(char *) * numbers);
-	if (!ret)
-		return (NULL);
-	b = fill_sret(ret, s, a);
-	if (b == -1)
-	{
-		ft_free_strtab(ret);
-		return (NULL);
-	}
-	return (ret);
-}
-*/
-// There is no way this shit works!!!!!
-// Wait ok nvm this might be ok...
-	// what happens when we give it " 23 34 543 433"
-	// or "2341 1234 234 "
-int		ft_check_str(char *str)
+int	ft_check_str(char *str)
 {
 	int	i;
 
@@ -152,7 +65,7 @@ int		ft_check_str(char *str)
 	return (1);
 }
 
-int		ft_fill_int_tab(char *str, int **int_tab)
+int	ft_fill_int_tab(char *str, int **int_tab)
 {
 	int		a;
 	int		i;
@@ -208,27 +121,17 @@ int		ft_fill_int_tab(char *str, int **int_tab)
 	return (1);
 }
 
-
-
-	// return size
-	// assuming int_tab is empty
-int		ft_split_ints(char *str, int **int_tab)
+int	ft_split_ints(char *str, int **int_tab)
 {
 	int	a;
 	int	size;
 
-//	printf("split ints str: |%s|\n", str);
-//	printf("start split\n");
 	if (!str)
 		return (0);
 	if (!str[0])
 		return (-1);
-	//if (!str || !int_tab || !ft_check_str(str))
 	if (!int_tab || !ft_check_str(str))
-	{
-//		printf("check str returned bad\n");
 		return (-2);
-	}
 	a = 0;
 	size = ns(str);
 //	printf("in split ints int tab size: %d\n", size);

@@ -23,7 +23,6 @@ int		ft_wr_swap(t_sorting *all, char id)
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(1)))
 			return (0);
 		++all->size_op;
-//		write(1, "sa\n", 3);
 		return (1);
 	}
 	else if (id == 'b' && ft_op_swap(&all->stack_b))
@@ -31,7 +30,6 @@ int		ft_wr_swap(t_sorting *all, char id)
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(5)))
 			return (0);
 		++all->size_op;
-//		write(1, "sb\n", 3);
 		return (1);
 	}
 	else if (id == 'c' && ft_op_swap_both(&all->stack_a, &all->stack_b))
@@ -39,7 +37,6 @@ int		ft_wr_swap(t_sorting *all, char id)
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(8)))
 			return (0);
 		++all->size_op;
-//		write(1, "ss\n", 3);
 		return (1);
 	}
 	return (0);
@@ -141,7 +138,6 @@ int     ft_all_push_to_from(t_sorting *all, char id)
 	}
 	else
 		return (2);
-
 	return (1);
 }
 
@@ -158,25 +154,18 @@ int		ft_wr_rotate(t_sorting *all, char id)
 		result = ft_op_rotate(&all->stack_a);
 		if (result != 1)
 			return (result);
-
-//		++all->info_a->rot;
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(2)))
 			return (0);
 		++all->size_op;
-//		write(1, "ra\n", 3);
-
 	}
 	else if (id == 'b')
 	{
 		result = ft_op_rotate(&all->stack_b);
 		if (result != 1)
 			return (result);
-
-//		++all->info_b->rot;
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(6)))
 			return (0);
 		++all->size_op;
-//		write(1, "rb\n", 3);
 	}
 	else if (id == 'r')
 	{
@@ -186,9 +175,7 @@ int		ft_wr_rotate(t_sorting *all, char id)
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(9)))
 			return (0);
 		++all->size_op;
-//		write(1, "rr\n", 3);
 	}
-
 	return (1);
 }
 
@@ -205,25 +192,18 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 		result = ft_op_reverse_rotate(&all->stack_a);
 		if (result != 1)
 			return (result);
-
-//		--all->info_a->rot;
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(3)))
 			return (0);
 		++all->size_op;
-//		write(1, "rra\n", 4);
-
 	}
 	else if (id == 'b')
 	{
 		result = ft_op_reverse_rotate(&all->stack_b);
 		if (result != 1)
 			return (result);
-
-//		--all->info_b->rot;
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(7)))
 			return (0);
 		++all->size_op;
-//		write(1, "rrb\n", 4);
 	}
 	else if (id == 'c')
 	{
@@ -233,11 +213,6 @@ int		ft_wr_reverse_rotate(t_sorting *all, char id)
 		if (!ft_ilstadd_back(&all->op_list, ft_ilstnew(10)))
 			return (0);
 		++all->size_op;
-//		write(1, "rrr\n", 4);
 	}
 	return (1);
 }
-
-
-
-

@@ -48,19 +48,10 @@ int		ft_checker(t_sorting *all)
 	return (1);
 }
 
-
-
-
-
-
-	// desparately needs to be Secured!!!!!
-
 int		main(int ac, char **av)
 {
-	t_list		*op_codes;		// i could put op_codes in op_list in all..
-				// DO that if you feel you have time...
+	t_list		*op_codes;
 	int			*int_tab;
-
 	t_sorting 	all;
 	// So i am going to create a t_sorting all but just not fill out 
 	// the stack info part, seems fine?
@@ -81,8 +72,6 @@ int		main(int ac, char **av)
 			return (0);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
-//	ft_print_inttab(int_tab, all.size_total);
 	if (!ft_parse_op_codes(&op_codes))
 	{
 		// Parse op codes is where i check if anything in STDIN vs STDERR
@@ -90,7 +79,6 @@ int		main(int ac, char **av)
 		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
 	if (!ft_create_stack(&all.stack_a, &int_tab, all.size_total))
 	{
 		ft_free_list_of_str(&op_codes);
@@ -98,9 +86,6 @@ int		main(int ac, char **av)
 		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
-//	ft_print_both_stacks(&all);
-
 	if (!ft_apply_ops(&all, &op_codes))
 	{
 		ft_free_list_of_str(&op_codes);
@@ -109,16 +94,10 @@ int		main(int ac, char **av)
 		ft_free_int_tab(&int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-
-//	ft_print_both_stacks(&all);
 	if (!ft_checker(&all))
-	{
 		ft_putstr("KO\n");
-	}
 	else
-	{
 		ft_putstr("OK\n");
-	}
 
 // hold up, is there an oplist to free?
 	ft_free_list_of_str(&op_codes);
@@ -128,8 +107,3 @@ int		main(int ac, char **av)
 //	ft_ilstdel_all(&all.op_list); // I'm not convinced i use all.op_list
 	return (0);
 }
-
-
-
-
-

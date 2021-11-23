@@ -21,7 +21,7 @@ int		ft_op_swap(t_nlist **stack)
 
 	e1 = NULL;
 	e2 = NULL;
-	if (!stack || !*stack)	// is this correct?
+	if (!stack || !*stack)
 		return (0);
 	if ((*stack)->next)
 	{
@@ -38,9 +38,7 @@ int		ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);
-
 	if (!ft_op_swap(stack_a) || !ft_op_swap(stack_b))
 		return (0);
-
 	return (1);
 }

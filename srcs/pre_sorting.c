@@ -14,8 +14,7 @@
 
 // Is Secure!
 
-// seems secure, doesn't mess with memory
-int		ft_is_reverse_sorted(t_nlist *stack)
+int	ft_is_reverse_sorted(t_nlist *stack)
 {
 	t_nlist	*tmp;
 
@@ -34,9 +33,7 @@ int		ft_is_reverse_sorted(t_nlist *stack)
 	return (1);
 }
 
-// need to secure this i think, the WR calls.
-	// yea decided not to worry about that...
-int		ft_rev_sort(t_sorting *all)
+int	ft_rev_sort(t_sorting *all)
 {
 //	printf("in do REV Sort, size var: %d\n", all->size_a);
 	// swap and push to b
@@ -58,11 +55,9 @@ int		ft_rev_sort(t_sorting *all)
 	return (1);
 }
 
-
-
 // pretty sure this checks for duplicates :)
 // single *stack? not **stack?
-int		ft_sort_by_index(t_sorting *all)
+int	ft_sort_by_index(t_sorting *all)
 {
 	t_nlist	*cur;
 	t_nlist	*tmp;

@@ -31,7 +31,7 @@ int	ft_create_stack(t_nlist **stack, int **int_tab, int size)
 	t_nlist	*new;
 	int		i;
 
-	if (!stack || !int_tab || !*int_tab)// may need to double check this condition...
+	if (!stack || !int_tab || !*int_tab)
 		return (0);
 	new = NULL;
 	i = 0;

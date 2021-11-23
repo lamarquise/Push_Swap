@@ -30,7 +30,6 @@ int	ft_op_rotate(t_nlist **stack)
 	last->next = first;
 	*stack = first->next;
 	first->next = NULL;
-//	printf("in Rotate end\n");
 	return (1);
 }
 
