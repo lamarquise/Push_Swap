@@ -63,7 +63,7 @@ void	ft_putstr_fd(char const *s, int fd)
 		return ;
 	while ((char)s[a])
 	{
-		write(fd, (void*)&s[a], 1);
+		write(fd, (void *)&s[a], 1);
 		++a;
 	}
 }

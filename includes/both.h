@@ -13,18 +13,12 @@
 #ifndef BOTH_H
 # define BOTH_H
 
-	// Don't need ?
-# include <stdio.h>
-
-	// NOT ANYMORE... sad
-//# include "libft.h"
 # include "minilib.h"
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647
 
 /*
-	// do i need to swap val of PA and PB???
 	PA = 0
 	SA = 1
 	RA = 2
@@ -38,7 +32,7 @@
 	RRR = 10
 */
 
-typedef struct	s_sorting
+typedef struct s_sorting
 {
 	int				size_total;
 	int				size_a;
@@ -49,8 +43,7 @@ typedef struct	s_sorting
 	int				size_op;
 	t_ilist			*op_list;
 
-}				t_sorting;		// t_sorting *all;
-
+}				t_sorting;
 
 /*
 **		Creat Stack
@@ -61,9 +54,6 @@ int			ft_create_stack(t_nlist **stack, int **int_tab, int size);
 
 /*
 **		Parsing
-**
-**		For some reason this is here in push_swap.h but Parsing file includes both.h
-**		Sort this out...
 */
 
 int			ft_check_is_number_full_str(char *str);
@@ -84,8 +74,6 @@ int			ft_op_reverse_rotate_both(t_nlist **stack_a, t_nlist **stack_b);
 /*
 **	 Utils Both
 */
-// Would rather not have this file, would like either to use funcs from Libft
-// create and put in libft, but for now...
 
 int			ft_strcmp_to_strtab(char *input, char **tab);
 int			ft_is_sorted(t_nlist *stack);
@@ -107,11 +95,9 @@ int			ft_split_ints(char *str, int **int_tab);
 
 void		ft_free_int(void *content);
 int			ft_free_int_tab(int **int_tab);
-
 int			ft_free_nlist_elems(t_nlist **stack);
 int			ft_free_ilist(t_nlist **stack);
 int			ft_free_list_of_str(t_list **lst);
-
 
 /*
 **		Print Struct Status
@@ -119,9 +105,5 @@ int			ft_free_list_of_str(t_list **lst);
 
 void		ft_print_stack(t_nlist *stack);
 void		ft_print_both_stacks(t_sorting *all);
-//void		ft_print_stack_info(t_stack_info *info);
-//void		ft_print_mysort_all(t_sorting *all);
-//void		ft_print_inttab(int *tab, int size);
-
 
 #endif

@@ -16,7 +16,6 @@ t_ilist	*ft_ilstnew(int num)
 {
 	t_ilist	*elem;
 
-//	return (NULL);
 	elem = (t_ilist *)malloc(sizeof(t_ilist));
 	if (!elem)
 		return (NULL);
@@ -31,7 +30,6 @@ int	ft_ilstadd_back(t_ilist **lst, t_ilist *new)
 
 	if (!lst || !new)
 	{
-		// never need to worry aobut freeing contents of new
 		if (new)
 			free(new);
 		return (0);

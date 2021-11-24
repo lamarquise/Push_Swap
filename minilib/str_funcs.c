@@ -69,7 +69,7 @@ char	*ft_strchr(const char *s, int c)
 	int		a;
 	char	*tmp;
 
-	tmp = (char*)s;
+	tmp = (char *)s;
 	a = 0;
 	while (tmp[a] || (tmp[a] == '\0' && (char)c == '\0'))
 	{

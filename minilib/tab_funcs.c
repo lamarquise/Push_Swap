@@ -24,8 +24,6 @@ int	ft_free_strtab(char **tab)
 		ft_scott_free(&(tab[a]), 1);
 		++a;
 	}
-// a possible addition
-// may only exist in Push Swap tho...
 	free(tab);
 	return (1);
 }

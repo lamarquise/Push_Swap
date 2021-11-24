@@ -13,9 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-	// already has libft and stdio.h
 # include "both.h"
-
 
 /*
 **		Pre Sorting
@@ -52,7 +50,7 @@ int		ft_get_median_p2(t_nlist *stack, int size);
 int		ft_get_median(t_sorting *all, int id, int size);
 void	ft_threesort_p2(t_sorting *all, t_nlist *stack);
 int		ft_threesort(t_sorting *all, int id, int size);
- 
+
 /*
 **		Wrapper Functions
 */
@@ -86,10 +84,5 @@ int		ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep);
 
 void	ft_post_processing_p2(t_sorting *all, t_ilist **tmp);
 int		ft_post_processing(t_sorting *all);
-
-	// Obsolete
-int		ft_my_sort(t_sorting *all);
-int		ft_bubble_sort(t_sorting *all);
-
 
 #endif

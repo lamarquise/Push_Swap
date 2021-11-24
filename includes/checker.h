@@ -13,12 +13,11 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "both.h"
+# include "both.h"
 
-// for open for testing GNL
-#include <fcntl.h>
-
+int		ft_apply_ops_p2(t_sorting *all, t_list *tmp);
 int		ft_apply_ops(t_sorting *all, t_list **op_codes);
+int		ft_parse_op_codes_p2(t_list **op_codes, char **valid_tab);
 int		ft_parse_op_codes(t_list **op_codes);
 int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab);
 

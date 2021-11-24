@@ -14,24 +14,15 @@
 
 // Is Secure!
 
-int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
+int	ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 {
 	t_list	*new;
 	char	*nstr;
 
 	if (!line || !op_codes || !valid_tab)
-		return (0);	
+		return (0);
 	if (!ft_strcmp_to_strtab(line, valid_tab))
 		return (0);
-
-	// I hate that lstadd_back returns a void, makes it way harder to check
-	// if everything has gone right...
-	// may need to use a "new" var and do lstnew & dup separately...
-
-
-		// this is a fucking shit show, if strdup fails, it returns NULL
-		// so lstnew still gets created but it's contents is NULL.
-		// but what happens if strdup works but lstnew does not, we have a leak!
 	nstr = ft_strdup(line);
 	if (!nstr)
 		return (0);
@@ -41,43 +32,57 @@ int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 		free(nstr);
 		return (0);
 	}
-
-//	ft_lstadd_back(op_codes, ft_lstnew(ft_strdup(line)));
 	ft_lstadd_back(op_codes, new);
 	return (1);
 }
 
-	// seems secure and leak free, did it the same ways as Cub3d
-int		ft_parse_op_codes(t_list **op_codes)
+int	ft_parse_op_codes_p2(t_list **op_codes, char **valid_tab)
 {
 	int		i;
 	int		ret;
 	char	*line;
-	char	**valid_tab;
-	
-	if (!op_codes || *op_codes)
-		return (0);
+
+	if (!op_codes || *op_codes || !valid_tab || !*valid_tab)
+		return (-1);
 	i = 0;
 	ret = 1;
 	line = NULL;
+	while (ret > 0)
+	{
+		ret = ft_gnl(&line, 0);
+		if (ret > 0)
+		{
+			if (!ft_check_add_code(line, op_codes, valid_tab))
+			{
+				ft_scott_free(&line, 0);
+				ft_free_strtab(valid_tab);
+				return (-1);
+			}
+			++i;
+		}
+		ft_scott_free(&line, 0);
+	}
+	return (i);
+}
+
+int	ft_parse_op_codes(t_list **op_codes)
+{
+	int		ret;
+	char	**valid_tab;
+
+	if (!op_codes || *op_codes)
+		return (0);
 	valid_tab = ft_split("pa pb sa sb ss ra rb rr rra rrb rrr", " ");
 	if (!valid_tab)
 		return (0);
-	while ((ret = ft_gnl(&line, 0)) > 0)
+	ret = ft_parse_op_codes_p2(op_codes, valid_tab);
+	if (ret < 1)
 	{
-		if (!ft_check_add_code(line, op_codes, valid_tab))
-		{
-			ft_scott_free(&line, 0);
-			ft_free_strtab(valid_tab);
-			return (0);
-		}
-		ft_scott_free(&line, 0);
-		++i;
+		ft_free_strtab(valid_tab);
+		if (ret == 0)
+			return (2);
+		return (0);
 	}
-//	printf("gnl ret: %d\n", ret);
-	ft_scott_free(&line, 0);
 	ft_free_strtab(valid_tab);
-	if (i == 0)		// this is the thing that allows me to know if nothing in STDIN
-		return (2);	// in which case we print nothing i think...
 	return (1);
 }

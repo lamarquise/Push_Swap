@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minilib.h"
 
 long	ft_error_msg(char *str, int ret)
@@ -21,7 +20,7 @@ long	ft_error_msg(char *str, int ret)
 	return (ret);
 }
 
-long		ft_error_msg_fd(char *str, int fd, int ret)
+long	ft_error_msg_fd(char *str, int fd, int ret)
 {
 	if (!str)
 		return (ret);

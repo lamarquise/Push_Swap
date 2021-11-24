@@ -12,6 +12,19 @@
 
 #include "minilib.h"
 
+int	ft_nlstadd_back_p2(t_nlist **lst, t_nlist *new, int i)
+{
+	if (!lst || !new)
+		return (0);
+	if (!*lst)
+	{
+		*lst = new;
+		new->index = i;
+		return (1);
+	}
+	return (0);
+}
+
 int	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
 {
 	size_t	i;
@@ -20,17 +33,12 @@ int	ft_nlstadd_back(t_nlist **lst, t_nlist *new)
 	i = 0;
 	if (!lst || !new)
 	{
-		// this only works because the contents of *new are freed elsewere
 		if (new)
 			free(new);
 		return (0);
 	}
-	if (!*lst)
-	{
-		*lst = new;
-		new->index = i;
+	if (ft_nlstadd_back_p2(lst, new, i))
 		return (1);
-	}
 	tmp = *lst;
 	while (tmp->next)
 	{

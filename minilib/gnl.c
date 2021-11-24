@@ -12,7 +12,6 @@
 
 #include "minilib.h"
 
-
 char	*get_line(char **line, char **b_read)
 {
 	size_t	i;
@@ -24,11 +23,7 @@ char	*get_line(char **line, char **b_read)
 		i++;
 	if ((*b_read)[i] == '\n')
 	{
-//		++i;
 		*line = ft_substr((*b_read), 0, i++);
-//		new_b = ft_strdup(&(*b_read)[i]);
-//		++i;
-//		new_b = ft_strdup((*b_read) + i);
 		new_b = ft_substr((*b_read), i, ft_sstrlen(*b_read) - i);
 	}
 	else
@@ -78,5 +73,3 @@ int	ft_gnl(char **line, int fd)
 		return (0);
 	return (1);
 }
-
-
