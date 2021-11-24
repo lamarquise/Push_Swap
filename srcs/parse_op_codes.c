@@ -50,12 +50,14 @@ int		ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 	// seems secure and leak free, did it the same ways as Cub3d
 int		ft_parse_op_codes(t_list **op_codes)
 {
+	int		i;
 	int		ret;
 	char	*line;
 	char	**valid_tab;
 	
 	if (!op_codes || *op_codes)
 		return (0);
+	i = 0;
 	ret = 1;
 	line = NULL;
 	valid_tab = ft_split("pa pb sa sb ss ra rb rr rra rrb rrr", " ");
@@ -70,8 +72,12 @@ int		ft_parse_op_codes(t_list **op_codes)
 			return (0);
 		}
 		ft_scott_free(&line, 0);
+		++i;
 	}
+//	printf("gnl ret: %d\n", ret);
 	ft_scott_free(&line, 0);
 	ft_free_strtab(valid_tab);
+	if (i == 0)		// this is the thing that allows me to know if nothing in STDIN
+		return (2);	// in which case we print nothing i think...
 	return (1);
 }

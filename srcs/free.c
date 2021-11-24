@@ -35,7 +35,7 @@ int	ft_free_nlist_elems(t_nlist **stack)
 		free(*stack);
 		*stack = tmp;
 	}
- 	return (1);
+	return (1);
 }
 
 int	ft_free_list_of_str(t_list **lst)

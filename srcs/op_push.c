@@ -13,10 +13,8 @@
 #include "both.h"
 
 // Is Secure!
-	// Push A is push from B to A
-	// Push B is from A to B
 
-int		ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from)
+int	ft_op_push_to_from(t_nlist **stack_to, t_nlist **stack_from)
 {
 	t_nlist	*tmp_from;
 

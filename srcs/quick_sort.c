@@ -58,7 +58,6 @@ int	ft_partition(t_sorting *all, int id, int size)
 	return (part_size);
 }
 
-	// yea fuck the if-checks, they aren't used ubiquitously so it doesn't matter...
 int	ft_my_quick_sort(t_sorting *all, int id, int size)
 {
 	int	part_size;
@@ -106,26 +105,21 @@ int	ft_first_partition(t_sorting *all, int size)
 	return (med);
 }
 
-	// this is fucking idiotic i apply my algo more than once in certain cases
-		// like in rev sorted size 3...
 int	ft_start_push_swap(t_sorting *all, int size)
 {
 	int	part_size;
 
-//	printf("made it to start of Quicksort\n");
 	if (ft_is_sorted(all->stack_a))
 		return (1);
-	else if (ft_is_reverse_sorted(all->stack_a)) //why secure, there are no checks...
+	else if (ft_is_reverse_sorted(all->stack_a))
 		ft_rev_sort(all);
 	else if (size < 4)
 		ft_threesort(all, 0, size);
 	else
 	{
-		// secure? I guess not... not really worth it...
 		part_size = ft_first_partition(all, size);
 		ft_my_quick_sort(all, 0, size - part_size);
 		ft_my_quick_sort(all, 1, part_size);
 	}
-//	printf("in end of QS\n");
 	return (1);
 }

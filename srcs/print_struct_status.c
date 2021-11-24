@@ -22,8 +22,8 @@ void	ft_print_stack(t_nlist *stack)
 	while (tmp)
 	{
 		if (!tmp->content)
-			return;
-		ft_putnbr(*((int*)(tmp->content)));
+			return ;
+		ft_putnbr(*((int *)(tmp->content)));
 		write(1, "  --  index: ", 13);
 		ft_putnbrnl(tmp->index);
 		tmp = tmp->next;

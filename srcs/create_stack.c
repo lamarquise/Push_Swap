@@ -14,8 +14,6 @@
 
 // Is Secure!
 
-	// NOT IN FINAL PUSH TO VOG
-	// does it need to return an int?
 int	ft_print_inttab(int *tab, int size)
 {
 	int		i;

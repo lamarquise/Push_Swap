@@ -39,20 +39,36 @@ int		ft_start_push_swap(t_sorting *all, int size);
 **		Minisort
 */
 
-int		ft_get_median(t_sorting *all, int id, int size);
-int		ft_threesort(t_sorting *all, int id, int size);
+void	ft_minisort_a_p2(t_sorting *all, int size);
 int		ft_minisort_a(t_sorting *all, int size);
 int		ft_minisort_b(t_sorting *all, int size);
 int		ft_minisort(t_sorting *all, int id, int size);
+
+/*
+**		Minisort Part 2
+*/
+
+int		ft_get_median_p2(t_nlist *stack, int size);
+int		ft_get_median(t_sorting *all, int id, int size);
+void	ft_threesort_p2(t_sorting *all, t_nlist *stack);
+int		ft_threesort(t_sorting *all, int id, int size);
  
 /*
 **		Wrapper Functions
 */
 
 int		ft_wr_swap(t_sorting *all, char id);
+int		ft_wr_push_p2(t_sorting *all);
 int		ft_wr_push(t_sorting *all, char id);
 int		ft_all_push_to_from(t_sorting *all, char id);
+
+/*
+**		Wrapper Functions Rotate
+*/
+
+int		ft_wr_rotate_p2(t_sorting *all, char id);
 int		ft_wr_rotate(t_sorting *all, char id);
+int		ft_wr_reverse_rotate_p2(t_sorting *all, char id);
 int		ft_wr_reverse_rotate(t_sorting *all, char id);
 
 /*
@@ -68,6 +84,7 @@ int		ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep);
 **		Post Processing
 */
 
+void	ft_post_processing_p2(t_sorting *all, t_ilist **tmp);
 int		ft_post_processing(t_sorting *all);
 
 	// Obsolete

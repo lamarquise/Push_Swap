@@ -18,8 +18,10 @@ DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap_main.c \
 					pre_sorting.c \
 					op_wrappers.c \
+					op_wrappers_rotate.c \
 					quick_sort.c \
 					minisort.c \
+					minisort_p2.c \
 
 DIR_BOTH		=	$(DIR_SRCS)
 SRCS_BOTH		=	parsing.c \

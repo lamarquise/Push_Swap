@@ -95,8 +95,10 @@ int			ft_satoi(const char *str, int *num);
 **	 Split Ints List
 */
 
-char		**ft_simple_split(char *s);
-	// potencially put in minilib...
+int			ns(char *str);
+int			ft_check_str(char *str);
+int			ft_fill_int_tab_p2(char *str, int *neg, int a);
+int			ft_fill_int_tab(char *str, int **int_tab);
 int			ft_split_ints(char *str, int **int_tab);
 
 /*

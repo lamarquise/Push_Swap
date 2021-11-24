@@ -14,7 +14,8 @@
 
 // Is Secure!
 	// like nothing happens here, the if-checks never get used
-int		ft_op_swap(t_nlist **stack)
+
+int	ft_op_swap(t_nlist **stack)
 {
 	t_nlist	*e1;
 	t_nlist	*e2;
@@ -34,7 +35,7 @@ int		ft_op_swap(t_nlist **stack)
 	return (1);
 }
 
-int		ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
+int	ft_op_swap_both(t_nlist **stack_a, t_nlist **stack_b)
 {
 	if (!stack_a || !stack_b)
 		return (0);

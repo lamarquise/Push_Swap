@@ -39,7 +39,7 @@ int	ft_is_sorted(t_nlist *stack)
 	tmp = stack;
 	while (tmp->next)
 	{
-		if (*((int*)tmp->content) > *((int*)tmp->next->content))
+		if (*((int *)tmp->content) > *((int *)tmp->next->content))
 			return (0);
 		tmp = tmp->next;
 	}
