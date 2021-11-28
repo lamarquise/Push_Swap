@@ -25,11 +25,12 @@ int	ns(char *str)
 		return (-1);
 	while (str[i])
 	{
-		if (str[i] == ' ' && str[i + 1])
+		if (ft_findchar("0123456789", str[i]) > -1 \
+			&& (!str[i + 1] || str[i + 1] == ' '))
 			++numbers;
 		++i;
 	}
-	return (numbers + 1);
+	return (numbers);
 }
 
 int	ft_check_str(char *str)
@@ -37,15 +38,12 @@ int	ft_check_str(char *str)
 	int	i;
 
 	i = 0;
-	if (!str || ft_findchar("+-0123456789", str[0]) == -1)
+	if (!str)
 		return (0);
 	while (str[i])
 	{
 		if ((str[i] == '+' || str[i] == '-') \
 			&& (str[i + 1] < '0' || str[i + 1] > '9'))
-			return (0);
-		else if (str[i] == ' ' && str[i + 1] \
-				&& ft_findchar("+-0123456789", str[i + 1]) == -1)
 			return (0);
 		else if (ft_findchar("+- 0123456789", str[i]) == -1)
 			return (0);

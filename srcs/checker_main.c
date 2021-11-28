@@ -56,9 +56,14 @@ int	main_pc2(t_sorting *all, int **int_tab, t_list **op_codes)
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	if (!ft_checker(all))
+	{
 		ft_putstr("KO\n");
+	}
 	else
+	{
+	//	ft_print_both_stacks(all);
 		ft_putstr("OK\n");
+	}
 	return (1);
 }
 
