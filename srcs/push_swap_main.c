@@ -66,8 +66,8 @@ int	main(int ac, char **av)
 	if (all.size_total < 1)
 	{
 		ft_free_int_tab(&int_tab);
-		if (all.size_total == -1) // this may never actually be a thing?
-			return (0); // this is the thing that makes "" not be an error.
+		if (all.size_total == -1)
+			return (0);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	if (!main_p2(&all, &int_tab))

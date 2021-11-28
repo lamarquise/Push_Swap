@@ -2,7 +2,6 @@
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 
-
 NAME		=	push_swap
 CHECKER		=	checker
 
@@ -12,7 +11,6 @@ DIR_CHECKER		=	$(DIR_SRCS)
 SRCS_CHECKER	=	checker_main.c \
 					apply_operations.c \
 					parse_op_codes.c \
-
 
 DIR_PUSH_SWAP	=	$(DIR_SRCS)
 SRCS_PUSH_SWAP	=	push_swap_main.c \
@@ -36,12 +34,6 @@ SRCS_BOTH		=	parsing.c \
 					ilist_more.c \
 					post_processing.c \
 
-# might move the last one..
-
-# This is where it would be nice to have an include file, one i could bring in
-# for libft that i also use in libft, where all the include files and sources files
-# are stored...
-
 DIR_MINILIB		=	./minilib/
 SRCS_MINILIB	=	atoi_funcs.c \
 					big_str_funcs.c \
@@ -58,47 +50,29 @@ SRCS_MINILIB	=	atoi_funcs.c \
 					gnl.c \
 					gnl_utils.c \
 
-
 DIR_INC		=	includes/
 INCS		=	-I$(DIR_INC)
 
-# TMP for testing with my old GNL
-#DIR_GNL		=	../libft/srcs/gnl/
-#SRCS_GNL	=	gnl.c \
-				utils.c \
-
-#OBJ_GNL		=	$(SRCS_GNL:.c=.o)
-# don't forget to remove from OBJ_CHECKER & OBJ_PUSH_SWAP
-
-# Remove -I for GNL
-#ALL_INCS	=	$(INCS) -I./minilib/ -I../libft/includes/
 ALL_INCS	=	$(INCS) -I./minilib/
-
-
 
 DIR_OBJ		=	./objs/
 
-OBJ_MINILIB	=	$(SRCS_MINILIB:.c=.o)
-OBJ_BOTH	=	$(SRCS_BOTH:.c=.o)
-OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
+OBJ_MINILIB		=	$(SRCS_MINILIB:.c=.o)
+OBJ_BOTH		=	$(SRCS_BOTH:.c=.o)
+OBJ_CHECKER		=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
 OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB)
-#OBJ_CHECKER	=	$(SRCS_CHECKER:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB) $(OBJ_GNL)
-#OBJ_PUSH_SWAP	=	$(SRCS_PUSH_SWAP:.c=.o) $(OBJ_BOTH) $(OBJ_MINILIB) $(OBJ_GNL)
 
 OBJS_CHECKER	=	$(addprefix $(DIR_OBJ),$(OBJ_CHECKER))
 OBJS_PUSH_SWAP	=	$(addprefix $(DIR_OBJ),$(OBJ_PUSH_SWAP))
 
 
+	### Rules ###
+
 all: $(NAME)
 
 bonus: $(NAME) $(CHECKER)
-#all: $(CHECKER) $(PUSH_SWAP)
 
 	### EXECUTABLE CREATION ###
-
-	# don't forget to add more dependancies, like $(LIBFT) and whatever else
-	# fairly certain the includes and libs and stuff need to be in both
-		# the "Name" rules and the "Obj" rules... I think.
 
 $(CHECKER): $(OBJS_CHECKER)
 	$(CC) $(CFLAGS) $(ALL_INCS) $(OBJS_CHECKER) -o $(CHECKER)
@@ -110,9 +84,6 @@ $(NAME): $(OBJS_PUSH_SWAP)
 
 
 	### BINARY CREATION ###
-
-	# may not need to link the libft here... IDK
-	# No i do not, just need the .h files of both my program and libft...
 
 $(DIR_OBJ)%.o: $(DIR_CHECKER)%.c
 	mkdir -p $(DIR_OBJ)
@@ -134,12 +105,6 @@ $(DIR_OBJ)%.o: $(DIR_MINILIB)%.c
 	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
 	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
 
-# TMP only for testing with my old GNL
-$(DIR_OBJ)%.o: $(DIR_GNL)%.c
-	mkdir -p $(DIR_OBJ)
-	$(CC) $(CFLAGS) $(ALL_INCS) -c $< -o $@
-	printf "$(_CYAN)\r\33[2K\rCompling $@$(_END)"
-
 
 	### CLEANING ###
 
@@ -153,28 +118,7 @@ fclean: clean
 
 re: fclean all
 
-# should re make push_swap AND checker?
-
-	### VARIOUS TESTS, Valgrind, leaks, etc... ###
-
-	# works for just Checker...
-	# also, dosen't work on Mac with Big Sur atm... ugh
-testlc: $(OBJS_CHECKER) $(LIBFT)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_valgrind -g
-	echo "$(_GREEN)\r\33[2K\rChecker Valgrind is ready  😎\n$(_END)"
-
-testlp: $(OBJS_PUSH_SWAP) $(LIBFT)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o push_swap_valgrind -g
-	echo "$(_GREEN)\r\33[2K\rPush Swap Valgrind is ready  😎\n$(_END)"
-
-testsc: $(OBJS_CHECKER) $(LIBFT)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_CHECKER) -o checker_sanitize -g3 -fsanitize=address
-	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
-
-testsp: $(OBJS_PUSH_SWAP) $(LIBFT)
-	$(CC) $(CFLAGS) $(ALL_INCS) $(ALL_LIBS) $(OBJS_PUSH_SWAP) -o pus_swap_sanitize -g3 -fsanitize=address
-	echo "$(_CYAN)Fsanitize Test ready  😬$(_END)"
-
+rebonus: fclean bonus
 
 .PHONY: all clean fclean re testlc testlp testsc testsp
 
