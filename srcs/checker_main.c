@@ -57,6 +57,7 @@ int	main_pc2(t_sorting *all, int **int_tab, t_list **op_codes)
 	}
 	if (!ft_checker(all))
 	{
+	//	ft_print_both_stacks(all);
 		ft_putstr("KO\n");
 	}
 	else

@@ -54,7 +54,7 @@ int	ft_check_str(char *str)
 
 int	ft_fill_int_tab_p2(char *str, int *neg, int a)
 {
-	if (str[a] == ' ')
+	while (str[a] == ' ')
 		++a;
 	if (str[a] == '-' || str[a] == '+')
 	{
