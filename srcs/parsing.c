@@ -19,6 +19,8 @@ int	ft_check_is_number_full_str(char *str)
 	int		i;
 
 	i = 0;
+	if (!str || !str[0])
+		return (0);
 	while (str[i])
 	{
 		if ((str[i] == '+' || str[i] == '-') && (str[i + 1] < '0' \

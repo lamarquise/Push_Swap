@@ -94,8 +94,8 @@ int	main(int ac, char **av)
 	{
 		ft_free_int_tab(&int_tab);
 		ft_free_list_of_str(&op_codes);
-		if (all.size_total == -1)
-			return (0);
+//		if (all.size_total == -1)
+//			return (0);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	if (!main_pc2(&all, &int_tab, &op_codes))
