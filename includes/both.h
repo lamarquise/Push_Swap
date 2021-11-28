@@ -13,8 +13,6 @@
 #ifndef BOTH_H
 # define BOTH_H
 
-//#include <stdio.h> // TMP for testing
-
 # include "minilib.h"
 
 # define INTMIN -2147483648

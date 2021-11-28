@@ -19,7 +19,10 @@ int	ft_post_processing_p2(t_sorting *all, t_ilist **tmp)
 {
 	if (!all || !tmp)
 		return (0);
-	if (((*tmp)->next->num == 2 && (*tmp)->next->next->num == 3) \
+	if (((*tmp)->next->num == 1 && (*tmp)->next->next->num == 1) \
+			|| ((*tmp)->next->num == 5 && (*tmp)->next->next->num == 5))
+		ft_remove_next_two(all, tmp);
+	else if (((*tmp)->next->num == 2 && (*tmp)->next->next->num == 3) \
 			|| ((*tmp)->next->num == 3 && (*tmp)->next->next->num == 2))
 		ft_remove_next_two(all, tmp);
 	else if (((*tmp)->next->num == 6 && (*tmp)->next->next->num == 7) \
@@ -50,9 +53,6 @@ int	ft_post_processing(t_sorting *all)
 		i = 0;
 		if ((tmp->next->num == 0 && tmp->next->next->num == 4) \
 			|| (tmp->next->num == 4 && tmp->next->next->num == 0))
-			ft_remove_next_two(all, &tmp);
-		else if ((tmp->next->num == 1 && tmp->next->next->num == 1) \
-				|| (tmp->next->num == 5 && tmp->next->next->num == 5))
 			ft_remove_next_two(all, &tmp);
 		else if (!ft_post_processing_p2(all, &tmp))
 			return (0);
