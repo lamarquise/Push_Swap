@@ -82,7 +82,7 @@ int		ft_replace_next_two_with_one(t_sorting *all, t_ilist **cur, int rep);
 **		Post Processing
 */
 
-void	ft_post_processing_p2(t_sorting *all, t_ilist **tmp);
+int		ft_post_processing_p2(t_sorting *all, t_ilist **tmp);
 int		ft_post_processing(t_sorting *all);
 
 #endif

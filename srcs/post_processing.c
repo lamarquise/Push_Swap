@@ -15,8 +15,10 @@
 // Is Secure!
 	// once again it has no leaks but no other checks...
 
-void	ft_post_processing_p2(t_sorting *all, t_ilist **tmp)
+int	ft_post_processing_p2(t_sorting *all, t_ilist **tmp)
 {
+	if (!all || !tmp)
+		return (0);
 	if (((*tmp)->next->num == 2 && (*tmp)->next->next->num == 3) \
 			|| ((*tmp)->next->num == 3 && (*tmp)->next->next->num == 2))
 		ft_remove_next_two(all, tmp);
@@ -32,10 +34,12 @@ void	ft_post_processing_p2(t_sorting *all, t_ilist **tmp)
 	else if (((*tmp)->next->num == 3 && (*tmp)->next->next->num == 7) \
 			|| ((*tmp)->next->num == 7 && (*tmp)->next->next->num == 3))
 		ft_replace_next_two_with_one(all, &(*tmp)->next, 10);
+	return (1);
 }
 
 int	ft_post_processing(t_sorting *all)
 {
+	int		i;
 	t_ilist	*tmp;
 
 	if (!all || !all->op_list)
@@ -43,15 +47,22 @@ int	ft_post_processing(t_sorting *all)
 	tmp = all->op_list;
 	while (tmp && tmp->next && tmp->next->next)
 	{
+		i = 0;
 		if ((tmp->next->num == 0 && tmp->next->next->num == 4) \
 			|| (tmp->next->num == 4 && tmp->next->next->num == 0))
 			ft_remove_next_two(all, &tmp);
 		else if ((tmp->next->num == 1 && tmp->next->next->num == 1) \
 				|| (tmp->next->num == 5 && tmp->next->next->num == 5))
 			ft_remove_next_two(all, &tmp);
+		else if (!ft_post_processing_p2(all, &tmp))
+			return (0);
 		else
-			ft_post_processing_p2(all, &tmp);
-		tmp = tmp->next;
+		{
+			i = 1;
+			tmp = tmp->next;
+		}
+		if (i == 0)
+			tmp = all->op_list;
 	}
 	return (1);
 }

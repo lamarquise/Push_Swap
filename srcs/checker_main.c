@@ -73,8 +73,8 @@ int	main_op(t_list **op_codes)
 	if (ret != 1)
 	{
 		ft_free_list_of_str(op_codes);
-		if (ret == 2)
-			return (0);
+//		if (ret == 2)
+//			return (0);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
 	return (1);

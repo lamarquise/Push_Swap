@@ -38,13 +38,13 @@ int	ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 
 int	ft_parse_op_codes_p2(t_list **op_codes, char **valid_tab)
 {
-	int		i;
+//	int		i;
 	int		ret;
 	char	*line;
 
 	if (!op_codes || *op_codes || !valid_tab || !*valid_tab)
-		return (-1);
-	i = 0;
+		return (0);
+//	i = 0;
 	ret = 1;
 	line = NULL;
 	while (ret > 0)
@@ -56,13 +56,14 @@ int	ft_parse_op_codes_p2(t_list **op_codes, char **valid_tab)
 			{
 				ft_scott_free(&line, 0);
 				ft_free_strtab(valid_tab);
-				return (-1);
+				return (0);
 			}
-			++i;
+//			++i;
 		}
 		ft_scott_free(&line, 0);
 	}
-	return (i);
+	return (1);
+//	return (i);
 }
 
 int	ft_parse_op_codes(t_list **op_codes)
@@ -76,11 +77,12 @@ int	ft_parse_op_codes(t_list **op_codes)
 	if (!valid_tab)
 		return (0);
 	ret = ft_parse_op_codes_p2(op_codes, valid_tab);
-	if (ret < 1)
+	//if (ret < 1)
+	if (ret != 1)
 	{
 		ft_free_strtab(valid_tab);
-		if (ret == 0)
-			return (2);
+//		if (ret == 0)
+//			return (2);
 		return (0);
 	}
 	ft_free_strtab(valid_tab);

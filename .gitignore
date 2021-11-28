@@ -1,6 +1,7 @@
 objs/
 checker_sanitize
 pus_swap_sanitize
+new_push_swap_tester
 push_swap_visualizer
 tester1
 .DS_Store
@@ -13,3 +14,4 @@ push_swap
 ans
 ans_2
 *.swp
+example_push_Swap
