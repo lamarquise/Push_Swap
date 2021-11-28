@@ -12,8 +12,6 @@
 
 #include "checker.h"
 
-// Is Secure!
-
 int	ft_check_add_code(char *line, t_list **op_codes, char **valid_tab)
 {
 	t_list	*new;

@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-
 int	ft_wr_swap(t_sorting *all, char id)
 {
 	if (!all)

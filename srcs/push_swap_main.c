@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-// This is Secure! enough...
-
 int	main_p3(t_sorting *all, int **int_tab)
 {
 	if (!ft_start_push_swap(all, all->size_total))

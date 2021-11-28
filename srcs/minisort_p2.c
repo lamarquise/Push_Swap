@@ -12,10 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-	// like i'm not gonna add a bunch of if-checks, there's no leaks
-	// good enough
-
 int	ft_get_median_p2(t_nlist *stack, int size)
 {
 	int		c;

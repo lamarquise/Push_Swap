@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-	// like i'm not gonna add a bunch of if-checks, there's no leaks
-	// good enough
-
-	// The Minisorts A and B are for sorting Partitions of size 3 or less
-	// Stolen and Adapted Directly from Pascal, thanks
-
 void	ft_minisort_a_p2(t_sorting *all, int size)
 {
 	ft_wr_rotate(all, 'a');

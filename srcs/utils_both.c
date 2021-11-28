@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure! (nothing allocated)
-
 int	ft_strcmp_to_strtab(char *input, char **tab)
 {
 	int		i;

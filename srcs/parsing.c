@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure!
-
 int	ft_check_is_number_full_str(char *str)
 {
 	int		i;

@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-
 int	ft_wr_rotate_p2(t_sorting *all, char id)
 {
 	int		result;

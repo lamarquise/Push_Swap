@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-
 int	ft_is_reverse_sorted(t_nlist *stack)
 {
 	t_nlist	*tmp;

@@ -12,9 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-	// Not gonna bother adding an shitload of if-checks...
-
 int	ft_split_part(t_sorting *all, int id, int part_size, int med)
 {
 	int		rot_count;

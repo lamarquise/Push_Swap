@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure!
-
 int	ft_print_inttab(int *tab, int size)
 {
 	int		i;

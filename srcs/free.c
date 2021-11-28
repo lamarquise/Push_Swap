@@ -12,9 +12,6 @@
 
 #include "both.h"
 
-// Is Secure!
-	// But do i need the funcs at the end or should i delete them...
-
 int	ft_free_int_tab(int **int_tab)
 {
 	if (!int_tab || !*int_tab)

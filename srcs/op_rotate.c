@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure!
-
 int	ft_op_rotate(t_nlist **stack)
 {
 	t_nlist	*first;

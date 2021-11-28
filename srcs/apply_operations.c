@@ -12,9 +12,6 @@
 
 #include "checker.h"
 
-// Op_codes part is secure, not sure about the rest...
-	// if it was good enough for push_swap, it's good enough for checker.
-
 int	ft_apply_ops_p2(t_sorting *all, t_list *tmp)
 {
 	if (!all || !tmp)

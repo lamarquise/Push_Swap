@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure :)
-
 int	ns(char *str)
 {
 	int	i;

@@ -12,8 +12,6 @@
 
 #include "checker.h"
 
-// Is Secure!
-
 int	ft_checker(t_sorting *all)
 {
 	int		prev;

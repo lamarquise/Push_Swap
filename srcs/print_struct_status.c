@@ -12,8 +12,6 @@
 
 #include "both.h"
 
-// Is Secure
-
 void	ft_print_stack(t_nlist *stack)
 {
 	t_nlist	*tmp;

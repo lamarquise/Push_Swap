@@ -12,9 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-	// no leaks but other checks never get used upstream...
-
 int	ft_print_ilist(t_ilist *lst)
 {
 	t_ilist	*tmp;

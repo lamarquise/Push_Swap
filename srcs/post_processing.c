@@ -12,9 +12,6 @@
 
 #include "push_swap.h"
 
-// Is Secure!
-	// once again it has no leaks but no other checks...
-
 int	ft_post_processing_p2(t_sorting *all, t_ilist **tmp)
 {
 	if (!all || !tmp)
