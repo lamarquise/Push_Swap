@@ -24,7 +24,9 @@ int	ft_checker(t_sorting *all)
 	tmp = tmp->next;
 	while (tmp)
 	{
-		if (*((int *)tmp->content) <= prev)
+		if (*((int *)tmp->content) == prev)
+			return (ft_error_msg_fd("Error\n", 2, -1));
+		if (*((int *)tmp->content) < prev)
 			return (0);
 		prev = *((int *)tmp->content);
 		tmp = tmp->next;
@@ -34,6 +36,8 @@ int	ft_checker(t_sorting *all)
 
 int	main_pc2(t_sorting *all, int **int_tab, t_list **op_codes)
 {
+	int	ret;
+
 	if (!all || !int_tab || !op_codes)
 		return (0);
 	all->stack_a = NULL;
@@ -53,8 +57,13 @@ int	main_pc2(t_sorting *all, int **int_tab, t_list **op_codes)
 		ft_free_int_tab(int_tab);
 		return (ft_error_msg_fd("Error\n", 2, 0));
 	}
-	if (!ft_checker(all))
+	ret = ft_checker(all);
+	if (ret != 1)
+	{
+		if (ret == -1)
+			return (-1);
 		ft_putstr("KO\n");
+	}
 	else
 		ft_putstr("OK\n");
 	return (1);
